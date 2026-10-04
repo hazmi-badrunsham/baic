@@ -1,0 +1,73 @@
+---
+import site from '../data/site.json';
+import T from './T.astro';
+import Media from './Media.astro';
+import WhatsAppLink from './WhatsAppLink.astro';
+import VehicleSpecs from './VehicleSpecs.astro';
+import VehicleGallery from './VehicleGallery.astro';
+import VehicleFeatures from './VehicleFeatures.astro';
+import VehiclePricing from './VehiclePricing.astro';
+
+const { vehicle, number } = Astro.props as { vehicle: any; number: number };
+const rugged = vehicle.theme === 'rugged';
+const n = String(number).padStart(2, '0');
+const m = vehicle.media;
+const pending = !(vehicle.keyStats?.length) && !vehicle.pricing;
+const ask = {
+  en: site.labels.ask.en.replace('{name}', vehicle.shortName),
+  bm: site.labels.ask.bm.replace('{name}', vehicle.shortName),
+};
+---
+<section
+  id={vehicle.slug}
+  data-ctx
+  data-ctx-vehicle={vehicle.name}
+  aria-labelledby={`${vehicle.id}-title`}
+  class:list={['border-t border-white/10 py-20 md:py-32', rugged ? 'bg-ink-2' : 'bg-ink']}
+>
+  <div class="wrap">
+    <div class:list={['flex items-baseline justify-between gap-6', rugged && 'md:flex-row-reverse']}>
+      <p class="label"><span class="text-lime">{n}</span> — {vehicle.name}</p>
+      <p class="label hidden md:block"><T value={vehicle.traits} /></p>
+    </div>
+  </div>
+
+  <!-- Large visual -->
+  <div class="mt-8 md:mt-12">
+    <Media
+      src={m.hero}
+      alt={{ en: `${vehicle.name}`, bm: `${vehicle.name}` }}
+      class:list={['reveal-img aspect-[4/5] w-full', rugged ? 'md:aspect-[21/9]' : 'md:aspect-[16/8]']}
+      video={m.video || undefined}
+    />
+  </div>
+
+  <div class="wrap">
+    <!-- Headline + description (mirrored for the rugged theme) -->
+    <div class="mt-12 grid gap-8 md:mt-20 md:grid-cols-12 md:gap-10">
+      <div class:list={['md:col-span-8', rugged && 'md:col-start-5 md:text-right']}>
+        <h2 id={`${vehicle.id}-title`} class="title-xl reveal"><T value={vehicle.tagline} /></h2>
+        {vehicle.subtitle && <p class="mt-5 font-display text-lg text-muted md:text-2xl"><T value={vehicle.subtitle} /></p>}
+      </div>
+      <div class:list={['md:col-span-4 md:self-end', rugged && 'md:col-start-1 md:row-start-1']}>
+        {vehicle.description && <p class="reveal text-muted md:text-lg"><T value={vehicle.description} /></p>}
+        {pending && <p class="max-w-sm text-muted"><T value={site.labels.pending} /></p>}
+        <div class="mt-5"><WhatsAppLink variant="text" vehicle={vehicle.name} label={ask} /></div>
+      </div>
+    </div>
+
+    <div class="mt-16 md:mt-24"><VehicleSpecs vehicle={vehicle} rugged={rugged} /></div>
+    <div class="mt-16 md:mt-24"><VehicleGallery vehicle={vehicle} rugged={rugged} /></div>
+
+    {(vehicle.features?.length > 0 || vehicle.pricing) && (
+      <div class="mt-16 grid gap-14 md:mt-24 md:grid-cols-12 md:gap-10">
+        <div class:list={['md:col-span-6', rugged && 'md:order-2 md:col-start-7']}><VehicleFeatures vehicle={vehicle} /></div>
+        <div class:list={['md:col-span-5', rugged ? 'md:order-1 md:col-start-1' : 'md:col-start-8']}><VehiclePricing vehicle={vehicle} /></div>
+      </div>
+    )}
+
+    <div class:list={['mt-12 flex', rugged && 'md:justify-end']}>
+      <WhatsAppLink vehicle={vehicle.name} label={ask} />
+    </div>
+  </div>
+</section>

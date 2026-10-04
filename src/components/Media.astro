@@ -1,0 +1,59 @@
+---
+// One image slot. If the file doesn't exist yet, Layout.astro flips it to a dashed placeholder
+// showing the expected path. Optional `video` lazy-loads and plays only while on screen.
+interface Props {
+  src: string;
+  alt: string | { en: string; bm: string };
+  label?: string;
+  class?: string;
+  eager?: boolean;
+  video?: string;
+}
+const { src, alt, label, class: cls = '', eager = false, video } = Astro.props;
+const a = typeof alt === 'string' ? { en: alt, bm: alt } : alt;
+---
+<div data-media data-label={label ?? src} class:list={['media relative overflow-hidden bg-ink-2', cls]}>
+  <img
+    src={src}
+    alt={a.en}
+    data-alt-en={a.en}
+    data-alt-bm={a.bm}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding="async"
+    class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+  />
+  {video && (
+    <video
+      class="absolute inset-0 h-full w-full object-cover"
+      data-lazy-video
+      data-src={video}
+      muted
+      loop
+      playsinline
+      preload="none"
+      aria-hidden="true"
+      tabindex="-1"
+    ></video>
+  )}
+</div>
+
+<script>
+  const videos = document.querySelectorAll<HTMLVideoElement>('video[data-lazy-video]');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData = !!(navigator as any).connection?.saveData;
+  if (videos.length && !reduce && !saveData && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        const v = e.target as HTMLVideoElement;
+        if (e.isIntersecting) {
+          if (!v.getAttribute('src')) v.src = v.dataset.src!;
+          v.muted = true;
+          v.play().then(() => v.classList.add('is-playing')).catch(() => {});
+        } else {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.35 });
+    videos.forEach((v) => io.observe(v));
+  }
+</script>

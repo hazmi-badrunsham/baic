@@ -1,0 +1,174 @@
+{
+  "advisor": {
+    "name": "Yus",
+    "role": { "en": "Sales Manager | BAIC Malaysia", "bm": "Pengurus Jualan | BAIC Malaysia" },
+    "company": "FM WORLD SDN BHD",
+    "location": "Sungai Petani",
+    "phone": "011-4977 7684",
+    "whatsappNumber": "601149777684"
+  },
+  "seo": {
+    "title": "BAIC Sungai Petani | Yus",
+    "description": {
+      "en": "BAIC X55, BJ40 Plus and BJ30 in Sungai Petani. Pricing, test drives, trade-in and booking with Yus, via WhatsApp.",
+      "bm": "BAIC X55, BJ40 Plus dan BJ30 di Sungai Petani. Harga, pandu uji, tukar ganti dan tempahan bersama Yus melalui WhatsApp."
+    },
+    "canonical": "",
+    "ogImage": "/media/og.jpg"
+  },
+  "disclaimer": {
+    "independent": {
+      "en": "Independent sales advisor page. Not the official BAIC Malaysia website.",
+      "bm": "Halaman penasihat jualan bebas. Bukan laman web rasmi BAIC Malaysia."
+    },
+    "footer": {
+      "en": "Vehicle specifications, pricing and availability are subject to change without prior notice. Please contact Yus for the latest information.",
+      "bm": "Spesifikasi, harga dan ketersediaan kenderaan tertakluk kepada perubahan tanpa notis terlebih dahulu. Sila hubungi Yus untuk maklumat terkini."
+    },
+    "pricing": {
+      "en": "Price and specifications are subject to change without prior notice.",
+      "bm": "Harga dan spesifikasi tertakluk kepada perubahan tanpa notis terlebih dahulu."
+    }
+  },
+  "cta": {
+    "primary": { "en": "WhatsApp Yus", "bm": "WhatsApp Yus" }
+  },
+  "whatsapp": {
+    "interest": {
+      "en": "Hi Yus, I'm interested in the {vehicle}. I'd like to know more about the current pricing and test drive availability.",
+      "bm": "Hi Yus, saya berminat dengan {vehicle}. Saya ingin tahu lebih lanjut tentang harga semasa dan slot pandu uji."
+    },
+    "anyVehicle": { "en": "BAIC lineup", "bm": "model BAIC" }
+  },
+  "hero": {
+    "video": "/media/hero/hero-portrait.mp4",
+    "poster": "/media/hero-landscape.mp4",
+    "eyebrow": { "en": "BAIC — Sungai Petani", "bm": "BAIC — Sungai Petani" },
+    "title": { "en": "Drive with confidence.", "bm": "Memandu dengan yakin." },
+    "description": {
+      "en": "Explore the BAIC X55, BJ40 Plus and BJ30.",
+      "bm": "Teroka BAIC X55, BJ40 Plus dan BJ30."
+    },
+    "scroll": { "en": "Scroll", "bm": "Tatal" }
+  },
+  "yus": {
+    "label": { "en": "Meet Yus", "bm": "Kenali Yus" },
+    "portrait": "/media/yus/yus.jpeg",
+    "portraitAlt": { "en": "Yus, BAIC sales manager in Sungai Petani", "bm": "Yus, pengurus jualan BAIC di Sungai Petani" },
+    "lines": [
+      { "en": "Your", "bm": "Penasihat" },
+      { "en": "BAIC", "bm": "BAIC" },
+      { "en": "advisor.", "bm": "anda." }
+    ],
+    "intro": {
+      "en": "Test drives, trade-ins, loans and bookings, all with one person. Message Yus and get a direct answer.",
+      "bm": "Pandu uji, tukar ganti, pinjaman dan tempahan, semuanya dengan satu orang. WhatsApp Yus dan dapatkan jawapan terus."
+    },
+    "modelsLabel": { "en": "Models", "bm": "Model" },
+    "servicesLabel": { "en": "Services", "bm": "Perkhidmatan" },
+    "services": [
+      { "en": "Test Drive", "bm": "Pandu Uji" },
+      { "en": "Trade-In", "bm": "Tukar Ganti" },
+      { "en": "Loan", "bm": "Pinjaman" },
+      { "en": "Booking", "bm": "Tempahan" }
+    ]
+  },
+  "models": {
+    "label": { "en": "Explore the models", "bm": "Teroka model" },
+    "lines": [
+      { "en": "Three SUVs.", "bm": "Tiga SUV." },
+      { "en": "Three ways to move.", "bm": "Tiga cara bergerak." }
+    ]
+  },
+  "why": {
+    "label": { "en": "Why BAIC", "bm": "Kenapa BAIC" },
+    "title": { "en": "Why BAIC?", "bm": "Kenapa BAIC?" },
+    "points": [
+      { "en": "Modern SUV lineup", "bm": "Barisan SUV moden" },
+      { "en": "Technology & safety", "bm": "Teknologi & keselamatan" },
+      { "en": "5 years / 150,000 km warranty", "bm": "Waranti 5 tahun / 150,000 km" },
+      { "en": "Test drive available", "bm": "Pandu uji tersedia" }
+    ]
+  },
+  "contact": {
+    "label": { "en": "Test drive", "bm": "Pandu uji" },
+    "lines": [
+      { "en": "Ready to", "bm": "Bersedia untuk" },
+      { "en": "drive?", "bm": "memandu?" }
+    ],
+    "sub": { "en": "Talk to Yus.", "bm": "Hubungi Yus." },
+    "pick": { "en": "Which model?", "bm": "Model yang diminati?" },
+    "anyOption": { "en": "Not sure yet", "bm": "Belum pasti" },
+    "call": { "en": "Or call", "bm": "Atau telefon" },
+    "intents": [
+      {
+        "label": { "en": "Book a test drive", "bm": "Tempah pandu uji" },
+        "template": {
+          "en": "Hi Yus, I'm interested in the {vehicle}. I'd like to book a test drive.",
+          "bm": "Hi Yus, saya berminat dengan {vehicle}. Saya ingin menempah pandu uji."
+        }
+      },
+      {
+        "label": { "en": "Ask about pricing", "bm": "Tanya tentang harga" },
+        "template": {
+          "en": "Hi Yus, I'm interested in the {vehicle}. I'd like to ask about the current pricing.",
+          "bm": "Hi Yus, saya berminat dengan {vehicle}. Saya ingin bertanya tentang harga semasa."
+        }
+      },
+      {
+        "label": { "en": "Trade-in", "bm": "Tukar ganti" },
+        "template": {
+          "en": "Hi Yus, I'm interested in the {vehicle}. I'd like to ask about trade-in.",
+          "bm": "Hi Yus, saya berminat dengan {vehicle}. Saya ingin bertanya tentang tukar ganti."
+        }
+      },
+      {
+        "label": { "en": "Loan / Booking", "bm": "Pinjaman / Tempahan" },
+        "template": {
+          "en": "Hi Yus, I'm interested in the {vehicle}. I'd like to ask about loan and booking.",
+          "bm": "Hi Yus, saya berminat dengan {vehicle}. Saya ingin bertanya tentang pinjaman dan tempahan."
+        }
+      }
+    ]
+  },
+  "more": {
+    "label": { "en": "More from Yus", "bm": "Lagi daripada Yus" },
+    "title": { "en": "Follow the journey.", "bm": "Ikuti perjalanan." },
+    "links": [
+      { "id": "tiktok", "label": { "en": "Yus on TikTok", "bm": "Yus di TikTok" }, "url": "https://www.tiktok.com/@eddieanne0" },
+      { "id": "baic", "label": { "en": "BAIC Malaysia official website", "bm": "Laman web rasmi BAIC Malaysia" }, "url": "https://www.baic.com.my" }
+    ]
+  },
+  "labels": {
+    "from": { "en": "From", "bm": "Bermula" },
+    "otr": { "en": "On-the-road price, without insurance", "bm": "Harga atas jalan, tanpa insurans" },
+    "sumInsured": { "en": "Proposed sum insured", "bm": "Cadangan jumlah diinsuranskan" },
+    "warranty": { "en": "Warranty", "bm": "Waranti" },
+    "years": { "en": "Years", "bm": "Tahun" },
+    "ask": { "en": "Ask About {name}", "bm": "Tanya Tentang {name}" },
+    "features": { "en": "Features", "bm": "Ciri-ciri" },
+    "gallery": { "en": "Gallery", "bm": "Galeri" },
+    "fullSpecs": { "en": "Full specifications", "bm": "Spesifikasi penuh" },
+    "pending": {
+      "en": "Full specifications and pricing will be added here. Ask Yus for the latest information.",
+      "bm": "Spesifikasi penuh dan harga akan dimuatkan di sini. Hubungi Yus untuk maklumat terkini."
+    },
+    "specs": {
+      "engine": { "en": "Engine", "bm": "Enjin" },
+      "power": { "en": "Power", "bm": "Kuasa" },
+      "torque": { "en": "Torque", "bm": "Tork" },
+      "transmission": { "en": "Transmission", "bm": "Transmisi" },
+      "drive": { "en": "Drivetrain", "bm": "Sistem pacuan" },
+      "fuelConsumption": { "en": "Fuel consumption (combined)", "bm": "Penggunaan bahan api (gabungan)" },
+      "seats": { "en": "Seats", "bm": "Tempat duduk" },
+      "towing": { "en": "Towing capacity", "bm": "Kapasiti tarikan" },
+      "wheelbase": { "en": "Wheelbase", "bm": "Jarak roda" },
+      "groundClearance": { "en": "Ground clearance", "bm": "Jarak kelegaan tanah" },
+      "fordingDepth": { "en": "Fording depth", "bm": "Kedalaman rentas air" },
+      "trenchCrossing": { "en": "Trench crossing", "bm": "Rentas parit" },
+      "fuelTank": { "en": "Fuel tank", "bm": "Tangki minyak" },
+      "kerbWeight": { "en": "Kerb weight", "bm": "Berat kerb" },
+      "suspension": { "en": "Suspension", "bm": "Suspensi" }
+    }
+  }
+}

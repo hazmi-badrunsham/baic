@@ -1,0 +1,27 @@
+---
+import site from '../data/site.json';
+import T from './T.astro';
+import WhatsAppLink from './WhatsAppLink.astro';
+const { vehicles } = Astro.props as { vehicles: any[] };
+const tel = `tel:+${site.advisor.whatsappNumber}`;
+---
+<section id="contact" data-ctx class="border-t border-white/10 py-28 md:py-44">
+  <div class="wrap">
+    <h2 class="reveal text-balance uppercase" style="font-size:clamp(2.75rem,9vw,8rem);line-height:.92"><T value={site.contact.title} /></h2>
+    <p class="mt-6 max-w-md text-muted md:text-lg"><T value={site.contact.description} /></p>
+
+    <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+      <WhatsAppLink class="min-h-14 px-8 text-lg" message={site.whatsapp.general} label={site.cta.final} />
+      <p class="text-sm text-muted">
+        <T value={site.contact.call} />
+        <a href={tel} class="ml-1 font-display text-lg text-text hover:text-accent">{site.advisor.phone}</a>
+      </p>
+    </div>
+
+    <ul class="mt-12 flex flex-wrap gap-x-8 gap-y-2 text-sm">
+      {vehicles.map((v) => (
+        <li><WhatsAppLink variant="text" message={v.whatsapp.message} label={v.whatsapp.cta} /></li>
+      ))}
+    </ul>
+  </div>
+</section>

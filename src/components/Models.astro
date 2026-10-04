@@ -1,0 +1,45 @@
+---
+import site from '../data/site.json';
+import T from './T.astro';
+import Lines from './Lines.astro';
+import Media from './Media.astro';
+const { vehicles } = Astro.props as { vehicles: any[] };
+
+// Editorial composition: large / offset narrow / offset wide. Extra vehicles fall back to the last slot.
+const slots = [
+  { wrap: 'md:col-span-7', ratio: 'aspect-[4/3]' },
+  { wrap: 'ml-auto w-[78%] md:w-auto md:col-span-4 md:col-start-9 md:mt-28', ratio: 'aspect-[4/5]' },
+  { wrap: 'w-[88%] md:w-auto md:col-span-6 md:col-start-3 md:mt-4', ratio: 'aspect-[16/10]' },
+];
+---
+<section id="models" data-ctx class="py-24 md:py-40">
+  <div class="wrap">
+    <p class="label"><span class="text-lime">03</span> — <T value={site.models.label} /></p>
+    <h2 class="title-xl mt-6 reveal"><Lines lines={site.models.lines} /></h2>
+
+    <div class="mt-16 grid gap-y-14 md:mt-24 md:grid-cols-12 md:gap-x-6 md:gap-y-0">
+      {vehicles.map((v, i) => {
+        const s = slots[Math.min(i, slots.length - 1)];
+        return (
+          <a href={`#${v.slug}`} class:list={['group block', s.wrap]}>
+            <div class="relative">
+              <Media
+                src={v.media.hero}
+                alt={{ en: v.name, bm: v.name }}
+                class:list={['reveal-img', s.ratio]}
+              />
+              <span class="pointer-events-none absolute left-4 top-3 z-10 font-display text-5xl text-paper mix-blend-difference md:text-7xl">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+            </div>
+            <div class="mt-4 flex items-baseline justify-between gap-4">
+              <h3 class="font-display text-2xl uppercase md:text-4xl">{v.shortName}</h3>
+              <span aria-hidden="true" class="text-lime transition-transform group-hover:translate-x-1">→</span>
+            </div>
+            <p class="label mt-1"><T value={v.traits} /></p>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>

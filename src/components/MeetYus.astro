@@ -1,0 +1,56 @@
+---
+import site from '../data/site.json';
+import T from './T.astro';
+import Lines from './Lines.astro';
+import Media from './Media.astro';
+import WhatsAppLink from './WhatsAppLink.astro';
+const { vehicles } = Astro.props as { vehicles: any[] };
+const y = site.yus;
+const a = site.advisor;
+---
+<section id="yus" data-ctx class="py-24 md:py-40">
+  <div class="wrap grid gap-12 md:grid-cols-12 md:gap-10">
+    <div class="md:col-span-5">
+      <p class="label mb-6"><span class="text-lime">02</span> — <T value={y.label} /></p>
+      <Media
+        src={y.portrait}
+        alt={y.portraitAlt}
+        label={`Yus portrait — ${y.portrait}`}
+        class="reveal-img aspect-[4/5] w-full"
+      />
+      <p class="label mt-3">{a.company} · {a.location}</p>
+    </div>
+
+    <div class="md:col-span-6 md:col-start-7 md:pt-14">
+      <h2 class="title-xl reveal"><Lines lines={y.lines} /></h2>
+
+      <div class="mt-10 border-t border-white/10 pt-6">
+        <p class="font-display text-3xl">{a.name}</p>
+        <p class="mt-1 text-muted"><T value={a.role} /></p>
+      </div>
+
+      <p class="mt-8 max-w-md text-muted md:text-lg"><T value={y.intro} /></p>
+
+      <div class="mt-10 grid gap-8 sm:grid-cols-2">
+        <div>
+          <h3 class="label mb-3"><T value={y.modelsLabel} /></h3>
+          <ul class="font-display text-lg">
+            {vehicles.map((v) => <li><a href={`#${v.slug}`} class="inline-flex min-h-10 items-center hover:text-lime">{v.name}</a></li>)}
+          </ul>
+        </div>
+        <div>
+          <h3 class="label mb-3"><T value={y.servicesLabel} /></h3>
+          <ul>
+            {y.services.map((s) => (
+              <li class="flex min-h-10 items-center gap-3 text-sm uppercase tracking-[0.1em]">
+                <span aria-hidden="true" class="size-1.5 bg-lime"></span><T value={s} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12"><WhatsAppLink label={site.cta.primary} /></div>
+    </div>
+  </div>
+</section>

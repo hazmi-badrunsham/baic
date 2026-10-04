@@ -1,0 +1,64 @@
+---
+import nav from '../data/navigation.json';
+import T from './T.astro';
+import LangToggle from './LangToggle.astro';
+---
+<header
+  id="site-header"
+  data-scrolled="false"
+  class="group fixed inset-x-0 top-0 z-50 transition-colors duration-300 data-[scrolled=true]:border-b data-[scrolled=true]:border-white/10 data-[scrolled=true]:bg-ink/85 data-[scrolled=true]:backdrop-blur-md"
+>
+  <div class="wrap flex h-16 items-center justify-between gap-4 transition-[height] duration-300 lg:h-20 lg:group-data-[scrolled=true]:h-16">
+    <a href="#top" class="font-display text-lg font-semibold tracking-[0.14em]">
+      BAIC <span class="font-normal text-muted">/ Yus</span>
+    </a>
+
+    <nav aria-label="Primary" class="hidden lg:block">
+      <ul class="flex items-center gap-6 text-xs uppercase tracking-[0.14em] xl:gap-9">
+        {nav.main.map((n) => (
+          <li><a href={n.href} class="py-2 text-muted transition-colors hover:text-paper"><T value={n.label} /></a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2 lg:gap-5">
+      <LangToggle />
+      <button id="menu-btn" type="button" class="burger lg:hidden" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Sibling of the header: backdrop-filter on the header would trap a fixed child -->
+<div id="mobile-menu" data-open="false" class="mobile-menu fixed inset-0 z-40 flex-col justify-between bg-ink px-5 pb-8 pt-24">
+  <nav aria-label="Mobile">
+    <ul>
+      {nav.main.map((n) => (
+        <li class="border-b border-white/10">
+          <a href={n.href} class="flex min-h-16 items-center font-display text-4xl uppercase tracking-tight"><T value={n.label} /></a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</div>
+
+<script>
+  const header = document.getElementById('site-header');
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  const onScroll = () => header?.setAttribute('data-scrolled', String(window.scrollY > 40));
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  function setMenu(open: boolean) {
+    menu?.setAttribute('data-open', String(open));
+    btn?.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  btn?.addEventListener('click', () => setMenu(btn.getAttribute('aria-expanded') !== 'true'));
+  menu?.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('a')) setMenu(false); });
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+  window.matchMedia('(min-width: 1024px)').addEventListener('change', (m) => { if (m.matches) setMenu(false); });
+</script>

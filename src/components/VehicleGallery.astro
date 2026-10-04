@@ -1,0 +1,36 @@
+---
+import site from '../data/site.json';
+import Media from './Media.astro';
+import T from './T.astro';
+const { vehicle, rugged = false } = Astro.props as { vehicle: any; rugged?: boolean };
+
+// Accepts plain path strings or { src, alt: {en, bm} }, so you can just list files in the JSON.
+const items = ((vehicle.media.gallery ?? []) as any[]).map((g, i) =>
+  typeof g === 'string'
+    ? { src: g, alt: { en: `${vehicle.name}, photo ${i + 1}`, bm: `${vehicle.name}, foto ${i + 1}` } }
+    : g,
+);
+
+// Desktop layout is position-based, so any number of images works. Wide + narrow rows alternate.
+const narrow = 'md:col-span-4 md:aspect-auto md:min-h-[26rem]';
+const wide = 'md:col-span-8 md:aspect-[16/10]';
+const full = 'md:col-span-12 md:aspect-[21/9]';
+const patternUrban = [wide, narrow, narrow, wide, full];
+const patternRugged = [narrow, wide, wide, narrow, full];
+const pattern = rugged ? patternRugged : patternUrban;
+---
+{items.length > 0 && (
+  <div>
+    <h3 class="sr-only"><T value={site.labels.gallery} /></h3>
+    <!-- Mobile: horizontal snap scroll. Desktop: asymmetric 12-column rows. -->
+    <div class="no-scrollbar -mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 md:mx-0 md:grid md:grid-cols-12 md:gap-4 md:overflow-visible md:px-0">
+      {items.map((g, i) => (
+        <Media
+          src={g.src}
+          alt={g.alt}
+          class:list={['reveal-img group aspect-[4/3] w-[84%] shrink-0 snap-center md:w-auto', pattern[i % pattern.length]]}
+        />
+      ))}
+    </div>
+  </div>
+)}

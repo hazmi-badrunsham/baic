@@ -1,0 +1,49 @@
+---
+import site from '../data/site.json';
+import T from './T.astro';
+const { vehicle, rugged = false } = Astro.props as { vehicle: any; rugged?: boolean };
+const stats: any[] = vehicle.keyStats ?? [];
+const labels = site.labels.specs as Record<string, { en: string; bm: string }>;
+// Null / missing values are skipped, so a half-filled vehicle (BJ30) still renders cleanly
+const rows = Object.entries(vehicle.specs ?? {}).filter(([k, v]) => v && labels[k]);
+---
+{stats.length > 0 && (
+  rugged ? (
+    // BJ40 Plus: stacked editorial rows
+    <dl class="divide-y divide-white/10 border-y border-white/10">
+      {stats.map((s) => (
+        <div class="flex flex-row-reverse items-baseline justify-between gap-6 py-5 md:py-7">
+          <dt class="label text-paper/70"><T value={s.unit} /></dt>
+          <dd class="font-display leading-none tracking-tight" style="font-size:clamp(2.5rem,7vw,5.5rem)">{s.value}</dd>
+        </div>
+      ))}
+    </dl>
+  ) : (
+    // X55 / default: one row of large numbers
+    <dl class="grid grid-cols-2 md:grid-cols-5">
+      {stats.map((s) => (
+        <div class="flex flex-col-reverse justify-end gap-3 border-t border-white/10 py-6 pr-4 md:border-l md:py-8 md:pl-6 md:first:border-l-0 md:first:pl-0">
+          <dt class="label text-paper/70"><T value={s.unit} /></dt>
+          <dd class="font-display leading-none tracking-tight" style="font-size:clamp(2.5rem,6vw,5rem)">{s.value}</dd>
+        </div>
+      ))}
+    </dl>
+  )
+)}
+
+{rows.length > 0 && (
+  <details class="group mt-4 border-y border-white/10">
+    <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between label hover:text-paper">
+      <span><T value={site.labels.fullSpecs} /></span>
+      <span aria-hidden="true" class="text-lg text-lime transition-transform group-open:rotate-45">+</span>
+    </summary>
+    <dl class="grid gap-x-12 pb-6 md:grid-cols-2">
+      {rows.map(([k, val]) => (
+        <div class="flex justify-between gap-6 border-t border-white/5 py-3 text-sm">
+          <dt class="text-muted"><T value={labels[k]} /></dt>
+          <dd class="text-right">{val as string}</dd>
+        </div>
+      ))}
+    </dl>
+  </details>
+)}

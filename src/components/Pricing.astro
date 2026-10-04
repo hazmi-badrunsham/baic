@@ -1,0 +1,45 @@
+---
+import site from '../data/site.json';
+import { rm } from '../lib/format';
+import T from './T.astro';
+import WhatsAppLink from './WhatsAppLink.astro';
+const { vehicles } = Astro.props as { vehicles: any[] };
+const L = site.labels.pricing;
+---
+<section id="pricing" data-ctx class="py-24 md:py-40">
+  <div class="wrap">
+    <p class="eyebrow"><T value={L.eyebrow} /></p>
+    <h2 class="section-title mt-3"><T value={L.title} /></h2>
+
+    <div class="mt-12 md:mt-20">
+      {vehicles.map((v) => (
+        <article class="reveal grid gap-8 border-t border-white/15 py-10 md:grid-cols-12 md:items-end">
+          <div class="md:col-span-4">
+            <h3 class="font-display text-2xl uppercase">{v.name}</h3>
+            <p class="mt-4 text-xs uppercase tracking-[0.14em] text-muted"><T value={L.nett} /></p>
+            <p class="mt-1 font-display leading-none" style="font-size:clamp(2.25rem,5vw,3.75rem)">{rm(v.price.nett)}</p>
+          </div>
+          <dl class="grid gap-4 text-sm md:col-span-5">
+            <div>
+              <dt class="text-muted"><T value={L.otr} /></dt>
+              <dd class="mt-0.5 text-base">{rm(v.price.otrWithoutInsurance)}</dd>
+            </div>
+            <div>
+              <dt class="text-muted"><T value={L.sumInsured} /></dt>
+              <dd class="mt-0.5 text-base">{rm(v.price.sumInsured)}</dd>
+            </div>
+            <div>
+              <dt class="text-muted"><T value={L.warranty} /></dt>
+              <dd class="mt-0.5 text-base"><T value={v.warranty} /></dd>
+            </div>
+          </dl>
+          <div class="md:col-span-3 md:flex md:justify-end">
+            <WhatsAppLink message={v.whatsapp.message} label={v.whatsapp.cta} />
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <p class="mt-6 border-t border-white/15 pt-5 text-xs text-muted"><T value={site.pricingDisclaimer} /></p>
+  </div>
+</section>

@@ -1,0 +1,64 @@
+---
+import site from '../data/site.json';
+import T from './T.astro';
+import WhatsAppLink from './WhatsAppLink.astro';
+const h = site.hero;
+---
+<!--
+  Mobile: the portrait video fills the screen.
+  Large screens (lg+): magazine split. Text on the left, the video keeps its natural 9:16 shape on the right,
+  so it is not cropped into a landscape frame.
+-->
+<section id="top" class="hero-grid relative isolate h-svh min-h-[560px] overflow-hidden">
+  <div class="hero-wrap media bg-ink-2" data-media data-label={`Hero video — ${h.video}`}>
+    <video
+      class="hero-video absolute inset-0 h-full w-full object-cover opacity-0"
+      data-hero-video
+      data-primary
+      data-src={h.video}
+      poster={h.poster}
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      aria-hidden="true"
+      tabindex="-1"
+    ></video>
+    <div class="hero-shade absolute inset-0"></div>
+  </div>
+
+  <div class="hero-copy wrap relative z-10 flex h-full flex-col justify-end pb-14 lg:justify-between lg:px-10 lg:pb-14 lg:pt-32">
+    <p class="label hidden text-paper/60 lg:block"><T value={h.eyebrow} /></p>
+
+    <div>
+      <p class="label text-paper/70 lg:hidden"><T value={h.eyebrow} /></p>
+      <h1 class="title-xl mt-4 max-w-[12ch] lg:mt-0" style="font-size:clamp(2.75rem,6.4vw,7.5rem)"><T value={h.title} /></h1>
+      <p class="mt-5 max-w-sm text-base text-paper/80 md:text-lg"><T value={h.description} /></p>
+      <div class="mt-8">
+        <WhatsAppLink label={site.cta.primary} />
+      </div>
+    </div>
+
+    <a href="#yus" class="label mt-10 hidden items-center gap-4 hover:text-paper lg:flex">
+      <span class="h-px w-12 bg-lime"></span><T value={h.scroll} />
+    </a>
+  </div>
+</section>
+
+<script>
+  const v = document.querySelector<HTMLVideoElement>('[data-hero-video]');
+  if (v) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const saveData = !!(navigator as any).connection?.saveData;
+    v.muted = true;
+    v.addEventListener('playing', () => { v.classList.add('is-playing'); v.style.opacity = '1'; });
+    // Reduced motion or Data Saver: don't load the video at all. The poster/placeholder stays.
+    if (!reduce && !saveData && v.dataset.src) {
+      v.src = v.dataset.src;
+      v.play().catch(() => {});
+    } else {
+      v.style.opacity = '1';
+    }
+  }
+</script>

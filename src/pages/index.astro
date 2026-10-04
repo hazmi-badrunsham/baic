@@ -1,17 +1,30 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import MeetYus from '../components/MeetYus.astro';
+import Models from '../components/Models.astro';
+import VehicleSection from '../components/VehicleSection.astro';
+import WhyBaic from '../components/WhyBaic.astro';
+import Contact from '../components/Contact.astro';
+import MoreFromYus from '../components/MoreFromYus.astro';
+import Footer from '../components/Footer.astro';
+import StickyWhatsApp from '../components/StickyWhatsApp.astro';
+import data from '../data/vehicles.json';
 
+const vehicles = data.vehicles;
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <Header />
+  <main>
+    <Hero />
+    <MeetYus vehicles={vehicles} />
+    <Models vehicles={vehicles} />
+    {vehicles.map((v, i) => <VehicleSection vehicle={v} number={4 + i} />)}
+    <WhyBaic />
+    <Contact vehicles={vehicles} />
+    <MoreFromYus />
+  </main>
+  <Footer vehicles={vehicles} />
+  <StickyWhatsApp />
+</Layout>

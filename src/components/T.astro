@@ -1,0 +1,9 @@
+---
+// A plain string renders as-is. An {en, bm} object renders both languages;
+// CSS hides the inactive one (see global.css).
+interface Props { value: string | { en: string; bm: string }; }
+const { value } = Astro.props;
+---
+{typeof value === 'string'
+  ? value
+  : <><span data-lang="en">{value.en}</span><span data-lang="bm">{value.bm}</span></>}

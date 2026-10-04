@@ -1,0 +1,97 @@
+---
+import '../styles/global.css';
+import site from '../data/site.json';
+
+interface Props { title?: string; description?: string; }
+const { title = site.seo.title, description = site.seo.description.en } = Astro.props;
+const canonical = site.seo.canonical || undefined;
+---
+<!doctype html>
+<html lang="en" data-ui="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#0A0A0A" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Yus — BAIC Sungai Petani" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={site.seo.ogImage} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Before first paint: flag JS, restore saved language -->
+    <script is:inline>
+      (function () {
+        document.documentElement.classList.add('js');
+        try {
+          if (localStorage.getItem('ui-lang') === 'bm') {
+            document.documentElement.dataset.ui = 'bm';
+            document.documentElement.lang = 'ms';
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      const root = document.documentElement;
+
+      // --- Language toggle: any [data-set-lang="en|bm"] ---
+      function apply(lang: 'en' | 'bm') {
+        root.dataset.ui = lang;
+        root.lang = lang === 'bm' ? 'ms' : 'en';
+        try { localStorage.setItem('ui-lang', lang); } catch {}
+        document.querySelectorAll<HTMLAnchorElement>('a[data-wa-en]').forEach((a) => {
+          a.href = (lang === 'bm' ? a.dataset.waBm : a.dataset.waEn) || a.href;
+        });
+        document.querySelectorAll<HTMLImageElement>('img[data-alt-en]').forEach((img) => {
+          img.alt = (lang === 'bm' ? img.dataset.altBm : img.dataset.altEn) || img.alt;
+        });
+        document.querySelectorAll<HTMLElement>('[data-set-lang]').forEach((b) => {
+          b.setAttribute('aria-pressed', String(b.dataset.setLang === lang));
+        });
+      }
+      document.addEventListener('click', (e) => {
+        const btn = (e.target as HTMLElement).closest<HTMLElement>('[data-set-lang]');
+        if (btn) apply(btn.dataset.setLang as 'en' | 'bm');
+      });
+      apply(root.dataset.ui === 'bm' ? 'bm' : 'en');
+
+      // --- Missing media: show the dashed placeholder instead of a broken image ---
+      const markMissing = (el: Element) => el.closest('[data-media]')?.setAttribute('data-missing', '');
+      document.addEventListener('error', (e) => {
+        const t = e.target;
+        if (t instanceof HTMLImageElement || (t instanceof HTMLVideoElement && t.hasAttribute('data-primary'))) markMissing(t);
+      }, true);
+      document.querySelectorAll<HTMLImageElement>('[data-media] img').forEach((img) => {
+        if (img.complete && img.naturalWidth === 0) markMissing(img);
+      });
+
+      // --- Reveal on scroll ---
+      const items = document.querySelectorAll('.reveal, .reveal-img');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.1 });
+        items.forEach((el) => io.observe(el));
+      } else {
+        items.forEach((el) => el.classList.add('is-in'));
+      }
+    </script>
+  </body>
+</html>

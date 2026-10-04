@@ -1,0 +1,14 @@
+---
+import T from './T.astro';
+const { next } = Astro.props as { next: any };
+---
+<section data-ctx class="mt-28 border-y border-white/10 py-20 md:mt-40 md:py-32">
+  <div class="wrap gap-10 md:flex md:items-end md:justify-between">
+    <p class="reveal max-w-4xl font-display uppercase leading-none text-balance" style="font-size:clamp(2rem,5.5vw,5rem)">
+      <T value={next.transitionIn} />
+    </p>
+    <a href={`#${next.id}`} class="mt-8 inline-flex min-h-12 shrink-0 items-center gap-3 text-sm uppercase tracking-[0.18em] text-accent md:mt-0">
+      {next.name} <span aria-hidden="true">↓</span>
+    </a>
+  </div>
+</section>

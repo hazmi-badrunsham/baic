@@ -1,0 +1,59 @@
+---
+import T from './T.astro';
+import WhatsAppLink from './WhatsAppLink.astro';
+import VehicleSpecs from './VehicleSpecs.astro';
+import VehicleFeatures from './VehicleFeatures.astro';
+import VehicleGallery from './VehicleGallery.astro';
+
+const { vehicle, index } = Astro.props as { vehicle: any; index: number };
+const rugged = vehicle.theme === 'rugged';
+const n = String(index + 1).padStart(2, '0');
+const m = vehicle.media;
+---
+<section
+  id={vehicle.id}
+  data-theme={vehicle.theme}
+  data-ctx
+  data-ctx-en={vehicle.whatsapp.message.en}
+  data-ctx-bm={vehicle.whatsapp.message.bm}
+  aria-labelledby={`${vehicle.id}-title`}
+  class="relative pt-8 md:pt-16"
+>
+  <!-- Cinematic visual; fades into the page so the title can overlap its lower edge -->
+  <div class="chapter-visual relative">
+    <img
+      src={m.visual}
+      alt={m.visualAlt.en}
+      data-alt-en={m.visualAlt.en}
+      data-alt-bm={m.visualAlt.bm}
+      loading="lazy"
+      decoding="async"
+      class:list={['aspect-4/5 w-full object-cover md:aspect-video md:max-h-[90svh]', rugged && 'contrast-[1.08] saturate-[.9]']}
+    />
+  </div>
+
+  <div class="wrap relative z-10 -mt-24 md:-mt-44">
+    <div class:list={['flex flex-col', rugged && 'md:items-end md:text-right']}>
+      <p class="eyebrow">{n} — {vehicle.name}</p>
+      <h2 id={`${vehicle.id}-title`} class="chapter-title mt-3"><T value={vehicle.tagline} /></h2>
+    </div>
+
+    <div class="mt-8 grid md:mt-12 md:grid-cols-12">
+      <div class:list={['md:col-span-5', rugged && 'md:col-start-8']}>
+        <p class="font-display text-xl text-accent"><T value={vehicle.subtitle} /></p>
+        <p class="mt-4 text-muted md:text-lg"><T value={vehicle.description} /></p>
+        <div class="mt-5">
+          <WhatsAppLink variant="text" template={vehicle.whatsapp.message} label={vehicle.whatsapp.cta} />
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-14 md:mt-20"><VehicleSpecs vehicle={vehicle} /></div>
+    <div class="mt-14 md:mt-20"><VehicleFeatures vehicle={vehicle} /></div>
+    <div class="mt-14 md:mt-20"><VehicleGallery vehicle={vehicle} /></div>
+
+    <div class:list={['mt-10 flex', rugged && 'md:justify-end']}>
+      <WhatsAppLink template={vehicle.whatsapp.message} label={vehicle.whatsapp.cta} />
+    </div>
+  </div>
+</section>

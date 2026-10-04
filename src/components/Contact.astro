@@ -1,0 +1,93 @@
+---
+import site from '../data/site.json';
+import { fill, waUrl } from '../lib/wa';
+import T from './T.astro';
+import Lines from './Lines.astro';
+import WhatsAppLink from './WhatsAppLink.astro';
+const { vehicles } = Astro.props as { vehicles: any[] };
+const c = site.contact;
+const any = site.whatsapp.anyVehicle;
+---
+<section
+  id="contact"
+  data-ctx
+  data-any-en={any.en}
+  data-any-bm={any.bm}
+  class="border-t border-white/10 py-24 md:py-40"
+>
+  <div class="wrap">
+    <p class="label"><span class="text-lime">08</span> — <T value={c.label} /></p>
+    <h2 class="title-xl reveal mt-6"><Lines lines={c.lines} /></h2>
+    <p class="mt-6 font-display text-2xl md:text-4xl"><T value={c.sub} /></p>
+
+    <div class="mt-14 grid gap-14 md:mt-20 md:grid-cols-12 md:gap-10">
+      <div class="md:col-span-5">
+        <p id="pick-label" class="label"><T value={c.pick} /></p>
+        <div role="group" aria-labelledby="pick-label" class="mt-3 flex flex-wrap gap-x-6">
+          <button type="button" class="pick" data-pick="" aria-pressed="true"><T value={c.anyOption} /></button>
+          {vehicles.map((v) => (
+            <button type="button" class="pick" data-pick={v.name} aria-pressed="false">{v.shortName}</button>
+          ))}
+        </div>
+
+        <div class="mt-10 flex flex-col items-start gap-5">
+          <WhatsAppLink class="min-h-14 px-8" label={site.cta.primary} />
+          <p class="text-sm text-muted">
+            <T value={c.call} />
+            <a href={`tel:+${site.advisor.whatsappNumber}`} class="ml-1 font-display text-lg text-paper hover:text-lime">{site.advisor.phone}</a>
+          </p>
+        </div>
+      </div>
+
+      <ul class="border-b border-white/10 md:col-span-6 md:col-start-7">
+        {c.intents.map((it) => {
+          const en = waUrl(fill(it.template.en, any.en));
+          const bm = waUrl(fill(it.template.bm, any.bm));
+          return (
+            <li class="border-t border-white/10">
+              <a
+                href={en}
+                data-wa-en={en}
+                data-wa-bm={bm}
+                data-tpl-en={it.template.en}
+                data-tpl-bm={it.template.bm}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex min-h-20 items-center justify-between gap-6 font-display text-2xl uppercase tracking-tight md:text-3xl"
+              >
+                <span><T value={it.label} /></span>
+                <span aria-hidden="true" class="text-lime transition-transform group-hover:translate-x-1">↗</span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { fill, waUrl } from '../lib/wa';
+
+  const root = document.getElementById('contact');
+  if (root) {
+    const any = { en: root.dataset.anyEn!, bm: root.dataset.anyBm! };
+    const links = root.querySelectorAll<HTMLAnchorElement>('a[data-tpl-en]');
+    const picks = root.querySelectorAll<HTMLButtonElement>('[data-pick]');
+
+    // Picking a model rewrites every WhatsApp link in this section (primary button + the four options)
+    const update = (name: string) => {
+      const v = name ? { en: name, bm: name } : any;
+      const bmOn = document.documentElement.dataset.ui === 'bm';
+      links.forEach((a) => {
+        const en = waUrl(fill(a.dataset.tplEn!, v.en));
+        const bm = waUrl(fill(a.dataset.tplBm!, v.bm));
+        a.dataset.waEn = en;
+        a.dataset.waBm = bm;
+        a.href = bmOn ? bm : en;
+      });
+      picks.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.pick === name)));
+    };
+    picks.forEach((b) => b.addEventListener('click', () => update(b.dataset.pick || '')));
+  }
+</script>

@@ -1,0 +1,50 @@
+---
+import site from '../data/site.json';
+import WhatsAppLink from './WhatsAppLink.astro';
+---
+<!-- Mobile: bottom bar. Desktop: small floating button. Appears once the hero is out of view. -->
+<div
+  id="wa-sticky"
+  data-visible="false"
+  data-any-en={site.whatsapp.anyVehicle.en}
+  data-any-bm={site.whatsapp.anyVehicle.bm}
+  class="fixed inset-x-0 bottom-0 z-40 bg-ink/85 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md md:inset-x-auto md:bottom-8 md:right-8 md:bg-transparent md:p-0 md:backdrop-blur-none"
+>
+  <WhatsAppLink class="w-full md:w-auto md:px-6" label={site.cta.primary} />
+</div>
+
+<script>
+  import { fill, waUrl } from '../lib/wa';
+
+  const bar = document.getElementById('wa-sticky');
+  const hero = document.getElementById('top');
+  const link = bar?.querySelector<HTMLAnchorElement>('a');
+
+  if (bar && link) {
+    if (hero && 'IntersectionObserver' in window) {
+      new IntersectionObserver(([e]) => { bar.dataset.visible = String(!e.isIntersecting); }, { threshold: 0.15 }).observe(hero);
+    } else {
+      bar.dataset.visible = 'true';
+    }
+
+    // The message follows the vehicle section in view (data-ctx-vehicle), otherwise it stays generic
+    const any = { en: bar.dataset.anyEn!, bm: bar.dataset.anyBm! };
+    const setVehicle = (name?: string) => {
+      const v = name ? { en: name, bm: name } : any;
+      const en = waUrl(fill(link.dataset.tplEn!, v.en));
+      const bm = waUrl(fill(link.dataset.tplBm!, v.bm));
+      link.dataset.waEn = en;
+      link.dataset.waBm = bm;
+      link.href = document.documentElement.dataset.ui === 'bm' ? bm : en;
+    };
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setVehicle((e.target as HTMLElement).dataset.ctxVehicle);
+        });
+      }, { rootMargin: '-45% 0px -45% 0px' });
+      document.querySelectorAll('[data-ctx]').forEach((el) => io.observe(el));
+    }
+  }
+</script>

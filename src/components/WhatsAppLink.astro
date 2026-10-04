@@ -1,0 +1,29 @@
+---
+import site from '../data/site.json';
+import { fill, waUrl } from '../lib/wa';
+import T from './T.astro';
+
+interface Props {
+  label: { en: string; bm: string };
+  template?: { en: string; bm: string }; // uses {vehicle}
+  vehicle?: string;                      // e.g. "BAIC X55"; omit for the generic message
+  variant?: 'solid' | 'text';
+  class?: string;
+}
+const { label, template = site.whatsapp.interest, vehicle, variant = 'solid', class: cls = '' } = Astro.props;
+const v = vehicle ? { en: vehicle, bm: vehicle } : site.whatsapp.anyVehicle;
+const en = waUrl(fill(template.en, v.en));
+const bm = waUrl(fill(template.bm, v.bm));
+---
+<a
+  href={en}
+  data-wa-en={en}
+  data-wa-bm={bm}
+  data-tpl-en={template.en}
+  data-tpl-bm={template.bm}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={[variant === 'text' ? 'btn-text' : 'btn', cls]}
+>
+  <T value={label} />
+</a>

@@ -1,0 +1,43 @@
+---
+import site from '../data/site.json';
+import T from './T.astro';
+const m = site.more;
+// In production only links with a URL are shown. In dev, empty ones show as "add URL" so you don't forget.
+const dev = import.meta.env.DEV;
+const links = m.links.filter((l) => l.url || dev);
+---
+{links.length > 0 && (
+  <section data-ctx class="border-t border-white/10 py-20 md:py-32">
+    <div class="wrap">
+      <p class="label"><span class="text-lime">09</span> — <T value={m.label} /></p>
+      <h2 class="title-lg mt-6 reveal"><T value={m.title} /></h2>
+
+      <ul class="mt-12 md:mt-16">
+        {links.map((l) => (
+          <li class="border-t border-white/10 last:border-b">
+            {l.url ? (
+              <a
+                href={l.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class:list={[
+                  'group flex items-center justify-between gap-6 font-display uppercase tracking-tight',
+                  l.id === 'tiktok' ? 'min-h-24 text-3xl md:min-h-32 md:text-6xl' : 'min-h-16 text-lg text-muted hover:text-paper md:text-2xl',
+                ]}
+              >
+                <span><T value={l.label} /></span>
+                <span aria-hidden="true" class="text-lime transition-transform group-hover:-translate-y-1 group-hover:translate-x-1">↗</span>
+                <span class="sr-only">(opens in a new tab)</span>
+              </a>
+            ) : (
+              <div class="flex min-h-16 items-center justify-between gap-6 font-display text-lg uppercase text-muted/50">
+                <span><T value={l.label} /></span>
+                <span class="label">Add URL in site.json (more.links)</span>
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}

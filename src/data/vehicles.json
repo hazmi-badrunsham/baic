@@ -1,0 +1,156 @@
+{
+  "vehicles": [
+    {
+      "id": "x55",
+      "slug": "x55",
+      "name": "BAIC X55",
+      "shortName": "X55",
+      "theme": "urban",
+      "traits": { "en": "Urban / Smart / Refined", "bm": "Urban / Pintar / Elegan" },
+      "tagline": { "en": "Bold by Design.", "bm": "Berani Dalam Reka Bentuk." },
+      "subtitle": { "en": "Smart. Stylish. Confident.", "bm": "Pintar. Bergaya. Yakin." },
+      "description": {
+        "en": "Futuristic design, smart technology and efficient performance. Made for the city, comfortable well beyond it.",
+        "bm": "Reka bentuk futuristik, teknologi pintar dan prestasi efisien. Sesuai di bandar, selesa juga di luar bandar."
+      },
+      "keyStats": [
+        { "value": "1.5L", "unit": "Turbo" },
+        { "value": "181", "unit": "HP" },
+        { "value": "305", "unit": "Nm" },
+        { "value": "7", "unit": "Speed DCT" },
+        { "value": "5", "unit": { "en": "Seats", "bm": "Tempat duduk" } }
+      ],
+      "specs": {
+        "engine": "1.5L Turbocharged 4-Cylinder Petrol",
+        "power": "181 HP",
+        "torque": "305 Nm @ 1,500–4,500 RPM",
+        "transmission": "7-Speed Wet DCT",
+        "drive": "FWD",
+        "fuelConsumption": "7.1 L/100km",
+        "seats": "5",
+        "wheelbase": "2,735 mm",
+        "groundClearance": "160 mm",
+        "suspension": "Front MacPherson Strut / Rear Multi-Link"
+      },
+      "_verify": [
+        "Power: client marketing says 181 HP, technical sheet says 188 hp / 138 kW. Prototype shows 181 HP.",
+        "'5 Star Safety Standard' was supplied but the rating body is not named. Not displayed."
+      ],
+      "features": [
+        { "en": "Digital cockpit", "bm": "Kokpit digital" },
+        { "en": "360° camera", "bm": "Kamera 360°" },
+        "ADAS",
+        { "en": "Wireless charging", "bm": "Pengecas wayarles" },
+        { "en": "Panoramic sunroof", "bm": "Bumbung panorama" },
+        { "en": "Ambient lighting", "bm": "Pencahayaan ambien" },
+        { "en": "Smart keyless entry", "bm": "Kemasukan tanpa kunci pintar" }
+      ],
+      "pricing": {
+        "from": "RM129,800",
+        "otr": "RM130,670",
+        "sumInsured": "RM130,000"
+      },
+      "warranty": { "years": "5", "km": "150,000" },
+      "media": {
+        "hero": "/media/x55/visual.jpg",
+        "video": "",
+        "gallery": [
+          "/media/x55/front.jpg",
+          "/media/x55/interior.jpg",
+          "/media/x55/top.png",
+          "/media/x55/back.jpg"
+        ]
+      }
+    },
+    {
+      "id": "bj40-plus",
+      "slug": "bj40-plus",
+      "name": "BAIC BJ40 Plus",
+      "shortName": "BJ40 Plus",
+      "theme": "rugged",
+      "traits": { "en": "Rugged / Capable / Adventure", "bm": "Lasak / Berkebolehan / Pengembaraan" },
+      "tagline": { "en": "Built for More.", "bm": "Dibina Untuk Lebih." },
+      "subtitle": { "en": "Bolder. Stronger. Beyond Limits.", "bm": "Lebih berani. Lebih kuat. Tanpa had." },
+      "description": {
+        "en": "A classic Jeep-style silhouette, part-time 4x4 and turbo power. Ready for the road, and for where the road ends.",
+        "bm": "Rupa klasik gaya Jeep, 4x4 sepenggal masa dan kuasa turbo. Sedia untuk jalan raya, dan untuk tempat jalan berakhir."
+      },
+      "keyStats": [
+        { "value": "2.0L", "unit": "Turbo" },
+        { "value": "221", "unit": "HP" },
+        { "value": "380", "unit": "Nm" },
+        { "value": "4X4", "unit": "Part-time" },
+        { "value": "2,000", "unit": { "en": "KG towing", "bm": "KG tarikan" } }
+      ],
+      "specs": {
+        "engine": "2.0L Turbocharged 4-Cylinder Petrol",
+        "power": "221 HP",
+        "torque": "380 Nm @ 1,750–4,500 RPM",
+        "transmission": "8-Speed Automatic",
+        "drive": "Part-time 4WD",
+        "fuelConsumption": "11.0 L/100km",
+        "seats": "5",
+        "towing": "2,000 kg",
+        "wheelbase": "2,745 mm",
+        "groundClearance": "210 mm",
+        "fordingDepth": ">600 mm",
+        "trenchCrossing": "500 mm",
+        "fuelTank": "75 litres",
+        "kerbWeight": "2,095 kg",
+        "suspension": "Front Double Wishbone / Rear 5-Link Live Axle"
+      },
+      "_verify": [
+        "Power: client marketing says 221 HP, technical sheet says 224 hp / 165 kW. Prototype shows 221 HP."
+      ],
+      "features": [
+        { "en": "Part-time 4x4", "bm": "4x4 sepenggal masa" },
+        { "en": "210 mm ground clearance", "bm": "Jarak kelegaan tanah 210 mm" },
+        { "en": "Full LED lighting", "bm": "Pencahayaan LED penuh" },
+        { "en": "Panoramic sunroof", "bm": "Bumbung panorama" },
+        { "en": "Leather seats", "bm": "Tempat duduk kulit" },
+        { "en": "Full-size spare tyre", "bm": "Tayar spare saiz penuh" },
+        { "en": "18\" alloy wheels", "bm": "Roda aloi 18\"" }
+      ],
+      "pricing": {
+        "from": "RM188,250",
+        "otr": "RM189,576.80",
+        "sumInsured": "RM189,000"
+      },
+      "warranty": { "years": "5", "km": "150,000" },
+      "media": {
+        "hero": "/media/bj40/visual.jpg",
+        "video": "",
+        "gallery": [
+          "/media/bj40/belakang.jpeg",
+          "/media/bj40/front.jpeg",
+          "/media/bj40/belakang2.jpeg",
+          "/media/bj40/dalam.jpeg"
+        ]
+      }
+    },
+    {
+      "id": "bj30",
+      "slug": "bj30",
+      "name": "BAIC BJ30",
+      "shortName": "BJ30",
+      "theme": "urban",
+      "traits": { "en": "Versatile / Modern / Practical", "bm": "Serba boleh / Moden / Praktikal" },
+      "tagline": { "en": "Versatile. Modern. Practical.", "bm": "Serba boleh. Moden. Praktikal." },
+      "subtitle": null,
+      "description": null,
+      "keyStats": [],
+      "specs": {
+        "engine": null, "power": null, "torque": null, "transmission": null,
+        "drive": null, "fuelConsumption": null, "seats": null
+      },
+      "features": [],
+      "pricing": null,
+      "warranty": null,
+      "media": {
+        "hero": "/media/bj30/visual.jpg",
+        "video": "",
+        "gallery": []
+      }
+    }
+  ]
+}

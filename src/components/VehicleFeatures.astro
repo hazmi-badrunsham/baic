@@ -1,0 +1,19 @@
+---
+import site from '../data/site.json';
+import T from './T.astro';
+const { vehicle } = Astro.props as { vehicle: any };
+const items: any[] = vehicle.features ?? [];
+---
+{items.length > 0 && (
+  <div>
+    <h3 class="label mb-4"><T value={site.labels.features} /></h3>
+    <ul class="border-t border-white/10">
+      {items.map((f, i) => (
+        <li class="flex min-h-14 items-baseline gap-5 border-b border-white/10 py-4 text-sm uppercase tracking-[0.1em]">
+          <span class="font-display text-xs text-muted">{String(i + 1).padStart(2, '0')}</span>
+          <span><T value={f} /></span>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}

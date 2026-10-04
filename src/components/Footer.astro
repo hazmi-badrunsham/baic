@@ -1,0 +1,41 @@
+---
+import site from '../data/site.json';
+import nav from '../data/navigation.json';
+import T from './T.astro';
+import LangToggle from './LangToggle.astro';
+import WhatsAppLink from './WhatsAppLink.astro';
+const { vehicles } = Astro.props as { vehicles: any[] };
+const a = site.advisor;
+const external = site.more.links.filter((l) => l.url);
+---
+<footer class="border-t border-white/10 pb-28 pt-14 md:pb-12">
+  <div class="wrap">
+    <div class="grid gap-12 md:grid-cols-12 md:gap-10">
+      <div class="md:col-span-4">
+        <p class="font-display text-2xl font-semibold uppercase leading-none tracking-[0.1em]">BAIC<br />{a.location}</p>
+        <p class="mt-5 font-display text-lg">{a.name}</p>
+        <p class="text-sm text-muted"><T value={a.role} /></p>
+      </div>
+
+      <ul class="grid gap-1 text-sm uppercase tracking-[0.12em] md:col-span-3 md:col-start-6">
+        <li><WhatsAppLink variant="text" label={site.cta.primary} /></li>
+        {external.map((l) => (
+          <li><a href={l.url} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center text-muted hover:text-paper"><T value={l.label} /> ↗</a></li>
+        ))}
+      </ul>
+
+      <div class="flex flex-col items-start gap-4 md:col-span-3 md:col-start-10 md:items-end">
+        <ul class="text-sm uppercase tracking-[0.12em] md:text-right">
+          {vehicles.map((v) => <li><a href={`#${v.slug}`} class="inline-flex min-h-11 items-center text-muted hover:text-paper">{v.shortName}</a></li>)}
+        </ul>
+        <LangToggle />
+      </div>
+    </div>
+
+    <div class="mt-14 max-w-2xl space-y-2 text-xs text-muted">
+      <p><T value={site.disclaimer.footer} /></p>
+      <p><T value={site.disclaimer.independent} /></p>
+    </div>
+    <p class="mt-8 text-xs text-muted">© {new Date().getFullYear()}</p>
+  </div>
+</footer>

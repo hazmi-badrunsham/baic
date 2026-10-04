@@ -1,0 +1,6 @@
+---
+// Headline split into stacked lines: [{en, bm}, ...]
+import T from './T.astro';
+const { lines } = Astro.props as { lines: { en: string; bm: string }[] };
+---
+{lines.map((l) => <span class="block"><T value={l} /></span>)}

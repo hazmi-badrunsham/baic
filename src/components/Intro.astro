@@ -1,0 +1,30 @@
+---
+import site from '../data/site.json';
+import T from './T.astro';
+const { vehicles } = Astro.props as { vehicles: any[] };
+---
+<section id="intro" data-ctx class="py-24 md:py-40">
+  <div class="wrap">
+    <div class="grid gap-8 md:grid-cols-12">
+      <h2 class="section-title reveal md:col-span-7" style="font-size:clamp(2.25rem,6vw,5rem)"><T value={site.intro.title} /></h2>
+      <p class="reveal text-muted md:col-span-4 md:col-start-9 md:pt-3 md:text-lg"><T value={site.intro.description} /></p>
+    </div>
+
+    <ul class="mt-16 md:mt-24">
+      {vehicles.map((v, i) => (
+        <li class="border-t border-white/10 last:border-b">
+          <a href={`#${v.id}`} class="group flex min-h-20 flex-col justify-center gap-1 py-5 md:flex-row md:items-baseline md:justify-between md:gap-8">
+            <span class="flex items-baseline gap-5">
+              <span class="font-display text-sm text-accent">{String(i + 1).padStart(2, '0')}</span>
+              <span class="font-display text-2xl uppercase md:text-4xl">{v.name}</span>
+            </span>
+            <span class="flex items-center gap-4 pl-9 text-muted transition-colors group-hover:text-text md:pl-0">
+              <T value={v.tagline} />
+              <span aria-hidden="true" class="text-accent">→</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
