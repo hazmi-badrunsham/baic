@@ -41,8 +41,8 @@
     "anyVehicle": { "en": "BAIC lineup", "bm": "model BAIC" }
   },
   "hero": {
-    "video": "/media/hero/hero-portrait.mp4",
-    "poster": "/media/hero-landscape.mp4",
+    "videoLandscape": "/media/hero-landscape.mp4",
+    "videoPortrait": "/media/hero/hero-portrait.mp4",
     "eyebrow": { "en": "BAIC — Sungai Petani", "bm": "BAIC — Sungai Petani" },
     "title": { "en": "Drive with confidence.", "bm": "Memandu dengan yakin." },
     "description": {

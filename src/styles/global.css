@@ -105,17 +105,18 @@ html[data-ui="bm"] [data-lang="en"] { display: none !important; }
   .media video { opacity: 0; transition: opacity 1s ease; }
   .media video.is-playing { opacity: 1; }
 
-  /* Hero: full-bleed on mobile, magazine split on large screens (video keeps its portrait shape) */
+  /* Hero: match the video orientation to the viewport and keep copy readable over the footage. */
   .hero-wrap { position: absolute; inset: 0; }
   .hero-shade { background: linear-gradient(to top, #0A0A0A 0%, rgb(10 10 10 / .55) 38%, rgb(10 10 10 / .1) 70%, rgb(10 10 10 / .45) 100%); }
   .hero-video { transition: opacity 1.2s ease; }
   .hero-video.is-playing { animation: hero-settle 9s ease-out forwards; }
   @keyframes hero-settle { from { transform: scale(1.05); } to { transform: scale(1); } }
   @media (min-width: 1024px) {
-    .hero-grid { display: grid; grid-template-columns: 1fr calc(100svh * .5625); }
-    .hero-wrap { position: relative; inset: auto; grid-column: 2; grid-row: 1; }
-    .hero-copy { grid-column: 1; grid-row: 1; }
-    .hero-shade { background: linear-gradient(to right, #0A0A0A 0%, transparent 22%), linear-gradient(to top, rgb(10 10 10 / .5) 0%, transparent 35%); }
+    .hero-shade {
+      background:
+        linear-gradient(90deg, rgb(10 10 10 / .82) 0%, rgb(10 10 10 / .62) 30%, transparent 78%),
+        linear-gradient(0deg, rgb(10 10 10 / .38) 0%, transparent 48%);
+    }
   }
 
   /* Sticky WhatsApp */

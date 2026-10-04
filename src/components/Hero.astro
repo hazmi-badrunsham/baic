@@ -4,19 +4,13 @@ import T from './T.astro';
 import WhatsAppLink from './WhatsAppLink.astro';
 const h = site.hero;
 ---
-<!--
-  Mobile: the portrait video fills the screen.
-  Large screens (lg+): magazine split. Text on the left, the video keeps its natural 9:16 shape on the right,
-  so it is not cropped into a landscape frame.
--->
-<section id="top" class="hero-grid relative isolate h-svh min-h-[560px] overflow-hidden">
-  <div class="hero-wrap media bg-ink-2" data-media data-label={`Hero video — ${h.video}`}>
+<section id="top" class="relative isolate h-svh min-h-[560px] overflow-hidden bg-ink">
+  <div class="hero-wrap media bg-ink-2" data-media data-label="BAIC hero video">
     <video
       class="hero-video absolute inset-0 h-full w-full object-cover opacity-0"
       data-hero-video
-      data-primary
-      data-src={h.video}
-      poster={h.poster}
+      data-video-landscape={h.videoLandscape}
+      data-video-portrait={h.videoPortrait}
       autoplay
       muted
       loop
@@ -51,14 +45,23 @@ const h = site.hero;
   if (v) {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const saveData = !!(navigator as any).connection?.saveData;
+    const desktop = window.matchMedia('(min-width: 1024px)');
     v.muted = true;
     v.addEventListener('playing', () => { v.classList.add('is-playing'); v.style.opacity = '1'; });
-    // Reduced motion or Data Saver: don't load the video at all. The poster/placeholder stays.
-    if (!reduce && !saveData && v.dataset.src) {
-      v.src = v.dataset.src;
-      v.play().catch(() => {});
-    } else {
-      v.style.opacity = '1';
-    }
+    const updateSource = () => {
+      const source = desktop.matches ? v.dataset.videoLandscape : v.dataset.videoPortrait;
+      if (reduce || saveData || !source) {
+        v.style.opacity = '1';
+        return;
+      }
+      if (v.getAttribute('src') === source) return;
+      v.classList.remove('is-playing');
+      v.style.opacity = '0';
+      v.src = source;
+      v.load();
+      v.play().catch(() => { v.style.opacity = '1'; });
+    };
+    updateSource();
+    desktop.addEventListener('change', updateSource);
   }
 </script>
