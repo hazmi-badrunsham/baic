@@ -20,7 +20,11 @@
     scroll-padding-top: 4.5rem;
     -webkit-text-size-adjust: 100%;
   }
-  body { overflow-x: hidden; }
+  body {
+    overflow-x: clip;
+    min-height: 100%;
+    position: relative;
+  }
   h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
   :focus-visible { outline: 2px solid var(--color-lime); outline-offset: 3px; }
   ::selection { background: var(--color-lime); color: var(--color-ink); }
@@ -34,11 +38,16 @@ html[data-ui="bm"] [data-lang="en"] { display: none !important; }
   .wrap {
     margin-inline: auto;
     max-width: 90rem;
-    padding-inline: max(1rem, env(safe-area-inset-left));
+    padding-left: max(1rem, env(safe-area-inset-left));
     padding-right: max(1rem, env(safe-area-inset-right));
+    width: 100%;
+    box-sizing: border-box;
   }
   @media (min-width: 480px) {
-    .wrap { padding-inline: 1.5rem; }
+    .wrap {
+      padding-left: max(1.5rem, env(safe-area-inset-left));
+      padding-right: max(1.5rem, env(safe-area-inset-right));
+    }
   }
   @media (min-width: 768px) {
     .wrap { padding-inline: 2.5rem; }
