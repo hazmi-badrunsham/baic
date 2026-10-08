@@ -20,7 +20,7 @@ const vehicles = data.vehicles;
     <Hero />
     <MeetYus vehicles={vehicles} />
     <Models vehicles={vehicles} />
-    {vehicles.map((v, i) => <VehicleSection vehicle={v} number={4 + i} />)}
+    {vehicles.map((v, i) => <VehicleSection vehicle={v} index={i} total={vehicles.length} />)}
     <WhyBaic />
     <Contact vehicles={vehicles} />
     <MoreFromYus />

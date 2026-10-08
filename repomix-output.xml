@@ -1,0 +1,2002 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+public/
+  media/
+    bj30/
+      visual.jpg
+    bj40/
+      belakang.jpeg
+      belakang2.jpeg
+      dalam.jpeg
+      front.jpeg
+      visual.jpeg
+      visual.jpg
+    hero/
+      hero-portrait.mp4
+    x55/
+      back.jpg
+      front.jpg
+      interior.jpg
+      top.png
+      visual.jpg
+    yus/
+      office.webp
+      yus.jpeg
+    hero-landscape.mp4
+    hero-portrait.mp4
+  favicon.ico
+  favicon.svg
+src/
+  components/
+    ChapterBreak.astro
+    Contact.astro
+    ContactCTA.astro
+    Footer.astro
+    Header.astro
+    Hero.astro
+    Intro.astro
+    LangToggle.astro
+    Lines.astro
+    Media.astro
+    MeetYus.astro
+    Models.astro
+    MoreFromYus.astro
+    Pricing.astro
+    StickyWhatsApp.astro
+    T.astro
+    VehicleChapter.astro
+    VehicleFeatures.astro
+    VehicleGallery.astro
+    VehiclePricing.astro
+    VehicleSection.astro
+    VehicleSpecs.astro
+    WhatsAppLink.astro
+    WhyBaic.astro
+  data/
+    navigation.json
+    site.json
+    vehicles.json
+  layouts/
+    Layout.astro
+  lib/
+    format.ts
+    wa.ts
+  pages/
+    index.astro
+  styles/
+    global.css
+.gitignore
+AGENTS.md
+astro.config.mjs
+CLAUDE.md
+package.json
+README.md
+tsconfig.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="public/favicon.svg">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 128 128">
+    <path d="M50.4 78.5a75.1 75.1 0 0 0-28.5 6.9l24.2-65.7c.7-2 1.9-3.2 3.4-3.2h29c1.5 0 2.7 1.2 3.4 3.2l24.2 65.7s-11.6-7-28.5-7L67 45.5c-.4-1.7-1.6-2.8-2.9-2.8-1.3 0-2.5 1.1-2.9 2.7L50.4 78.5Zm-1.1 28.2Zm-4.2-20.2c-2 6.6-.6 15.8 4.2 20.2a17.5 17.5 0 0 1 .2-.7 5.5 5.5 0 0 1 5.7-4.5c2.8.1 4.3 1.5 4.7 4.7.2 1.1.2 2.3.2 3.5v.4c0 2.7.7 5.2 2.2 7.4a13 13 0 0 0 5.7 4.9v-.3l-.2-.3c-1.8-5.6-.5-9.5 4.4-12.8l1.5-1a73 73 0 0 0 3.2-2.2 16 16 0 0 0 6.8-11.4c.3-2 .1-4-.6-6l-.8.6-1.6 1a37 37 0 0 1-22.4 2.7c-5-.7-9.7-2-13.2-6.2Z" />
+    <style>
+        path { fill: #000; }
+        @media (prefers-color-scheme: dark) {
+            path { fill: #FFF; }
+        }
+    </style>
+</svg>
+</file>
+
+<file path="src/components/ChapterBreak.astro">
+---
+import T from './T.astro';
+const { next } = Astro.props as { next: any };
+---
+<section data-ctx class="mt-28 border-y border-white/10 py-20 md:mt-40 md:py-32">
+  <div class="wrap gap-10 md:flex md:items-end md:justify-between">
+    <p class="reveal max-w-4xl font-display uppercase leading-none text-balance" style="font-size:clamp(2rem,5.5vw,5rem)">
+      <T value={next.transitionIn} />
+    </p>
+    <a href={`#${next.id}`} class="mt-8 inline-flex min-h-12 shrink-0 items-center gap-3 text-sm uppercase tracking-[0.18em] text-accent md:mt-0">
+      {next.name} <span aria-hidden="true">↓</span>
+    </a>
+  </div>
+</section>
+</file>
+
+<file path="src/components/Contact.astro">
+---
+import site from '../data/site.json';
+import { fill, waUrl } from '../lib/wa';
+import T from './T.astro';
+import Lines from './Lines.astro';
+import WhatsAppLink from './WhatsAppLink.astro';
+const { vehicles } = Astro.props as { vehicles: any[] };
+const c = site.contact;
+const any = site.whatsapp.anyVehicle;
+---
+<section
+  id="contact"
+  data-ctx
+  data-any-en={any.en}
+  data-any-bm={any.bm}
+  class="border-t border-white/10 py-24 md:py-40"
+>
+  <div class="wrap">
+    <p class="label"><span class="text-lime">08</span> — <T value={c.label} /></p>
+    <h2 class="title-xl reveal mt-6"><Lines lines={c.lines} /></h2>
+    <p class="mt-6 font-display text-2xl md:text-4xl"><T value={c.sub} /></p>
+
+    <div class="mt-14 grid gap-14 md:mt-20 md:grid-cols-12 md:gap-10">
+      <div class="md:col-span-5">
+        <p id="pick-label" class="label"><T value={c.pick} /></p>
+        <div role="group" aria-labelledby="pick-label" class="mt-3 flex flex-wrap gap-x-6">
+          <button type="button" class="pick" data-pick="" aria-pressed="true"><T value={c.anyOption} /></button>
+          {vehicles.map((v) => (
+            <button type="button" class="pick" data-pick={v.name} aria-pressed="false">{v.shortName}</button>
+          ))}
+        </div>
+
+        <div class="mt-10 flex flex-col items-start gap-5">
+          <WhatsAppLink class="min-h-14 px-8" label={site.cta.primary} />
+          <p class="text-sm text-muted">
+            <T value={c.call} />
+            <a href={`tel:+${site.advisor.whatsappNumber}`} class="ml-1 font-display text-lg text-paper hover:text-lime">{site.advisor.phone}</a>
+          </p>
+        </div>
+      </div>
+
+      <ul class="border-b border-white/10 md:col-span-6 md:col-start-7">
+        {c.intents.map((it) => {
+          const en = waUrl(fill(it.template.en, any.en));
+          const bm = waUrl(fill(it.template.bm, any.bm));
+          return (
+            <li class="border-t border-white/10">
+              <a
+                href={en}
+                data-wa-en={en}
+                data-wa-bm={bm}
+                data-tpl-en={it.template.en}
+                data-tpl-bm={it.template.bm}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex min-h-20 items-center justify-between gap-6 font-display text-2xl uppercase tracking-tight md:text-3xl"
+              >
+                <span><T value={it.label} /></span>
+                <span aria-hidden="true" class="text-lime transition-transform group-hover:translate-x-1">↗</span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { fill, waUrl } from '../lib/wa';
+
+  const root = document.getElementById('contact');
+  if (root) {
+    const any = { en: root.dataset.anyEn!, bm: root.dataset.anyBm! };
+    const links = root.querySelectorAll<HTMLAnchorElement>('a[data-tpl-en]');
+    const picks = root.querySelectorAll<HTMLButtonElement>('[data-pick]');
+
+    // Picking a model rewrites every WhatsApp link in this section (primary button + the four options)
+    const update = (name: string) => {
+      const v = name ? { en: name, bm: name } : any;
+      const bmOn = document.documentElement.dataset.ui === 'bm';
+      links.forEach((a) => {
+        const en = waUrl(fill(a.dataset.tplEn!, v.en));
+        const bm = waUrl(fill(a.dataset.tplBm!, v.bm));
+        a.dataset.waEn = en;
+        a.dataset.waBm = bm;
+        a.href = bmOn ? bm : en;
+      });
+      picks.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.pick === name)));
+    };
+    picks.forEach((b) => b.addEventListener('click', () => update(b.dataset.pick || '')));
+  }
+</script>
+</file>
+
+<file path="src/components/ContactCTA.astro">
+---
+import site from '../data/site.json';
+import T from './T.astro';
+import WhatsAppLink from './WhatsAppLink.astro';
+const { vehicles } = Astro.props as { vehicles: any[] };
+const tel = `tel:+${site.advisor.whatsappNumber}`;
+---
+<section id="contact" data-ctx class="border-t border-white/10 py-28 md:py-44">
+  <div class="wrap">
+    <h2 class="reveal text-balance uppercase" style="font-size:clamp(2.75rem,9vw,8rem);line-height:.92"><T value={site.contact.title} /></h2>
+    <p class="mt-6 max-w-md text-muted md:text-lg"><T value={site.contact.description} /></p>
+
+    <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+      <WhatsAppLink class="min-h-14 px-8 text-lg" message={site.whatsapp.general} label={site.cta.final} />
+      <p class="text-sm text-muted">
+        <T value={site.contact.call} />
+        <a href={tel} class="ml-1 font-display text-lg text-text hover:text-accent">{site.advisor.phone}</a>
+      </p>
+    </div>
+
+    <ul class="mt-12 flex flex-wrap gap-x-8 gap-y-2 text-sm">
+      {vehicles.map((v) => (
+        <li><WhatsAppLink variant="text" message={v.whatsapp.message} label={v.whatsapp.cta} /></li>
+      ))}
+    </ul>
+  </div>
+</section>
+</file>
+
+<file path="src/components/Footer.astro">
+---
+import site from '../data/site.json';
+import nav from '../data/navigation.json';
+import T from './T.astro';
+import LangToggle from './LangToggle.astro';
+import WhatsAppLink from './WhatsAppLink.astro';
+const { vehicles } = Astro.props as { vehicles: any[] };
+const a = site.advisor;
+const external = site.more.links.filter((l) => l.url);
+---
+<footer class="border-t border-white/10 pb-28 pt-14 md:pb-12">
+  <div class="wrap">
+    <div class="grid gap-12 md:grid-cols-12 md:gap-10">
+      <div class="md:col-span-4">
+        <p class="font-display text-2xl font-semibold uppercase leading-none tracking-[0.1em]">BAIC<br />{a.location}</p>
+        <p class="mt-5 font-display text-lg">{a.name}</p>
+        <p class="text-sm text-muted"><T value={a.role} /></p>
+      </div>
+
+      <ul class="grid gap-1 text-sm uppercase tracking-[0.12em] md:col-span-3 md:col-start-6">
+        <li><WhatsAppLink variant="text" label={site.cta.primary} /></li>
+        {external.map((l) => (
+          <li><a href={l.url} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center text-muted hover:text-paper"><T value={l.label} /> ↗</a></li>
+        ))}
+      </ul>
+
+      <div class="flex flex-col items-start gap-4 md:col-span-3 md:col-start-10 md:items-end">
+        <ul class="text-sm uppercase tracking-[0.12em] md:text-right">
+          {vehicles.map((v) => <li><a href={`#${v.slug}`} class="inline-flex min-h-11 items-center text-muted hover:text-paper">{v.shortName}</a></li>)}
+        </ul>
+        <LangToggle />
+      </div>
+    </div>
+
+    <div class="mt-14 max-w-2xl space-y-2 text-xs text-muted">
+      <p><T value={site.disclaimer.footer} /></p>
+      <p><T value={site.disclaimer.independent} /></p>
+    </div>
+    <p class="mt-8 text-xs text-muted">© {new Date().getFullYear()}</p>
+  </div>
+</footer>
+</file>
+
+<file path="src/components/Header.astro">
+---
+import nav from '../data/navigation.json';
+import T from './T.astro';
+import LangToggle from './LangToggle.astro';
+---
+<header
+  id="site-header"
+  data-scrolled="false"
+  class="group fixed inset-x-0 top-0 z-50 transition-colors duration-300 data-[scrolled=true]:border-b data-[scrolled=true]:border-white/10 data-[scrolled=true]:bg-ink/85 data-[scrolled=true]:backdrop-blur-md"
+>
+  <div class="wrap flex h-16 items-center justify-between gap-4 transition-[height] duration-300 lg:h-20 lg:group-data-[scrolled=true]:h-16">
+    <a href="#top" class="font-display text-lg font-semibold tracking-[0.14em]">
+      BAIC <span class="font-normal text-muted">/ Yus</span>
+    </a>
+
+    <nav aria-label="Primary" class="hidden lg:block">
+      <ul class="flex items-center gap-6 text-xs uppercase tracking-[0.14em] xl:gap-9">
+        {nav.main.map((n) => (
+          <li><a href={n.href} class="py-2 text-muted transition-colors hover:text-paper"><T value={n.label} /></a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2 lg:gap-5">
+      <LangToggle />
+      <button id="menu-btn" type="button" class="burger lg:hidden" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Sibling of the header: backdrop-filter on the header would trap a fixed child -->
+<div id="mobile-menu" data-open="false" class="mobile-menu fixed inset-0 z-40 flex-col justify-between bg-ink px-5 pb-8 pt-24">
+  <nav aria-label="Mobile">
+    <ul>
+      {nav.main.map((n) => (
+        <li class="border-b border-white/10">
+          <a href={n.href} class="flex min-h-16 items-center font-display text-4xl uppercase tracking-tight"><T value={n.label} /></a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</div>
+
+<script>
+  const header = document.getElementById('site-header');
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  const onScroll = () => header?.setAttribute('data-scrolled', String(window.scrollY > 40));
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  function setMenu(open: boolean) {
+    menu?.setAttribute('data-open', String(open));
+    btn?.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  btn?.addEventListener('click', () => setMenu(btn.getAttribute('aria-expanded') !== 'true'));
+  menu?.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('a')) setMenu(false); });
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+  window.matchMedia('(min-width: 1024px)').addEventListener('change', (m) => { if (m.matches) setMenu(false); });
+</script>
+</file>
+
+<file path="src/components/Intro.astro">
+---
+import site from '../data/site.json';
+import T from './T.astro';
+const { vehicles } = Astro.props as { vehicles: any[] };
+---
+<section id="intro" data-ctx class="py-24 md:py-40">
+  <div class="wrap">
+    <div class="grid gap-8 md:grid-cols-12">
+      <h2 class="section-title reveal md:col-span-7" style="font-size:clamp(2.25rem,6vw,5rem)"><T value={site.intro.title} /></h2>
+      <p class="reveal text-muted md:col-span-4 md:col-start-9 md:pt-3 md:text-lg"><T value={site.intro.description} /></p>
+    </div>
+
+    <ul class="mt-16 md:mt-24">
+      {vehicles.map((v, i) => (
+        <li class="border-t border-white/10 last:border-b">
+          <a href={`#${v.id}`} class="group flex min-h-20 flex-col justify-center gap-1 py-5 md:flex-row md:items-baseline md:justify-between md:gap-8">
+            <span class="flex items-baseline gap-5">
+              <span class="font-display text-sm text-accent">{String(i + 1).padStart(2, '0')}</span>
+              <span class="font-display text-2xl uppercase md:text-4xl">{v.name}</span>
+            </span>
+            <span class="flex items-center gap-4 pl-9 text-muted transition-colors group-hover:text-text md:pl-0">
+              <T value={v.tagline} />
+              <span aria-hidden="true" class="text-accent">→</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+</file>
+
+<file path="src/components/LangToggle.astro">
+---
+// EN | BM. Behaviour lives in Layout.astro.
+---
+<div class="flex items-center font-display" role="group" aria-label="Language">
+  <button type="button" class="lang-btn" data-set-lang="en" aria-pressed="true">EN</button>
+  <span aria-hidden="true" class="text-muted/50">|</span>
+  <button type="button" class="lang-btn" data-set-lang="bm" aria-pressed="false">BM</button>
+</div>
+</file>
+
+<file path="src/components/Lines.astro">
+---
+// Headline split into stacked lines: [{en, bm}, ...]
+import T from './T.astro';
+const { lines } = Astro.props as { lines: { en: string; bm: string }[] };
+---
+{lines.map((l) => <span class="block"><T value={l} /></span>)}
+</file>
+
+<file path="src/components/Media.astro">
+---
+// One image slot. If the file doesn't exist yet, Layout.astro flips it to a dashed placeholder
+// showing the expected path. Optional `video` lazy-loads and plays only while on screen.
+interface Props {
+  src: string;
+  alt: string | { en: string; bm: string };
+  label?: string;
+  class?: string;
+  eager?: boolean;
+  video?: string;
+}
+const { src, alt, label, class: cls = '', eager = false, video } = Astro.props;
+const a = typeof alt === 'string' ? { en: alt, bm: alt } : alt;
+---
+<div data-media data-label={label ?? src} class:list={['media relative overflow-hidden bg-ink-2', cls]}>
+  <img
+    src={src}
+    alt={a.en}
+    data-alt-en={a.en}
+    data-alt-bm={a.bm}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding="async"
+    class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+  />
+  {video && (
+    <video
+      class="absolute inset-0 h-full w-full object-cover"
+      data-lazy-video
+      data-src={video}
+      muted
+      loop
+      playsinline
+      preload="none"
+      aria-hidden="true"
+      tabindex="-1"
+    ></video>
+  )}
+</div>
+
+<script>
+  const videos = document.querySelectorAll<HTMLVideoElement>('video[data-lazy-video]');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData = !!(navigator as any).connection?.saveData;
+  if (videos.length && !reduce && !saveData && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        const v = e.target as HTMLVideoElement;
+        if (e.isIntersecting) {
+          if (!v.getAttribute('src')) v.src = v.dataset.src!;
+          v.muted = true;
+          v.play().then(() => v.classList.add('is-playing')).catch(() => {});
+        } else {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.35 });
+    videos.forEach((v) => io.observe(v));
+  }
+</script>
+</file>
+
+<file path="src/components/MeetYus.astro">
+---
+import site from '../data/site.json';
+import T from './T.astro';
+import Lines from './Lines.astro';
+import Media from './Media.astro';
+import WhatsAppLink from './WhatsAppLink.astro';
+const { vehicles } = Astro.props as { vehicles: any[] };
+const y = site.yus;
+const a = site.advisor;
+---
+<section id="yus" data-ctx class="py-24 md:py-40">
+  <div class="wrap grid gap-12 md:grid-cols-12 md:gap-10">
+    <div class="md:col-span-5">
+      <p class="label mb-6 lg"><T value={y.label} /></p>
+      <Media
+        src={y.portrait}
+        alt={y.portraitAlt}
+        label={`Yus portrait — ${y.portrait}`}
+        class="reveal-img aspect-[4/5] w-full"
+      />
+      <p class="label mt-3">{a.company} · {a.location}</p>
+    </div>
+
+    <div class="md:col-span-6 md:col-start-7 md:pt-14">
+      <h2 class="title-xl reveal"><Lines lines={y.lines} /></h2>
+
+      <div class="mt-10 border-t border-white/10 pt-6">
+        <p class="font-display text-3xl">{a.name}</p>
+        <p class="mt-1 text-muted"><T value={a.role} /></p>
+      </div>
+
+      <p class="mt-8 max-w-md text-muted md:text-lg"><T value={y.intro} /></p>
+
+      <div class="mt-10 grid gap-8 sm:grid-cols-2">
+        <div>
+          <h3 class="label mb-3"><T value={y.modelsLabel} /></h3>
+          <ul class="font-display text-lg">
+            {vehicles.map((v) => <li><a href={`#${v.slug}`} class="inline-flex min-h-10 items-center hover:text-lime">{v.name}</a></li>)}
+          </ul>
+        </div>
+        <div>
+          <h3 class="label mb-3"><T value={y.servicesLabel} /></h3>
+          <ul>
+            {y.services.map((s) => (
+              <li class="flex min-h-10 items-center gap-3 text-sm uppercase tracking-[0.1em]">
+                <span aria-hidden="true" class="size-1.5 bg-lime"></span><T value={s} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12"><WhatsAppLink label={site.cta.primary} /></div>
+    </div>
+  </div>
+</section>
+</file>
+
+<file path="src/components/Models.astro">
+---
+import site from '../data/site.json';
+import T from './T.astro';
+import Lines from './Lines.astro';
+import Media from './Media.astro';
+const { vehicles } = Astro.props as { vehicles: any[] };
+
+// Editorial composition: large / offset narrow / offset wide. Extra vehicles fall back to the last slot.
+const slots = [
+  { wrap: 'md:col-span-7', ratio: 'aspect-[4/3]' },
+  { wrap: 'ml-auto w-[78%] md:w-auto md:col-span-4 md:col-start-9 md:mt-28', ratio: 'aspect-[4/5]' },
+  { wrap: 'w-[88%] md:w-auto md:col-span-6 md:col-start-3 md:mt-4', ratio: 'aspect-[16/10]' },
+];
+---
+<section id="models" data-ctx class="py-24 md:py-40">
+  <div class="wrap">
+    <p class="label"><span class="text-lime">03</span> — <T value={site.models.label} /></p>
+    <h2 class="title-xl mt-6 reveal"><Lines lines={site.models.lines} /></h2>
+
+    <div class="mt-16 grid gap-y-14 md:mt-24 md:grid-cols-12 md:gap-x-6 md:gap-y-0">
+      {vehicles.map((v, i) => {
+        const s = slots[Math.min(i, slots.length - 1)];
+        return (
+          <a href={`#${v.slug}`} class:list={['group block', s.wrap]}>
+            <div class="relative">
+              <Media
+                src={v.media.hero}
+                alt={{ en: v.name, bm: v.name }}
+                class:list={['reveal-img', s.ratio]}
+              />
+              <span class="pointer-events-none absolute left-4 top-3 z-10 font-display text-5xl text-paper mix-blend-difference md:text-7xl">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+            </div>
+            <div class="mt-4 flex items-baseline justify-between gap-4">
+              <h3 class="font-display text-2xl uppercase md:text-4xl">{v.shortName}</h3>
+              <span aria-hidden="true" class="text-lime transition-transform group-hover:translate-x-1">→</span>
+            </div>
+            <p class="label mt-1"><T value={v.traits} /></p>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>
+</file>
+
+<file path="src/components/MoreFromYus.astro">
+---
+import site from '../data/site.json';
+import T from './T.astro';
+const m = site.more;
+// In production only links with a URL are shown. In dev, empty ones show as "add URL" so you don't forget.
+const dev = import.meta.env.DEV;
+const links = m.links.filter((l) => l.url || dev);
+---
+{links.length > 0 && (
+  <section data-ctx class="border-t border-white/10 py-20 md:py-32">
+    <div class="wrap">
+      <p class="label"><span class="text-lime">09</span> — <T value={m.label} /></p>
+      <h2 class="title-lg mt-6 reveal"><T value={m.title} /></h2>
+
+      <ul class="mt-12 md:mt-16">
+        {links.map((l) => (
+          <li class="border-t border-white/10 last:border-b">
+            {l.url ? (
+              <a
+                href={l.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class:list={[
+                  'group flex items-center justify-between gap-6 font-display uppercase tracking-tight',
+                  l.id === 'tiktok' ? 'min-h-24 text-3xl md:min-h-32 md:text-6xl' : 'min-h-16 text-lg text-muted hover:text-paper md:text-2xl',
+                ]}
+              >
+                <span><T value={l.label} /></span>
+                <span aria-hidden="true" class="text-lime transition-transform group-hover:-translate-y-1 group-hover:translate-x-1">↗</span>
+                <span class="sr-only">(opens in a new tab)</span>
+              </a>
+            ) : (
+              <div class="flex min-h-16 items-center justify-between gap-6 font-display text-lg uppercase text-muted/50">
+                <span><T value={l.label} /></span>
+                <span class="label">Add URL in site.json (more.links)</span>
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+</file>
+
+<file path="src/components/Pricing.astro">
+---
+import site from '../data/site.json';
+import { rm } from '../lib/format';
+import T from './T.astro';
+import WhatsAppLink from './WhatsAppLink.astro';
+const { vehicles } = Astro.props as { vehicles: any[] };
+const L = site.labels.pricing;
+---
+<section id="pricing" data-ctx class="py-24 md:py-40">
+  <div class="wrap">
+    <p class="eyebrow"><T value={L.eyebrow} /></p>
+    <h2 class="section-title mt-3"><T value={L.title} /></h2>
+
+    <div class="mt-12 md:mt-20">
+      {vehicles.map((v) => (
+        <article class="reveal grid gap-8 border-t border-white/15 py-10 md:grid-cols-12 md:items-end">
+          <div class="md:col-span-4">
+            <h3 class="font-display text-2xl uppercase">{v.name}</h3>
+            <p class="mt-4 text-xs uppercase tracking-[0.14em] text-muted"><T value={L.nett} /></p>
+            <p class="mt-1 font-display leading-none" style="font-size:clamp(2.25rem,5vw,3.75rem)">{rm(v.price.nett)}</p>
+          </div>
+          <dl class="grid gap-4 text-sm md:col-span-5">
+            <div>
+              <dt class="text-muted"><T value={L.otr} /></dt>
+              <dd class="mt-0.5 text-base">{rm(v.price.otrWithoutInsurance)}</dd>
+            </div>
+            <div>
+              <dt class="text-muted"><T value={L.sumInsured} /></dt>
+              <dd class="mt-0.5 text-base">{rm(v.price.sumInsured)}</dd>
+            </div>
+            <div>
+              <dt class="text-muted"><T value={L.warranty} /></dt>
+              <dd class="mt-0.5 text-base"><T value={v.warranty} /></dd>
+            </div>
+          </dl>
+          <div class="md:col-span-3 md:flex md:justify-end">
+            <WhatsAppLink message={v.whatsapp.message} label={v.whatsapp.cta} />
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <p class="mt-6 border-t border-white/15 pt-5 text-xs text-muted"><T value={site.pricingDisclaimer} /></p>
+  </div>
+</section>
+</file>
+
+<file path="src/components/StickyWhatsApp.astro">
+---
+import site from '../data/site.json';
+import WhatsAppLink from './WhatsAppLink.astro';
+---
+<!-- Mobile: bottom bar. Desktop: small floating button. Appears once the hero is out of view. -->
+<div
+  id="wa-sticky"
+  data-visible="false"
+  data-any-en={site.whatsapp.anyVehicle.en}
+  data-any-bm={site.whatsapp.anyVehicle.bm}
+  class="fixed inset-x-0 bottom-0 z-40 bg-ink/85 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md md:inset-x-auto md:bottom-8 md:right-8 md:bg-transparent md:p-0 md:backdrop-blur-none"
+>
+  <WhatsAppLink class="w-full md:w-auto md:px-6" label={site.cta.primary} />
+</div>
+
+<script>
+  import { fill, waUrl } from '../lib/wa';
+
+  const bar = document.getElementById('wa-sticky');
+  const hero = document.getElementById('top');
+  const link = bar?.querySelector<HTMLAnchorElement>('a');
+
+  if (bar && link) {
+    if (hero && 'IntersectionObserver' in window) {
+      new IntersectionObserver(([e]) => { bar.dataset.visible = String(!e.isIntersecting); }, { threshold: 0.15 }).observe(hero);
+    } else {
+      bar.dataset.visible = 'true';
+    }
+
+    // The message follows the vehicle section in view (data-ctx-vehicle), otherwise it stays generic
+    const any = { en: bar.dataset.anyEn!, bm: bar.dataset.anyBm! };
+    const setVehicle = (name?: string) => {
+      const v = name ? { en: name, bm: name } : any;
+      const en = waUrl(fill(link.dataset.tplEn!, v.en));
+      const bm = waUrl(fill(link.dataset.tplBm!, v.bm));
+      link.dataset.waEn = en;
+      link.dataset.waBm = bm;
+      link.href = document.documentElement.dataset.ui === 'bm' ? bm : en;
+    };
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setVehicle((e.target as HTMLElement).dataset.ctxVehicle);
+        });
+      }, { rootMargin: '-45% 0px -45% 0px' });
+      document.querySelectorAll('[data-ctx]').forEach((el) => io.observe(el));
+    }
+  }
+</script>
+</file>
+
+<file path="src/components/T.astro">
+---
+// A plain string renders as-is. An {en, bm} object renders both languages;
+// CSS hides the inactive one (see global.css).
+interface Props { value: string | { en: string; bm: string }; }
+const { value } = Astro.props;
+---
+{typeof value === 'string'
+  ? value
+  : <><span data-lang="en">{value.en}</span><span data-lang="bm">{value.bm}</span></>}
+</file>
+
+<file path="src/components/VehicleChapter.astro">
+---
+import T from './T.astro';
+import WhatsAppLink from './WhatsAppLink.astro';
+import VehicleSpecs from './VehicleSpecs.astro';
+import VehicleFeatures from './VehicleFeatures.astro';
+import VehicleGallery from './VehicleGallery.astro';
+
+const { vehicle, index } = Astro.props as { vehicle: any; index: number };
+const rugged = vehicle.theme === 'rugged';
+const n = String(index + 1).padStart(2, '0');
+const m = vehicle.media;
+---
+<section
+  id={vehicle.id}
+  data-theme={vehicle.theme}
+  data-ctx
+  data-ctx-en={vehicle.whatsapp.message.en}
+  data-ctx-bm={vehicle.whatsapp.message.bm}
+  aria-labelledby={`${vehicle.id}-title`}
+  class="relative pt-8 md:pt-16"
+>
+  <!-- Cinematic visual; fades into the page so the title can overlap its lower edge -->
+  <div class="chapter-visual relative">
+    <img
+      src={m.visual}
+      alt={m.visualAlt.en}
+      data-alt-en={m.visualAlt.en}
+      data-alt-bm={m.visualAlt.bm}
+      loading="lazy"
+      decoding="async"
+      class:list={['aspect-4/5 w-full object-cover md:aspect-video md:max-h-[90svh]', rugged && 'contrast-[1.08] saturate-[.9]']}
+    />
+  </div>
+
+  <div class="wrap relative z-10 -mt-24 md:-mt-44">
+    <div class:list={['flex flex-col', rugged && 'md:items-end md:text-right']}>
+      <p class="eyebrow">{n} — {vehicle.name}</p>
+      <h2 id={`${vehicle.id}-title`} class="chapter-title mt-3"><T value={vehicle.tagline} /></h2>
+    </div>
+
+    <div class="mt-8 grid md:mt-12 md:grid-cols-12">
+      <div class:list={['md:col-span-5', rugged && 'md:col-start-8']}>
+        <p class="font-display text-xl text-accent"><T value={vehicle.subtitle} /></p>
+        <p class="mt-4 text-muted md:text-lg"><T value={vehicle.description} /></p>
+        <div class="mt-5">
+          <WhatsAppLink variant="text" template={vehicle.whatsapp.message} label={vehicle.whatsapp.cta} />
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-14 md:mt-20"><VehicleSpecs vehicle={vehicle} /></div>
+    <div class="mt-14 md:mt-20"><VehicleFeatures vehicle={vehicle} /></div>
+    <div class="mt-14 md:mt-20"><VehicleGallery vehicle={vehicle} /></div>
+
+    <div class:list={['mt-10 flex', rugged && 'md:justify-end']}>
+      <WhatsAppLink template={vehicle.whatsapp.message} label={vehicle.whatsapp.cta} />
+    </div>
+  </div>
+</section>
+</file>
+
+<file path="src/components/VehicleFeatures.astro">
+---
+import site from '../data/site.json';
+import T from './T.astro';
+const { vehicle } = Astro.props as { vehicle: any };
+const items: any[] = vehicle.features ?? [];
+---
+{items.length > 0 && (
+  <div>
+    <h3 class="label mb-4"><T value={site.labels.features} /></h3>
+    <ul class="border-t border-white/10">
+      {items.map((f, i) => (
+        <li class="flex min-h-14 items-baseline gap-5 border-b border-white/10 py-4 text-sm uppercase tracking-[0.1em]">
+          <span class="font-display text-xs text-muted">{String(i + 1).padStart(2, '0')}</span>
+          <span><T value={f} /></span>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
+</file>
+
+<file path="src/components/VehicleGallery.astro">
+---
+import site from '../data/site.json';
+import Media from './Media.astro';
+import T from './T.astro';
+const { vehicle, rugged = false } = Astro.props as { vehicle: any; rugged?: boolean };
+
+// Accepts plain path strings or { src, alt: {en, bm} }, so you can just list files in the JSON.
+const items = ((vehicle.media.gallery ?? []) as any[]).map((g, i) =>
+  typeof g === 'string'
+    ? { src: g, alt: { en: `${vehicle.name}, photo ${i + 1}`, bm: `${vehicle.name}, foto ${i + 1}` } }
+    : g,
+);
+
+// Desktop layout is position-based, so any number of images works. Wide + narrow rows alternate.
+const narrow = 'md:col-span-4 md:aspect-auto md:min-h-[26rem]';
+const wide = 'md:col-span-8 md:aspect-[16/10]';
+const full = 'md:col-span-12 md:aspect-[21/9]';
+const patternUrban = [wide, narrow, narrow, wide, full];
+const patternRugged = [narrow, wide, wide, narrow, full];
+const pattern = rugged ? patternRugged : patternUrban;
+---
+{items.length > 0 && (
+  <div>
+    <h3 class="sr-only"><T value={site.labels.gallery} /></h3>
+    <!-- Mobile: horizontal snap scroll. Desktop: asymmetric 12-column rows. -->
+    <div class="no-scrollbar -mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 md:mx-0 md:grid md:grid-cols-12 md:gap-4 md:overflow-visible md:px-0">
+      {items.map((g, i) => (
+        <Media
+          src={g.src}
+          alt={g.alt}
+          class:list={['reveal-img group aspect-[4/3] w-[84%] shrink-0 snap-center md:w-auto', pattern[i % pattern.length]]}
+        />
+      ))}
+    </div>
+  </div>
+)}
+</file>
+
+<file path="src/components/VehiclePricing.astro">
+---
+import site from '../data/site.json';
+import T from './T.astro';
+const { vehicle } = Astro.props as { vehicle: any };
+const p = vehicle.pricing;
+const w = vehicle.warranty;
+const L = site.labels;
+---
+{p && (
+  <div>
+    <p class="label"><T value={L.from} /></p>
+    <p class="mt-2 font-display leading-none tracking-tight" style="font-size:clamp(3rem,8vw,6.5rem)">{p.from}</p>
+
+    {w && (
+      <dl class="mt-10 flex flex-wrap items-end gap-x-10 gap-y-4 border-t border-white/10 pt-6">
+        <div class="flex flex-col-reverse gap-2">
+          <dt class="label"><T value={L.years} /></dt>
+          <dd class="font-display text-4xl leading-none">{w.years}</dd>
+        </div>
+        <div class="flex flex-col-reverse gap-2">
+          <dt class="label">KM</dt>
+          <dd class="font-display text-4xl leading-none">{w.km}</dd>
+        </div>
+        <p class="label pb-1 text-paper/70"><T value={L.warranty} /></p>
+      </dl>
+    )}
+
+    {(p.otr || p.sumInsured) && (
+      <dl class="mt-8 grid gap-3 text-sm">
+        {p.otr && (
+          <div class="flex justify-between gap-6 border-t border-white/5 pt-3">
+            <dt class="text-muted"><T value={L.otr} /></dt><dd>{p.otr}</dd>
+          </div>
+        )}
+        {p.sumInsured && (
+          <div class="flex justify-between gap-6 border-t border-white/5 pt-3">
+            <dt class="text-muted"><T value={L.sumInsured} /></dt><dd>{p.sumInsured}</dd>
+          </div>
+        )}
+      </dl>
+    )}
+
+    <p class="mt-6 text-xs text-muted"><T value={site.disclaimer.pricing} /></p>
+  </div>
+)}
+</file>
+
+<file path="src/components/VehicleSection.astro">
+---
+import site from '../data/site.json';
+import T from './T.astro';
+import Media from './Media.astro';
+import WhatsAppLink from './WhatsAppLink.astro';
+import VehicleSpecs from './VehicleSpecs.astro';
+import VehicleGallery from './VehicleGallery.astro';
+import VehicleFeatures from './VehicleFeatures.astro';
+import VehiclePricing from './VehiclePricing.astro';
+
+const { vehicle, number } = Astro.props as { vehicle: any; number: number };
+const rugged = vehicle.theme === 'rugged';
+const n = String(number).padStart(2, '0');
+const m = vehicle.media;
+const pending = !(vehicle.keyStats?.length) && !vehicle.pricing;
+const ask = {
+  en: site.labels.ask.en.replace('{name}', vehicle.shortName),
+  bm: site.labels.ask.bm.replace('{name}', vehicle.shortName),
+};
+---
+<section
+  id={vehicle.slug}
+  data-ctx
+  data-ctx-vehicle={vehicle.name}
+  aria-labelledby={`${vehicle.id}-title`}
+  class:list={['border-t border-white/10 py-20 md:py-32', rugged ? 'bg-ink-2' : 'bg-ink']}
+>
+  <div class="wrap">
+    <div class:list={['flex items-baseline justify-between gap-6', rugged && 'md:flex-row-reverse']}>
+      <p class="label"><span class="text-lime">{n}</span> — {vehicle.name}</p>
+      <p class="label hidden md:block"><T value={vehicle.traits} /></p>
+    </div>
+  </div>
+
+  <!-- Large visual -->
+  <div class="mt-8 md:mt-12">
+    <Media
+      src={m.hero}
+      alt={{ en: `${vehicle.name}`, bm: `${vehicle.name}` }}
+      class:list={['reveal-img aspect-[4/5] w-full', rugged ? 'md:aspect-[21/9]' : 'md:aspect-[16/8]']}
+      video={m.video || undefined}
+    />
+  </div>
+
+  <div class="wrap">
+    <!-- Headline + description (mirrored for the rugged theme) -->
+    <div class="mt-12 grid gap-8 md:mt-20 md:grid-cols-12 md:gap-10">
+      <div class:list={['md:col-span-8', rugged && 'md:col-start-5 md:text-right']}>
+        <h2 id={`${vehicle.id}-title`} class="title-xl reveal"><T value={vehicle.tagline} /></h2>
+        {vehicle.subtitle && <p class="mt-5 font-display text-lg text-muted md:text-2xl"><T value={vehicle.subtitle} /></p>}
+      </div>
+      <div class:list={['md:col-span-4 md:self-end', rugged && 'md:col-start-1 md:row-start-1']}>
+        {vehicle.description && <p class="reveal text-muted md:text-lg"><T value={vehicle.description} /></p>}
+        {pending && <p class="max-w-sm text-muted"><T value={site.labels.pending} /></p>}
+        <div class="mt-5"><WhatsAppLink variant="text" vehicle={vehicle.name} label={ask} /></div>
+      </div>
+    </div>
+
+    <div class="mt-16 md:mt-24"><VehicleSpecs vehicle={vehicle} rugged={rugged} /></div>
+    <div class="mt-16 md:mt-24"><VehicleGallery vehicle={vehicle} rugged={rugged} /></div>
+
+    {(vehicle.features?.length > 0 || vehicle.pricing) && (
+      <div class="mt-16 grid gap-14 md:mt-24 md:grid-cols-12 md:gap-10">
+        <div class:list={['md:col-span-6', rugged && 'md:order-2 md:col-start-7']}><VehicleFeatures vehicle={vehicle} /></div>
+        <div class:list={['md:col-span-5', rugged ? 'md:order-1 md:col-start-1' : 'md:col-start-8']}><VehiclePricing vehicle={vehicle} /></div>
+      </div>
+    )}
+
+    <div class:list={['mt-12 flex', rugged && 'md:justify-end']}>
+      <WhatsAppLink vehicle={vehicle.name} label={ask} />
+    </div>
+  </div>
+</section>
+</file>
+
+<file path="src/components/VehicleSpecs.astro">
+---
+import site from '../data/site.json';
+import T from './T.astro';
+const { vehicle, rugged = false } = Astro.props as { vehicle: any; rugged?: boolean };
+const stats: any[] = vehicle.keyStats ?? [];
+const labels = site.labels.specs as Record<string, { en: string; bm: string }>;
+// Null / missing values are skipped, so a half-filled vehicle (BJ30) still renders cleanly
+const rows = Object.entries(vehicle.specs ?? {}).filter(([k, v]) => v && labels[k]);
+---
+{stats.length > 0 && (
+  rugged ? (
+    // BJ40 Plus: stacked editorial rows
+    <dl class="divide-y divide-white/10 border-y border-white/10">
+      {stats.map((s) => (
+        <div class="flex flex-row-reverse items-baseline justify-between gap-6 py-5 md:py-7">
+          <dt class="label text-paper/70"><T value={s.unit} /></dt>
+          <dd class="font-display leading-none tracking-tight" style="font-size:clamp(2.5rem,7vw,5.5rem)">{s.value}</dd>
+        </div>
+      ))}
+    </dl>
+  ) : (
+    // X55 / default: one row of large numbers
+    <dl class="grid grid-cols-2 md:grid-cols-5">
+      {stats.map((s) => (
+        <div class="flex flex-col-reverse justify-end gap-3 border-t border-white/10 py-6 pr-4 md:border-l md:py-8 md:pl-6 md:first:border-l-0 md:first:pl-0">
+          <dt class="label text-paper/70"><T value={s.unit} /></dt>
+          <dd class="font-display leading-none tracking-tight" style="font-size:clamp(2.5rem,6vw,5rem)">{s.value}</dd>
+        </div>
+      ))}
+    </dl>
+  )
+)}
+
+{rows.length > 0 && (
+  <details class="group mt-4 border-y border-white/10">
+    <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between label hover:text-paper">
+      <span><T value={site.labels.fullSpecs} /></span>
+      <span aria-hidden="true" class="text-lg text-lime transition-transform group-open:rotate-45">+</span>
+    </summary>
+    <dl class="grid gap-x-12 pb-6 md:grid-cols-2">
+      {rows.map(([k, val]) => (
+        <div class="flex justify-between gap-6 border-t border-white/5 py-3 text-sm">
+          <dt class="text-muted"><T value={labels[k]} /></dt>
+          <dd class="text-right">{val as string}</dd>
+        </div>
+      ))}
+    </dl>
+  </details>
+)}
+</file>
+
+<file path="src/components/WhatsAppLink.astro">
+---
+import site from '../data/site.json';
+import { fill, waUrl } from '../lib/wa';
+import T from './T.astro';
+
+interface Props {
+  label: { en: string; bm: string };
+  template?: { en: string; bm: string }; // uses {vehicle}
+  vehicle?: string;                      // e.g. "BAIC X55"; omit for the generic message
+  variant?: 'solid' | 'text';
+  class?: string;
+}
+const { label, template = site.whatsapp.interest, vehicle, variant = 'solid', class: cls = '' } = Astro.props;
+const v = vehicle ? { en: vehicle, bm: vehicle } : site.whatsapp.anyVehicle;
+const en = waUrl(fill(template.en, v.en));
+const bm = waUrl(fill(template.bm, v.bm));
+---
+<a
+  href={en}
+  data-wa-en={en}
+  data-wa-bm={bm}
+  data-tpl-en={template.en}
+  data-tpl-bm={template.bm}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={[variant === 'text' ? 'btn-text' : 'btn', cls]}
+>
+  <T value={label} />
+</a>
+</file>
+
+<file path="src/components/WhyBaic.astro">
+---
+import site from '../data/site.json';
+import T from './T.astro';
+const w = site.why;
+---
+<!-- Light editorial break between the vehicles and the contact section -->
+<section data-ctx class="bg-paper py-20 text-ink md:py-32">
+  <div class="wrap">
+    <p class="label text-ink/60"><span class="text-ink">07</span> — <T value={w.label} /></p>
+    <h2 class="title-lg mt-6"><T value={w.title} /></h2>
+
+    <ol class="mt-12 md:mt-20">
+      {w.points.map((p, i) => (
+        <li class="reveal grid gap-2 border-t border-ink/20 py-6 last:border-b md:grid-cols-12 md:items-baseline md:gap-10 md:py-8">
+          <span class="font-display text-sm text-ink/50 md:col-span-2">{String(i + 1).padStart(2, '0')}</span>
+          <span class="font-display uppercase tracking-tight md:col-span-10" style="font-size:clamp(1.75rem,4.2vw,3.5rem);line-height:1"><T value={p} /></span>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+</file>
+
+<file path="src/data/navigation.json">
+{
+  "main": [
+    { "href": "#models", "label": { "en": "Models", "bm": "Model" } },
+    { "href": "#x55", "label": { "en": "X55", "bm": "X55" } },
+    { "href": "#bj40-plus", "label": { "en": "BJ40 Plus", "bm": "BJ40 Plus" } },
+    { "href": "#bj30", "label": { "en": "BJ30", "bm": "BJ30" } },
+    { "href": "#yus", "label": { "en": "About Yus", "bm": "Tentang Yus" } },
+    { "href": "#contact", "label": { "en": "Contact", "bm": "Hubungi" } }
+  ]
+}
+</file>
+
+<file path="src/data/vehicles.json">
+{
+  "vehicles": [
+    {
+      "id": "x55",
+      "slug": "x55",
+      "name": "BAIC X55",
+      "shortName": "X55",
+      "theme": "urban",
+      "traits": { "en": "Urban / Smart / Refined", "bm": "Urban / Pintar / Elegan" },
+      "tagline": { "en": "Bold by Design.", "bm": "Berani Dalam Reka Bentuk." },
+      "subtitle": { "en": "Smart. Stylish. Confident.", "bm": "Pintar. Bergaya. Yakin." },
+      "description": {
+        "en": "Futuristic design, smart technology and efficient performance. Made for the city, comfortable well beyond it.",
+        "bm": "Reka bentuk futuristik, teknologi pintar dan prestasi efisien. Sesuai di bandar, selesa juga di luar bandar."
+      },
+      "keyStats": [
+        { "value": "1.5L", "unit": "Turbo" },
+        { "value": "181", "unit": "HP" },
+        { "value": "305", "unit": "Nm" },
+        { "value": "7", "unit": "Speed DCT" },
+        { "value": "5", "unit": { "en": "Seats", "bm": "Tempat duduk" } }
+      ],
+      "specs": {
+        "engine": "1.5L Turbocharged 4-Cylinder Petrol",
+        "power": "181 HP",
+        "torque": "305 Nm @ 1,500–4,500 RPM",
+        "transmission": "7-Speed Wet DCT",
+        "drive": "FWD",
+        "fuelConsumption": "7.1 L/100km",
+        "seats": "5",
+        "wheelbase": "2,735 mm",
+        "groundClearance": "160 mm",
+        "suspension": "Front MacPherson Strut / Rear Multi-Link"
+      },
+      "_verify": [
+        "Power: client marketing says 181 HP, technical sheet says 188 hp / 138 kW. Prototype shows 181 HP.",
+        "'5 Star Safety Standard' was supplied but the rating body is not named. Not displayed."
+      ],
+      "features": [
+        { "en": "Digital cockpit", "bm": "Kokpit digital" },
+        { "en": "360° camera", "bm": "Kamera 360°" },
+        "ADAS",
+        { "en": "Wireless charging", "bm": "Pengecas wayarles" },
+        { "en": "Panoramic sunroof", "bm": "Bumbung panorama" },
+        { "en": "Ambient lighting", "bm": "Pencahayaan ambien" },
+        { "en": "Smart keyless entry", "bm": "Kemasukan tanpa kunci pintar" }
+      ],
+      "pricing": {
+        "from": "RM129,800",
+        "otr": "RM130,670",
+        "sumInsured": "RM130,000"
+      },
+      "warranty": { "years": "5", "km": "150,000" },
+      "media": {
+        "hero": "/media/x55/visual.jpg",
+        "video": "",
+        "gallery": [
+          "/media/x55/front.jpg",
+          "/media/x55/interior.jpg",
+          "/media/x55/top.png",
+          "/media/x55/back.jpg"
+        ]
+      }
+    },
+    {
+      "id": "bj40-plus",
+      "slug": "bj40-plus",
+      "name": "BAIC BJ40 Plus",
+      "shortName": "BJ40 Plus",
+      "theme": "rugged",
+      "traits": { "en": "Rugged / Capable / Adventure", "bm": "Lasak / Berkebolehan / Pengembaraan" },
+      "tagline": { "en": "Built for More.", "bm": "Dibina Untuk Lebih." },
+      "subtitle": { "en": "Bolder. Stronger. Beyond Limits.", "bm": "Lebih berani. Lebih kuat. Tanpa had." },
+      "description": {
+        "en": "A classic Jeep-style silhouette, part-time 4x4 and turbo power. Ready for the road, and for where the road ends.",
+        "bm": "Rupa klasik gaya Jeep, 4x4 sepenggal masa dan kuasa turbo. Sedia untuk jalan raya, dan untuk tempat jalan berakhir."
+      },
+      "keyStats": [
+        { "value": "2.0L", "unit": "Turbo" },
+        { "value": "221", "unit": "HP" },
+        { "value": "380", "unit": "Nm" },
+        { "value": "4X4", "unit": "Part-time" },
+        { "value": "2,000", "unit": { "en": "KG towing", "bm": "KG tarikan" } }
+      ],
+      "specs": {
+        "engine": "2.0L Turbocharged 4-Cylinder Petrol",
+        "power": "221 HP",
+        "torque": "380 Nm @ 1,750–4,500 RPM",
+        "transmission": "8-Speed Automatic",
+        "drive": "Part-time 4WD",
+        "fuelConsumption": "11.0 L/100km",
+        "seats": "5",
+        "towing": "2,000 kg",
+        "wheelbase": "2,745 mm",
+        "groundClearance": "210 mm",
+        "fordingDepth": ">600 mm",
+        "trenchCrossing": "500 mm",
+        "fuelTank": "75 litres",
+        "kerbWeight": "2,095 kg",
+        "suspension": "Front Double Wishbone / Rear 5-Link Live Axle"
+      },
+      "_verify": [
+        "Power: client marketing says 221 HP, technical sheet says 224 hp / 165 kW. Prototype shows 221 HP."
+      ],
+      "features": [
+        { "en": "Part-time 4x4", "bm": "4x4 sepenggal masa" },
+        { "en": "210 mm ground clearance", "bm": "Jarak kelegaan tanah 210 mm" },
+        { "en": "Full LED lighting", "bm": "Pencahayaan LED penuh" },
+        { "en": "Panoramic sunroof", "bm": "Bumbung panorama" },
+        { "en": "Leather seats", "bm": "Tempat duduk kulit" },
+        { "en": "Full-size spare tyre", "bm": "Tayar spare saiz penuh" },
+        { "en": "18\" alloy wheels", "bm": "Roda aloi 18\"" }
+      ],
+      "pricing": {
+        "from": "RM188,250",
+        "otr": "RM189,576.80",
+        "sumInsured": "RM189,000"
+      },
+      "warranty": { "years": "5", "km": "150,000" },
+      "media": {
+        "hero": "/media/bj40/visual.jpg",
+        "video": "",
+        "gallery": [
+          "/media/bj40/belakang.jpeg",
+          "/media/bj40/front.jpeg",
+          "/media/bj40/belakang2.jpeg",
+          "/media/bj40/dalam.jpeg"
+        ]
+      }
+    },
+    {
+      "id": "bj30",
+      "slug": "bj30",
+      "name": "BAIC BJ30",
+      "shortName": "BJ30",
+      "theme": "urban",
+      "traits": { "en": "Versatile / Modern / Practical", "bm": "Serba boleh / Moden / Praktikal" },
+      "tagline": { "en": "Versatile. Modern. Practical.", "bm": "Serba boleh. Moden. Praktikal." },
+      "subtitle": null,
+      "description": null,
+      "keyStats": [],
+      "specs": {
+        "engine": null, "power": null, "torque": null, "transmission": null,
+        "drive": null, "fuelConsumption": null, "seats": null
+      },
+      "features": [],
+      "pricing": null,
+      "warranty": null,
+      "media": {
+        "hero": "/media/bj30/visual.jpg",
+        "video": "",
+        "gallery": []
+      }
+    }
+  ]
+}
+</file>
+
+<file path="src/layouts/Layout.astro">
+---
+import '../styles/global.css';
+import site from '../data/site.json';
+
+interface Props { title?: string; description?: string; }
+const { title = site.seo.title, description = site.seo.description.en } = Astro.props;
+const canonical = site.seo.canonical || undefined;
+---
+<!doctype html>
+<html lang="en" data-ui="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#0A0A0A" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Yus — BAIC Sungai Petani" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={site.seo.ogImage} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Before first paint: flag JS, restore saved language -->
+    <script is:inline>
+      (function () {
+        document.documentElement.classList.add('js');
+        try {
+          if (localStorage.getItem('ui-lang') === 'bm') {
+            document.documentElement.dataset.ui = 'bm';
+            document.documentElement.lang = 'ms';
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      const root = document.documentElement;
+
+      // --- Language toggle: any [data-set-lang="en|bm"] ---
+      function apply(lang: 'en' | 'bm') {
+        root.dataset.ui = lang;
+        root.lang = lang === 'bm' ? 'ms' : 'en';
+        try { localStorage.setItem('ui-lang', lang); } catch {}
+        document.querySelectorAll<HTMLAnchorElement>('a[data-wa-en]').forEach((a) => {
+          a.href = (lang === 'bm' ? a.dataset.waBm : a.dataset.waEn) || a.href;
+        });
+        document.querySelectorAll<HTMLImageElement>('img[data-alt-en]').forEach((img) => {
+          img.alt = (lang === 'bm' ? img.dataset.altBm : img.dataset.altEn) || img.alt;
+        });
+        document.querySelectorAll<HTMLElement>('[data-set-lang]').forEach((b) => {
+          b.setAttribute('aria-pressed', String(b.dataset.setLang === lang));
+        });
+      }
+      document.addEventListener('click', (e) => {
+        const btn = (e.target as HTMLElement).closest<HTMLElement>('[data-set-lang]');
+        if (btn) apply(btn.dataset.setLang as 'en' | 'bm');
+      });
+      apply(root.dataset.ui === 'bm' ? 'bm' : 'en');
+
+      // --- Missing media: show the dashed placeholder instead of a broken image ---
+      const markMissing = (el: Element) => el.closest('[data-media]')?.setAttribute('data-missing', '');
+      document.addEventListener('error', (e) => {
+        const t = e.target;
+        if (t instanceof HTMLImageElement || (t instanceof HTMLVideoElement && t.hasAttribute('data-primary'))) markMissing(t);
+      }, true);
+      document.querySelectorAll<HTMLImageElement>('[data-media] img').forEach((img) => {
+        if (img.complete && img.naturalWidth === 0) markMissing(img);
+      });
+
+      // --- Reveal on scroll ---
+      const items = document.querySelectorAll('.reveal, .reveal-img');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.1 });
+        items.forEach((el) => io.observe(el));
+      } else {
+        items.forEach((el) => el.classList.add('is-in'));
+      }
+    </script>
+  </body>
+</html>
+</file>
+
+<file path="src/lib/format.ts">
+export const rm = (n: number) =>
+  'RM' + n.toLocaleString('en-MY', {
+    minimumFractionDigits: Number.isInteger(n) ? 0 : 2,
+    maximumFractionDigits: 2,
+  });
+
+export const waHref = (number: string, message: string) =>
+  `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+</file>
+
+<file path="src/lib/wa.ts">
+import site from '../data/site.json';
+
+export const WA_NUMBER = site.advisor.whatsappNumber;
+export const fill = (tpl: string, vehicle: string) => tpl.replaceAll('{vehicle}', vehicle);
+export const waUrl = (text: string) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+</file>
+
+<file path=".gitignore">
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/
+</file>
+
+<file path="AGENTS.md">
+## Development
+
+When starting the dev server, use background mode:
+
+```
+astro dev --background
+```
+
+Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
+
+## Documentation
+
+Full documentation: https://docs.astro.build
+
+Consult these guides before working on related tasks:
+
+- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
+- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
+- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
+- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
+- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
+- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+</file>
+
+<file path="CLAUDE.md">
+## Development
+
+When starting the dev server, use background mode:
+
+```
+astro dev --background
+```
+
+Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
+
+## Documentation
+
+Full documentation: https://docs.astro.build
+
+Consult these guides before working on related tasks:
+
+- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
+- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
+- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
+- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
+- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
+- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+</file>
+
+<file path="README.md">
+# Astro Starter Kit: Minimal
+
+```sh
+npm create astro@latest -- --template minimal
+```
+
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
+
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+
+Any static assets, like images, can be placed in the `public/` directory.
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+</file>
+
+<file path="tsconfig.json">
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"]
+}
+</file>
+
+<file path="src/components/Hero.astro">
+---
+import site from '../data/site.json';
+import T from './T.astro';
+import WhatsAppLink from './WhatsAppLink.astro';
+const h = site.hero;
+---
+<section id="top" class="relative isolate h-svh min-h-[560px] overflow-hidden bg-ink">
+  <div class="hero-wrap media bg-ink-2" data-media data-label="BAIC hero video">
+    <video
+      class="hero-video absolute inset-0 h-full w-full object-cover opacity-0"
+      data-hero-video
+      data-video-landscape={h.videoLandscape}
+      data-video-portrait={h.videoPortrait}
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      aria-hidden="true"
+      tabindex="-1"
+    ></video>
+    <div class="hero-shade absolute inset-0"></div>
+  </div>
+
+  <div class="hero-copy wrap relative z-10 flex h-full flex-col justify-end pb-14 lg:justify-between lg:px-10 lg:pb-14 lg:pt-32">
+    <p class="label hidden text-paper/60 lg:block"><T value={h.eyebrow} /></p>
+
+    <div>
+      <p class="label text-paper/70 lg:hidden"><T value={h.eyebrow} /></p>
+      <h1 class="title-xl mt-4 max-w-[12ch] lg:mt-0" style="font-size:clamp(2.75rem,6.4vw,7.5rem)"><T value={h.title} /></h1>
+      <p class="mt-5 max-w-sm text-base text-paper/80 md:text-lg"><T value={h.description} /></p>
+      <div class="mt-8">
+        <WhatsAppLink label={site.cta.primary} />
+      </div>
+    </div>
+
+    <a href="#yus" class="label mt-10 hidden items-center gap-4 hover:text-paper lg:flex">
+      <span class=""></span><T value={h.scroll} />
+    </a>
+  </div>
+</section>
+
+<script>
+  const v = document.querySelector<HTMLVideoElement>('[data-hero-video]');
+  if (v) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const saveData = !!(navigator as any).connection?.saveData;
+    const desktop = window.matchMedia('(min-width: 1024px)');
+    v.muted = true;
+    v.addEventListener('playing', () => { v.classList.add('is-playing'); v.style.opacity = '1'; });
+    const updateSource = () => {
+      const source = desktop.matches ? v.dataset.videoLandscape : v.dataset.videoPortrait;
+      if (reduce || saveData || !source) {
+        v.style.opacity = '1';
+        return;
+      }
+      if (v.getAttribute('src') === source) return;
+      v.classList.remove('is-playing');
+      v.style.opacity = '0';
+      v.src = source;
+      v.load();
+      v.play().catch(() => { v.style.opacity = '1'; });
+    };
+    updateSource();
+    desktop.addEventListener('change', updateSource);
+  }
+</script>
+</file>
+
+<file path="src/data/site.json">
+{
+  "advisor": {
+    "name": "Yus",
+    "role": { "en": "Sales Manager | BAIC Sungai Petani", "bm": "Pengurus Jualan | BAIC Sungai Petani" },
+    "company": "FM WORLD SDN BHD",
+    "location": "Sungai Petani",
+    "phone": "011-4977 7684",
+    "whatsappNumber": "601149777684"
+  },
+  "seo": {
+    "title": "BAIC Sungai Petani | Yus",
+    "description": {
+      "en": "BAIC X55, BJ40 Plus and BJ30 in Sungai Petani. Pricing, test drives, trade-in and booking with Yus, via WhatsApp.",
+      "bm": "BAIC X55, BJ40 Plus dan BJ30 di Sungai Petani. Harga, pandu uji, tukar ganti dan tempahan bersama Yus melalui WhatsApp."
+    },
+    "canonical": "",
+    "ogImage": "/media/og.jpg"
+  },
+  "disclaimer": {
+    "independent": {
+      "en": "Independent sales advisor page. Not the official BAIC Malaysia website.",
+      "bm": "Halaman penasihat jualan bebas. Bukan laman web rasmi BAIC Malaysia."
+    },
+    "footer": {
+      "en": "Vehicle specifications, pricing and availability are subject to change without prior notice. Please contact Yus for the latest information.",
+      "bm": "Spesifikasi, harga dan ketersediaan kenderaan tertakluk kepada perubahan tanpa notis terlebih dahulu. Sila hubungi Yus untuk maklumat terkini."
+    },
+    "pricing": {
+      "en": "Price and specifications are subject to change without prior notice.",
+      "bm": "Harga dan spesifikasi tertakluk kepada perubahan tanpa notis terlebih dahulu."
+    }
+  },
+  "cta": {
+    "primary": { "en": "WhatsApp Yus", "bm": "WhatsApp Yus" }
+  },
+  "whatsapp": {
+    "interest": {
+      "en": "Hi Yus, I'm interested in the {vehicle}. I'd like to know more about the current pricing and test drive availability.",
+      "bm": "Hi Yus, saya berminat dengan {vehicle}. Saya ingin tahu lebih lanjut tentang harga semasa dan slot pandu uji."
+    },
+    "anyVehicle": { "en": "BAIC lineup", "bm": "model BAIC" }
+  },
+  "hero": {
+    "videoLandscape": "/media/hero-landscape.mp4",
+    "videoPortrait": "/media/hero/hero-portrait.mp4",
+    "eyebrow": { "en": "BAIC Sungai Petani", "bm": "BAIC Sungai Petani" },
+    "title": { "en": "Drive with confidence.", "bm": "Memandu dengan yakin." },
+    "description": {
+      "en": "Explore our available models.",
+      "bm": "Lihat koleksi model yang tersedia."
+    },
+    "scroll": { "en": "Scroll", "bm": "Scroll" }
+  },
+  "yus": {
+    "label": { "en": "Meet Yus", "bm": "Kenali Yus" },
+    "portrait": "/media/yus/yus.jpeg",
+    "portraitAlt": { "en": "Yus, BAIC sales manager in Sungai Petani", "bm": "Yus, pengurus jualan BAIC di Sungai Petani" },
+    "lines": [
+      { "en": "Your", "bm": "Penasihat" },
+      { "en": "BAIC", "bm": "BAIC" },
+      { "en": "advisor.", "bm": "anda." }
+    ],
+    "intro": {
+      "en": "Test drives, trade-ins, loans and bookings, all with one person. Message Yus and get a direct answer.",
+      "bm": "Pandu uji, tukar ganti, pinjaman dan tempahan, semuanya dengan satu orang. WhatsApp Yus dan dapatkan jawapan terus."
+    },
+    "modelsLabel": { "en": "Models", "bm": "Model" },
+    "servicesLabel": { "en": "Services", "bm": "Perkhidmatan" },
+    "services": [
+      { "en": "Test Drive", "bm": "Pandu Uji" },
+      { "en": "Trade-In", "bm": "Tukar Ganti" },
+      { "en": "Loan", "bm": "Pinjaman" },
+      { "en": "Booking", "bm": "Tempahan" }
+    ]
+  },
+  "models": {
+    "label": { "en": "Explore the models", "bm": "Teroka model" },
+    "lines": [
+      { "en": "Three SUVs.", "bm": "Tiga SUV." },
+      { "en": "Three ways to move.", "bm": "Tiga cara bergerak." }
+    ]
+  },
+  "why": {
+    "label": { "en": "Why BAIC", "bm": "Kenapa BAIC" },
+    "title": { "en": "Why BAIC?", "bm": "Kenapa BAIC?" },
+    "points": [
+      { "en": "Modern SUV lineup", "bm": "Barisan SUV moden" },
+      { "en": "Technology & safety", "bm": "Teknologi & keselamatan" },
+      { "en": "5 years / 150,000 km warranty", "bm": "Waranti 5 tahun / 150,000 km" },
+      { "en": "Test drive available", "bm": "Pandu uji tersedia" }
+    ]
+  },
+  "contact": {
+    "label": { "en": "Test drive", "bm": "Pandu uji" },
+    "lines": [
+      { "en": "Ready to", "bm": "Bersedia untuk" },
+      { "en": "drive?", "bm": "memandu?" }
+    ],
+    "sub": { "en": "Talk to Yus.", "bm": "Hubungi Yus." },
+    "pick": { "en": "Which model?", "bm": "Model yang diminati?" },
+    "anyOption": { "en": "Not sure yet", "bm": "Belum pasti" },
+    "call": { "en": "Or call", "bm": "Atau telefon" },
+    "intents": [
+      {
+        "label": { "en": "Book a test drive", "bm": "Tempah pandu uji" },
+        "template": {
+          "en": "Hi Yus, I'm interested in the {vehicle}. I'd like to book a test drive.",
+          "bm": "Hi Yus, saya berminat dengan {vehicle}. Saya ingin menempah pandu uji."
+        }
+      },
+      {
+        "label": { "en": "Ask about pricing", "bm": "Tanya tentang harga" },
+        "template": {
+          "en": "Hi Yus, I'm interested in the {vehicle}. I'd like to ask about the current pricing.",
+          "bm": "Hi Yus, saya berminat dengan {vehicle}. Saya ingin bertanya tentang harga semasa."
+        }
+      },
+      {
+        "label": { "en": "Trade-in", "bm": "Tukar ganti" },
+        "template": {
+          "en": "Hi Yus, I'm interested in the {vehicle}. I'd like to ask about trade-in.",
+          "bm": "Hi Yus, saya berminat dengan {vehicle}. Saya ingin bertanya tentang tukar ganti."
+        }
+      },
+      {
+        "label": { "en": "Loan / Booking", "bm": "Pinjaman / Tempahan" },
+        "template": {
+          "en": "Hi Yus, I'm interested in the {vehicle}. I'd like to ask about loan and booking.",
+          "bm": "Hi Yus, saya berminat dengan {vehicle}. Saya ingin bertanya tentang pinjaman dan tempahan."
+        }
+      }
+    ]
+  },
+  "more": {
+    "label": { "en": "More from Yus", "bm": "Lagi daripada Yus" },
+    "title": { "en": "Follow the journey.", "bm": "Ikuti perjalanan." },
+    "links": [
+      { "id": "tiktok", "label": { "en": "Yus on TikTok", "bm": "Yus di TikTok" }, "url": "https://www.tiktok.com/@eddieanne0" },
+      { "id": "baic", "label": { "en": "BAIC Malaysia official website", "bm": "Laman web rasmi BAIC Malaysia" }, "url": "https://www.baic.com.my" }
+    ]
+  },
+  "labels": {
+    "from": { "en": "From", "bm": "Bermula" },
+    "otr": { "en": "On-the-road price, without insurance", "bm": "Harga atas jalan, tanpa insurans" },
+    "sumInsured": { "en": "Proposed sum insured", "bm": "Cadangan jumlah diinsuranskan" },
+    "warranty": { "en": "Warranty", "bm": "Waranti" },
+    "years": { "en": "Years", "bm": "Tahun" },
+    "ask": { "en": "Ask About {name}", "bm": "Tanya Tentang {name}" },
+    "features": { "en": "Features", "bm": "Ciri-ciri" },
+    "gallery": { "en": "Gallery", "bm": "Galeri" },
+    "fullSpecs": { "en": "Full specifications", "bm": "Spesifikasi penuh" },
+    "pending": {
+      "en": "Full specifications and pricing will be added here. Ask Yus for the latest information.",
+      "bm": "Spesifikasi penuh dan harga akan dimuatkan di sini. Hubungi Yus untuk maklumat terkini."
+    },
+    "specs": {
+      "engine": { "en": "Engine", "bm": "Enjin" },
+      "power": { "en": "Power", "bm": "Kuasa" },
+      "torque": { "en": "Torque", "bm": "Tork" },
+      "transmission": { "en": "Transmission", "bm": "Transmisi" },
+      "drive": { "en": "Drivetrain", "bm": "Sistem pacuan" },
+      "fuelConsumption": { "en": "Fuel consumption (combined)", "bm": "Penggunaan bahan api (gabungan)" },
+      "seats": { "en": "Seats", "bm": "Tempat duduk" },
+      "towing": { "en": "Towing capacity", "bm": "Kapasiti tarikan" },
+      "wheelbase": { "en": "Wheelbase", "bm": "Jarak roda" },
+      "groundClearance": { "en": "Ground clearance", "bm": "Jarak kelegaan tanah" },
+      "fordingDepth": { "en": "Fording depth", "bm": "Kedalaman rentas air" },
+      "trenchCrossing": { "en": "Trench crossing", "bm": "Rentas parit" },
+      "fuelTank": { "en": "Fuel tank", "bm": "Tangki minyak" },
+      "kerbWeight": { "en": "Kerb weight", "bm": "Berat kerb" },
+      "suspension": { "en": "Suspension", "bm": "Suspensi" }
+    }
+  }
+}
+</file>
+
+<file path="src/pages/index.astro">
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import MeetYus from '../components/MeetYus.astro';
+import Models from '../components/Models.astro';
+import VehicleSection from '../components/VehicleSection.astro';
+import WhyBaic from '../components/WhyBaic.astro';
+import Contact from '../components/Contact.astro';
+import MoreFromYus from '../components/MoreFromYus.astro';
+import Footer from '../components/Footer.astro';
+import StickyWhatsApp from '../components/StickyWhatsApp.astro';
+import data from '../data/vehicles.json';
+
+const vehicles = data.vehicles;
+---
+<Layout>
+  <Header />
+  <main>
+    <Hero />
+    <MeetYus vehicles={vehicles} />
+    <Models vehicles={vehicles} />
+    {vehicles.map((v, i) => <VehicleSection vehicle={v} number={4 + i} />)}
+    <WhyBaic />
+    <Contact vehicles={vehicles} />
+    <MoreFromYus />
+  </main>
+  <Footer vehicles={vehicles} />
+  <StickyWhatsApp />
+</Layout>
+</file>
+
+<file path="src/styles/global.css">
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0A0A0A;
+  --color-ink-2: #111111;
+  --color-paper: #F5F5F0;
+  --color-muted: #A1A1A1;
+  --color-lime: #C8FF00;
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body { overflow-x: hidden; }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  :focus-visible { outline: 2px solid var(--color-lime); outline-offset: 3px; }
+  ::selection { background: var(--color-lime); color: var(--color-ink); }
+  summary::-webkit-details-marker { display: none; }
+}
+
+html[data-ui="en"] [data-lang="bm"],
+html[data-ui="bm"] [data-lang="en"] { display: none !important; }
+
+@layer components {
+  .wrap { margin-inline: auto; max-width: 90rem; padding-inline: 1.25rem; }
+  @media (min-width: 768px) { .wrap { padding-inline: 2.5rem; } }
+
+  .label {
+    font-size: .75rem; font-weight: 500; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--color-muted);
+  }
+  .title-xl {
+    font-size: clamp(2.75rem, 8vw, 7.5rem); line-height: .92; letter-spacing: -.035em;
+    text-transform: uppercase; text-wrap: balance;
+  }
+  .title-lg {
+    font-size: clamp(2.25rem, 6vw, 5rem); line-height: .95; letter-spacing: -.03em;
+    text-transform: uppercase; text-wrap: balance;
+  }
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+
+  /* Buttons: white by default, lime only on hover */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 48px; padding: 0 1.5rem;
+    background: var(--color-paper); color: var(--color-ink);
+    font-family: var(--font-display); font-weight: 600; font-size: .8125rem;
+    letter-spacing: .1em; text-transform: uppercase;
+    transition: background-color .2s ease;
+  }
+  .btn:hover { background: var(--color-lime); }
+  .btn-text {
+    display: inline-flex; align-items: center; min-height: 44px;
+    font-family: var(--font-display); font-weight: 500; font-size: .8125rem;
+    letter-spacing: .1em; text-transform: uppercase;
+    border-bottom: 1px solid var(--color-lime); transition: color .2s ease;
+  }
+  .btn-text:hover { color: var(--color-lime); }
+
+  .lang-btn {
+    min-width: 36px; min-height: 44px; padding: 0 .35rem;
+    color: var(--color-muted); font-size: .8125rem; letter-spacing: .1em;
+  }
+  .lang-btn[aria-pressed="true"] { color: var(--color-paper); box-shadow: inset 0 -2px 0 var(--color-lime); }
+
+  .pick {
+    min-height: 44px; color: var(--color-muted); font-size: .875rem;
+    border-bottom: 2px solid transparent; transition: color .2s ease;
+  }
+  .pick:hover { color: var(--color-paper); }
+  .pick[aria-pressed="true"] { color: var(--color-paper); border-bottom-color: var(--color-lime); }
+
+  .burger { position: relative; width: 44px; height: 44px; }
+  .burger span {
+    position: absolute; left: 11px; right: 11px; height: 2px;
+    background: var(--color-paper); transition: transform .25s ease, top .25s ease;
+  }
+  .burger span:first-child { top: 18px; }
+  .burger span:last-child { top: 25px; }
+  .burger[aria-expanded="true"] span:first-child { top: 21px; transform: rotate(45deg); }
+  .burger[aria-expanded="true"] span:last-child { top: 21px; transform: rotate(-45deg); }
+  .mobile-menu { display: none; }
+  .mobile-menu[data-open="true"] { display: flex; }
+  @media (min-width: 1024px) { .mobile-menu { display: none !important; } }
+
+  /* Media slots: dashed placeholder when the real file is missing */
+  .media[data-missing] img { display: none; }
+  .media[data-missing]::after {
+    content: attr(data-label);
+    position: absolute; inset: .75rem; display: grid; place-items: center; padding: 1rem;
+    border: 1px dashed rgb(255 255 255 / .14);
+    font: 500 .6875rem/1.6 var(--font-display); letter-spacing: .16em; text-transform: uppercase;
+    text-align: center; color: #6b6b6b; word-break: break-all;
+  }
+  .media video { opacity: 0; transition: opacity 1s ease; }
+  .media video.is-playing { opacity: 1; }
+
+  /* Hero: match the video orientation to the viewport and keep copy readable over the footage. */
+  .hero-wrap { position: absolute; inset: 0; }
+  .hero-shade { background: linear-gradient(to top, #0A0A0A 0%, rgb(10 10 10 / .55) 38%, rgb(10 10 10 / .1) 70%, rgb(10 10 10 / .45) 100%); }
+  .hero-video { transition: opacity 1.2s ease; }
+  .hero-video.is-playing { animation: hero-settle 9s ease-out forwards; }
+  @keyframes hero-settle { from { transform: scale(1.05); } to { transform: scale(1); } }
+  @media (min-width: 1024px) {
+    .hero-shade {
+      background:
+        linear-gradient(90deg, rgb(10 10 10 / .82) 0%, rgb(10 10 10 / .62) 30%, transparent 78%),
+        linear-gradient(0deg, rgb(10 10 10 / .38) 0%, transparent 48%);
+    }
+  }
+
+  /* Sticky WhatsApp */
+  #wa-sticky { transform: translateY(120%); opacity: 0; pointer-events: none; transition: transform .4s ease, opacity .4s ease; }
+  #wa-sticky[data-visible="true"] { transform: none; opacity: 1; pointer-events: auto; }
+}
+
+/* Reveals only apply when JS is running */
+.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .8s ease, transform .8s ease; }
+.js .reveal.is-in { opacity: 1; transform: none; }
+.js .reveal-img { opacity: 0; clip-path: inset(6% 0 0 0); transition: opacity 1s ease, clip-path 1.1s cubic-bezier(.2,.7,.2,1); }
+.js .reveal-img.is-in { opacity: 1; clip-path: inset(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal, .js .reveal-img { opacity: 1; transform: none; clip-path: none; transition: none; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+</file>
+
+<file path="astro.config.mjs">
+// @ts-check
+import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
+
+// https://astro.build/config
+export default defineConfig({
+  vite: {
+    plugins: [tailwindcss()],
+  },
+});
+</file>
+
+<file path="package.json">
+{
+  "name": "baic",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.5",
+    "tailwindcss": "^4.3.3"
+  },
+  "allowScripts": {
+    "esbuild": true
+  }
+}
+</file>
+
+</files>

@@ -1,0 +1,13 @@
+---
+// Consistent heading for each block inside a vehicle chapter:
+// "01  OVERVIEW ........................ X55"
+import T from './T.astro';
+interface Props { index: number; label: { en: string; bm: string }; vehicle: string; id?: string; }
+const { index, label, vehicle, id } = Astro.props;
+---
+<div class="flex items-baseline gap-4 border-t border-white/10 pt-5 md:gap-6 md:pt-6">
+  <span class="font-display text-sm text-lime md:text-base">{String(index).padStart(2, '0')}</span>
+  <h3 id={id} class="font-display text-2xl uppercase tracking-tight md:text-4xl"><T value={label} /></h3>
+  <span class="label ml-auto hidden sm:inline">{vehicle}</span>
+</div>
+

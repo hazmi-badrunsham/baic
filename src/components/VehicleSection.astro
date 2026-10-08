@@ -3,71 +3,183 @@ import site from '../data/site.json';
 import T from './T.astro';
 import Media from './Media.astro';
 import WhatsAppLink from './WhatsAppLink.astro';
+import SubHead from './SubHead.astro';
 import VehicleSpecs from './VehicleSpecs.astro';
 import VehicleGallery from './VehicleGallery.astro';
 import VehicleFeatures from './VehicleFeatures.astro';
 import VehiclePricing from './VehiclePricing.astro';
 
-const { vehicle, number } = Astro.props as { vehicle: any; number: number };
+interface Props { vehicle: any; index: number; total: number; }
+const { vehicle, index, total } = Astro.props;
 const rugged = vehicle.theme === 'rugged';
-const n = String(number).padStart(2, '0');
+const n = String(index + 1).padStart(2, '0');
+const of = String(total).padStart(2, '0');
 const m = vehicle.media;
-const pending = !(vehicle.keyStats?.length) && !vehicle.pricing;
+const L = site.labels;
 const ask = {
-  en: site.labels.ask.en.replace('{name}', vehicle.shortName),
-  bm: site.labels.ask.bm.replace('{name}', vehicle.shortName),
+  en: L.ask.en.replace('{name}', vehicle.shortName),
+  bm: L.ask.bm.replace('{name}', vehicle.shortName),
 };
+
+// Fit the giant model name to the screen: shorter names get bigger type.
+const nameVw = Math.min(24, 88 / (0.62 * vehicle.shortName.length)).toFixed(1);
+
+// Blocks inside this chapter. Only those with content are rendered and listed in the sub-nav.
+const s = vehicle.slug;
+const hasSpecs = (vehicle.keyStats?.length ?? 0) > 0 || Object.values(vehicle.specs ?? {}).some(Boolean);
+const hasGallery = (m.gallery?.length ?? 0) > 0;
+const blocks = [
+  { id: `${s}-overview`, label: L.overview, show: true },
+  { id: `${s}-specs`, label: L.specsTab, show: hasSpecs },
+  { id: `${s}-gallery`, label: L.gallery, show: hasGallery },
+  { id: `${s}-price`, label: L.priceTab, show: true },
+].filter((b) => b.show);
+const idx = (id: string) => blocks.findIndex((b) => b.id === id) + 1;
 ---
 <section
-  id={vehicle.slug}
+  id={s}
   data-ctx
   data-ctx-vehicle={vehicle.name}
   aria-labelledby={`${vehicle.id}-title`}
-  class:list={['border-t border-white/10 py-20 md:py-32', rugged ? 'bg-ink-2' : 'bg-ink']}
+  class:list={['relative border-t border-white/10', rugged ? 'bg-ink-2' : 'bg-ink']}
 >
-  <div class="wrap">
-    <div class:list={['flex items-baseline justify-between gap-6', rugged && 'md:flex-row-reverse']}>
-      <p class="label"><span class="text-lime">{n}</span> — {vehicle.name}</p>
-      <p class="label hidden md:block"><T value={vehicle.traits} /></p>
+  <!-- ── Chapter opener ───────────────────────────────────────────────
+       Mobile: name → photo → tagline/CTA (stacked).
+       Desktop: full-screen photo with the name and CTA laid over it. -->
+  <div class="relative flex flex-col md:block md:h-svh md:max-h-[60rem] md:min-h-[38rem] md:overflow-hidden">
+    <div class="relative order-2 mt-6 md:absolute md:inset-0 md:mt-0">
+      <Media
+        src={m.hero}
+        alt={{ en: vehicle.name, bm: vehicle.name }}
+        class="reveal-img aspect-[4/3] w-full md:aspect-auto md:h-full"
+        video={m.video || undefined}
+      />
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 hidden bg-gradient-to-t from-ink via-ink/40 to-ink/20 md:block"></div>
+    </div>
+
+    <div class="contents md:absolute md:inset-0 md:z-10 md:flex md:flex-col md:justify-end">
+      <div class="wrap order-1 w-full pt-20 md:pt-0">
+        <div class="flex items-center gap-3 label">
+          <span class="text-lime"><T value={L.model} /> {n}</span><span class="text-paper/40">/ {of}</span>
+          <span class="h-px flex-1 bg-white/15 md:max-w-24"></span>
+          <span class="text-paper/80"><T value={vehicle.traits} /></span>
+        </div>
+        <p class="mt-5 font-display text-sm uppercase tracking-[0.3em] text-paper/70 md:text-base">BAIC</p>
+        <h2
+          id={`${vehicle.id}-title`}
+          class="vehicle-name reveal font-display uppercase"
+          style={`font-size:clamp(3.5rem, ${nameVw}vw, 16rem)`}
+        >
+          {vehicle.shortName}
+        </h2>
+      </div>
+
+      <div class="wrap order-3 mt-6 w-full md:mt-6 md:pb-12">
+        <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-10 md:border-t md:border-white/15 md:pt-6">
+          <div>
+            <p class="font-display text-2xl uppercase text-lime md:text-3xl"><T value={vehicle.tagline} /></p>
+            {vehicle.subtitle && <p class="mt-1 text-muted md:text-lg"><T value={vehicle.subtitle} /></p>}
+          </div>
+          <div class="flex flex-wrap items-center gap-x-8 gap-y-4">
+            {vehicle.pricing?.from && (
+              <p class="font-display text-3xl leading-none md:text-4xl">
+                <span class="label mb-1 block"><T value={L.from} /></span>{vehicle.pricing.from}
+              </p>
+            )}
+            <!-- <WhatsAppLink vehicle={vehicle.name} label={ask} /> -->
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Large visual -->
-  <div class="mt-8 md:mt-12">
-    <Media
-      src={m.hero}
-      alt={{ en: `${vehicle.name}`, bm: `${vehicle.name}` }}
-      class:list={['reveal-img aspect-[4/5] w-full', rugged ? 'md:aspect-[21/9]' : 'md:aspect-[16/8]']}
-      video={m.video || undefined}
-    />
-  </div>
+  <!-- ── Sticky chapter nav: always shows which car you're on + jump links ── -->
+  <nav data-vnav aria-label={vehicle.name} class="sticky top-16 z-30 mt-10 border-y border-white/10 bg-ink/90 backdrop-blur-md md:mt-0">
+    <div class="wrap flex h-12 items-center gap-5 md:h-14 md:gap-8">
+      <a href={`#${s}`} class="shrink-0 font-display text-sm uppercase tracking-[0.08em] md:text-base">
+        <span class="text-lime">{n}</span> <span class="hidden sm:inline">BAIC </span>{vehicle.shortName}
+      </a>
+      <span class="h-5 w-px shrink-0 bg-white/15"></span>
+      <ul class="no-scrollbar flex min-w-0 flex-1 gap-5 overflow-x-auto md:gap-8">
+        {blocks.map((b) => (
+          <li class="shrink-0">
+            <a href={`#${b.id}`} class="vnav-link flex h-12 items-center text-xs uppercase tracking-[0.14em] text-muted transition-colors hover:text-paper md:h-14">
+              <T value={b.label} />
+            </a>
+          </li>
+        ))}
+      </ul>
+      <!-- <WhatsAppLink vehicle={vehicle.name} label={site.cta.primary} variant="text" class="hidden shrink-0 lg:inline-flex" /> -->
+    </div>
+  </nav>
 
-  <div class="wrap">
-    <!-- Headline + description (mirrored for the rugged theme) -->
-    <div class="mt-12 grid gap-8 md:mt-20 md:grid-cols-12 md:gap-10">
-      <div class:list={['md:col-span-8', rugged && 'md:col-start-5 md:text-right']}>
-        <h2 id={`${vehicle.id}-title`} class="title-xl reveal"><T value={vehicle.tagline} /></h2>
-        {vehicle.subtitle && <p class="mt-5 font-display text-lg text-muted md:text-2xl"><T value={vehicle.subtitle} /></p>}
-      </div>
-      <div class:list={['md:col-span-4 md:self-end', rugged && 'md:col-start-1 md:row-start-1']}>
-        {vehicle.description && <p class="reveal text-muted md:text-lg"><T value={vehicle.description} /></p>}
-        {pending && <p class="max-w-sm text-muted"><T value={site.labels.pending} /></p>}
-        <div class="mt-5"><WhatsAppLink variant="text" vehicle={vehicle.name} label={ask} /></div>
+  <div class="wrap pb-20 md:pb-32">
+    <!-- Overview -->
+    <div id={`${s}-overview`} class="vblock pt-14 md:pt-24">
+      <SubHead index={idx(`${s}-overview`)} label={L.overview} vehicle={vehicle.name} />
+      <div class="mt-8 grid gap-10 md:mt-12 md:grid-cols-12 md:gap-10">
+        <div class="md:col-span-5">
+          {vehicle.description
+            ? <p class="reveal font-display text-xl leading-snug md:text-3xl"><T value={vehicle.description} /></p>
+            : <p class="font-display text-xl leading-snug text-muted md:text-2xl"><T value={L.pending} /></p>}
+        </div>
+        {vehicle.features?.length > 0 && (
+          <div class="md:col-span-6 md:col-start-7">
+            <p class="label mb-2"><T value={L.features} /></p>
+            <VehicleFeatures vehicle={vehicle} />
+          </div>
+        )}
       </div>
     </div>
 
-    <div class="mt-16 md:mt-24"><VehicleSpecs vehicle={vehicle} rugged={rugged} /></div>
-    <div class="mt-16 md:mt-24"><VehicleGallery vehicle={vehicle} rugged={rugged} /></div>
-
-    {(vehicle.features?.length > 0 || vehicle.pricing) && (
-      <div class="mt-16 grid gap-14 md:mt-24 md:grid-cols-12 md:gap-10">
-        <div class:list={['md:col-span-6', rugged && 'md:order-2 md:col-start-7']}><VehicleFeatures vehicle={vehicle} /></div>
-        <div class:list={['md:col-span-5', rugged ? 'md:order-1 md:col-start-1' : 'md:col-start-8']}><VehiclePricing vehicle={vehicle} /></div>
+    {hasSpecs && (
+      <div id={`${s}-specs`} class="vblock pt-16 md:pt-28">
+        <SubHead index={idx(`${s}-specs`)} label={L.specsTab} vehicle={vehicle.name} />
+        <div class="mt-8 md:mt-12"><VehicleSpecs vehicle={vehicle} /></div>
       </div>
     )}
 
-    <div class:list={['mt-12 flex', rugged && 'md:justify-end']}>
-      <WhatsAppLink vehicle={vehicle.name} label={ask} />
+    {hasGallery && (
+      <div id={`${s}-gallery`} class="vblock pt-16 md:pt-28">
+        <SubHead index={idx(`${s}-gallery`)} label={L.gallery} vehicle={vehicle.name} />
+        <div class="mt-8 md:mt-12"><VehicleGallery vehicle={vehicle} rugged={rugged} /></div>
+      </div>
+    )}
+
+    <div id={`${s}-price`} class="vblock pt-16 md:pt-28">
+      <SubHead index={idx(`${s}-price`)} label={L.priceTab} vehicle={vehicle.name} />
+      <div class="mt-8 md:mt-12"><VehiclePricing vehicle={vehicle} ask={ask} /></div>
     </div>
   </div>
 </section>
+
+<style>
+  .vehicle-name { line-height: .82; letter-spacing: -.045em; white-space: nowrap; margin-left: -.04em; }
+  /* Room for fixed header + sticky chapter nav when jumping to a block */
+  .vblock { scroll-margin-top: 7rem; }
+  .vnav-link[aria-current="true"] { color: var(--color-paper); box-shadow: inset 0 -2px 0 var(--color-lime); }
+</style>
+
+<script>
+  // Highlight the block currently on screen in each chapter's sticky nav.
+  document.querySelectorAll<HTMLElement>('[data-vnav]').forEach((nav) => {
+    const links = [...nav.querySelectorAll<HTMLAnchorElement>('.vnav-link')];
+    const targets = links
+      .map((a) => document.getElementById(a.hash.slice(1)))
+      .filter(Boolean) as HTMLElement[];
+    if (!('IntersectionObserver' in window) || !targets.length) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        links.forEach((a) => a.setAttribute('aria-current', String(a.hash === `#${e.target.id}`)));
+        const active = links.find((a) => a.hash === `#${e.target.id}`);
+        const strip = active?.closest('ul');
+        if (active && strip && strip.scrollWidth > strip.clientWidth) {
+          const li = active.parentElement as HTMLElement;
+          strip.scrollTo({ left: li.offsetLeft - strip.offsetLeft - 16, behavior: 'smooth' });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    targets.forEach((t) => io.observe(t));
+  });
+</script>

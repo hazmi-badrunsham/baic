@@ -5,19 +5,26 @@ import Lines from './Lines.astro';
 import Media from './Media.astro';
 const { vehicles } = Astro.props as { vehicles: any[] };
 
-// Editorial composition: large / offset narrow / offset wide. Extra vehicles fall back to the last slot.
+// Mobile: editorial composition — large / offset narrow / offset wide. Extra vehicles fall back to the last slot.
 const slots = [
-  { wrap: 'md:col-span-7', ratio: 'aspect-[4/3]' },
-  { wrap: 'ml-auto w-[78%] md:w-auto md:col-span-4 md:col-start-9 md:mt-28', ratio: 'aspect-[4/5]' },
-  { wrap: 'w-[88%] md:w-auto md:col-span-6 md:col-start-3 md:mt-4', ratio: 'aspect-[16/10]' },
+  { wrap: '', ratio: 'aspect-[4/3]' },
+  { wrap: 'ml-auto w-[78%]', ratio: 'aspect-[4/5]' },
+  { wrap: 'w-[88%]', ratio: 'aspect-[16/10]' },
 ];
+const num = (i: number) => String(i + 1).padStart(2, '0');
 ---
-<section id="models" data-ctx class="py-24 md:py-40">
+<section id="models" data-ctx class="border-t border-white/10 pt-24 pb-16 md:pt-40 md:pb-20">
   <div class="wrap">
-    <p class="label"><span class="text-lime">03</span> — <T value={site.models.label} /></p>
-    <h2 class="title-xl mt-6 reveal"><Lines lines={site.models.lines} /></h2>
+    <div class="md:flex md:items-end md:justify-between md:gap-10">
+      <div>
+        <p class="label text-sm"><span class="text-lime">- </span><T value={site.models.label} /></p>
+        <h2 class="title-xl mt-6 reveal"><Lines lines={site.models.lines} /></h2>
+      </div>
+      <p class="label hidden shrink-0 md:block">{String(vehicles.length).padStart(2, '0')} SUV · BAIC</p>
+    </div>
 
-    <div class="mt-16 grid gap-y-14 md:mt-24 md:grid-cols-12 md:gap-x-6 md:gap-y-0">
+    <!-- ── Mobile (unchanged): stacked editorial cards ── -->
+    <div class="mt-16 grid gap-y-14 md:hidden">
       {vehicles.map((v, i) => {
         const s = slots[Math.min(i, slots.length - 1)];
         return (
@@ -28,12 +35,12 @@ const slots = [
                 alt={{ en: v.name, bm: v.name }}
                 class:list={['reveal-img', s.ratio]}
               />
-              <span class="pointer-events-none absolute left-4 top-3 z-10 font-display text-5xl text-paper mix-blend-difference md:text-7xl">
-                {String(i + 1).padStart(2, '0')}
+              <span class="pointer-events-none absolute left-4 top-3 z-10 font-display text-5xl text-paper mix-blend-difference">
+                {num(i)}
               </span>
             </div>
             <div class="mt-4 flex items-baseline justify-between gap-4">
-              <h3 class="font-display text-2xl uppercase md:text-4xl">{v.shortName}</h3>
+              <h3 class="font-display text-2xl uppercase">{v.shortName}</h3>
               <span aria-hidden="true" class="text-lime transition-transform group-hover:translate-x-1">→</span>
             </div>
             <p class="label mt-1"><T value={v.traits} /></p>
@@ -41,5 +48,57 @@ const slots = [
         );
       })}
     </div>
+
+    <!-- ── Desktop: expanding panels. First is open by default; hover/focus opens another. ── -->
+    <div class="models-row mt-24 hidden h-[clamp(30rem,68vh,44rem)] gap-3 md:flex">
+      {vehicles.map((v, i) => (
+        <a href={`#${v.slug}`} class="models-panel group relative block min-w-0 overflow-hidden bg-ink-2">
+          <div class="absolute inset-0">
+            <Media src={v.media.hero} alt={{ en: v.name, bm: v.name }} class="reveal-img h-full w-full" />
+          </div>
+          <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-ink/10"></div>
+
+          <span class="pointer-events-none absolute left-6 top-5 z-10 font-display text-6xl text-paper/90 lg:text-7xl">{num(i)}</span>
+          <span aria-hidden="true" class="absolute right-6 top-6 z-10 grid size-11 place-items-center border border-white/20 text-lime transition-colors group-hover:border-lime group-hover:bg-lime group-hover:text-ink">→</span>
+
+          <div class="absolute inset-x-0 bottom-0 z-10 p-6 lg:p-8">
+            <div class="models-detail">
+              <p class="font-display text-lg text-lime lg:text-xl"><T value={v.tagline} /></p>
+            </div>
+            <h3 class="mt-2 whitespace-nowrap font-display text-3xl uppercase leading-none lg:text-5xl xl:text-6xl">{v.shortName}</h3>
+            <div class="models-detail mt-4 flex flex-wrap items-end justify-between gap-x-8 gap-y-2 border-t border-white/15 pt-4">
+              <p class="label"><T value={v.traits} /></p>
+              {v.pricing?.from && (
+                <p class="whitespace-nowrap font-display text-lg">
+                  <span class="label mr-2"><T value={site.labels.from} /></span>{v.pricing.from}
+                </p>
+              )}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- Divider into the car chapters -->
+    <div aria-hidden="true" class="mt-24 flex items-center md:mt-40">
+      <span class="h-0.5 w-16 bg-lime md:w-24"></span>
+      <span class="h-px flex-1 bg-white/25"></span>
+    </div>
   </div>
 </section>
+
+<style>
+  .models-panel { flex: 1 1 0; transition: flex-grow .7s cubic-bezier(.2,.7,.2,1); }
+  .models-panel:first-child { flex-grow: 2.6; }
+  .models-row:hover .models-panel,
+  .models-row:focus-within .models-panel { flex-grow: 1; }
+  .models-row .models-panel:hover,
+  .models-row .models-panel:focus-visible { flex-grow: 2.6; }
+
+  .models-detail { opacity: 0; transform: translateY(8px); transition: opacity .4s ease, transform .4s ease; }
+  .models-panel:first-child .models-detail { opacity: 1; transform: none; transition-delay: .15s; }
+  .models-row:hover .models-panel .models-detail,
+  .models-row:focus-within .models-panel .models-detail { opacity: 0; transform: translateY(8px); transition-delay: 0s; }
+  .models-row .models-panel:hover .models-detail,
+  .models-row .models-panel:focus-visible .models-detail { opacity: 1; transform: none; transition-delay: .2s; }
+</style>

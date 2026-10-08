@@ -21,7 +21,6 @@ const pattern = rugged ? patternRugged : patternUrban;
 ---
 {items.length > 0 && (
   <div>
-    <h3 class="sr-only"><T value={site.labels.gallery} /></h3>
     <!-- Mobile: horizontal snap scroll. Desktop: asymmetric 12-column rows. -->
     <div class="no-scrollbar -mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 md:mx-0 md:grid md:grid-cols-12 md:gap-4 md:overflow-visible md:px-0">
       {items.map((g, i) => (

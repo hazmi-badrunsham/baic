@@ -7,37 +7,47 @@ const dev = import.meta.env.DEV;
 const links = m.links.filter((l) => l.url || dev);
 ---
 {links.length > 0 && (
-  <section data-ctx class="border-t border-white/10 py-20 md:py-32">
+  <section data-ctx class="border-t border-white/10 py-14 md:py-20">
     <div class="wrap">
-      <p class="label"><span class="text-lime">09</span> — <T value={m.label} /></p>
-      <h2 class="title-lg mt-6 reveal"><T value={m.title} /></h2>
+      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p class="label mb-2 text-sm"><span class="text-lime">- </span><T value={m.label} /></p>
+          <h2 class="font-display text-2xl uppercase tracking-tight sm:text-3xl md:text-4xl reveal">
+            <T value={m.title} />
+          </h2>
+        </div>
+      </div>
 
-      <ul class="mt-12 md:mt-16">
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 md:mt-10">
         {links.map((l) => (
-          <li class="border-t border-white/10 last:border-b">
-            {l.url ? (
-              <a
-                href={l.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class:list={[
-                  'group flex items-center justify-between gap-6 font-display uppercase tracking-tight',
-                  l.id === 'tiktok' ? 'min-h-24 text-3xl md:min-h-32 md:text-6xl' : 'min-h-16 text-lg text-muted hover:text-paper md:text-2xl',
-                ]}
-              >
-                <span><T value={l.label} /></span>
-                <span aria-hidden="true" class="text-lime transition-transform group-hover:-translate-y-1 group-hover:translate-x-1">↗</span>
-                <span class="sr-only">(opens in a new tab)</span>
-              </a>
-            ) : (
-              <div class="flex min-h-16 items-center justify-between gap-6 font-display text-lg uppercase text-muted/50">
-                <span><T value={l.label} /></span>
-                <span class="label">Add URL in site.json (more.links)</span>
+          l.url ? (
+            <a
+              href={l.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-center justify-between border border-white/10 bg-white/[0.02] p-5 sm:p-6 transition-all hover:border-lime/60 hover:bg-white/[0.05]"
+            >
+              <div>
+                <p class="label mb-1 text-xs text-muted">
+                  {l.id === 'tiktok' ? 'TikTok' : 'Official'}
+                </p>
+                <p class="font-display text-lg uppercase tracking-tight text-paper transition-colors group-hover:text-lime sm:text-xl">
+                  <T value={l.label} />
+                </p>
               </div>
-            )}
-          </li>
+              <span aria-hidden="true" class="grid size-9 shrink-0 place-items-center border border-white/15 text-lime transition-all group-hover:border-lime group-hover:bg-lime group-hover:text-ink">
+                ↗
+              </span>
+              <span class="sr-only">(opens in a new tab)</span>
+            </a>
+          ) : (
+            <div class="flex items-center justify-between border border-white/10 p-5 text-muted/50 sm:p-6">
+              <span class="font-display uppercase"><T value={l.label} /></span>
+              <span class="label text-xs">Add URL in site.json</span>
+            </div>
+          )
         ))}
-      </ul>
+      </div>
     </div>
   </section>
 )}

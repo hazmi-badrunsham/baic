@@ -1,7 +1,7 @@
 {
   "advisor": {
     "name": "Yus",
-    "role": { "en": "Sales Manager | BAIC Malaysia", "bm": "Pengurus Jualan | BAIC Malaysia" },
+    "role": { "en": "Sales Manager | BAIC Sungai Petani", "bm": "Pengurus Jualan | BAIC Sungai Petani" },
     "company": "FM WORLD SDN BHD",
     "location": "Sungai Petani",
     "phone": "011-4977 7684",
@@ -43,18 +43,33 @@
   "hero": {
     "videoLandscape": "/media/hero-landscape.mp4",
     "videoPortrait": "/media/hero/hero-portrait.mp4",
-    "eyebrow": { "en": "BAIC — Sungai Petani", "bm": "BAIC — Sungai Petani" },
+    "eyebrow": { "en": "BAIC Sungai Petani", "bm": "BAIC Sungai Petani" },
     "title": { "en": "Drive with confidence.", "bm": "Memandu dengan yakin." },
     "description": {
-      "en": "Explore the BAIC X55, BJ40 Plus and BJ30.",
-      "bm": "Teroka BAIC X55, BJ40 Plus dan BJ30."
+      "en": "Explore our available models.",
+      "bm": "Lihat koleksi model yang tersedia."
     },
-    "scroll": { "en": "Scroll", "bm": "Tatal" }
+    "scroll": { "en": "Scroll", "bm": "Scroll" }
   },
   "yus": {
     "label": { "en": "Meet Yus", "bm": "Kenali Yus" },
     "portrait": "/media/yus/yus.jpeg",
     "portraitAlt": { "en": "Yus, BAIC sales manager in Sungai Petani", "bm": "Yus, pengurus jualan BAIC di Sungai Petani" },
+    "office": "/media/yus/office.webp",
+    "officeAlt": { "en": "BAIC Sungai Petani (U) 3S showroom", "bm": "Bilik pameran BAIC Sungai Petani (U) 3S" },
+    "location": {
+      "label": { "en": "Visit us", "bm": "Lawati kami" },
+      "name": "BAIC Sungai Petani (U) 3S",
+      "facilities": [
+        { "en": "Sales", "bm": "Jualan" },
+        { "en": "Service", "bm": "Servis" },
+        { "en": "Spare Parts", "bm": "Alat Ganti" }
+      ],
+      "address": "4 & 5, Jalan Perdana 1, Pusat Perniagaan Perdana Sungai Petani (U), 08000 Sungai Petani, Kedah",
+      "mapEmbed": "https://www.google.com/maps?q=BAIC+Sungai+Petani+(U)+3S,+4+%26+5+Jalan+Perdana+1,+Pusat+Perniagaan+Perdana+Sungai+Petani+(U),+08000+Sungai+Petani,+Kedah&output=embed",
+      "mapLink": "https://www.google.com/maps/search/?api=1&query=BAIC+Sungai+Petani+(U)+3S+Jalan+Perdana+1+08000+Sungai+Petani",
+      "openMap": { "en": "Open in Google Maps", "bm": "Buka di Google Maps" }
+    },
     "lines": [
       { "en": "Your", "bm": "Penasihat" },
       { "en": "BAIC", "bm": "BAIC" },
@@ -149,6 +164,11 @@
     "features": { "en": "Features", "bm": "Ciri-ciri" },
     "gallery": { "en": "Gallery", "bm": "Galeri" },
     "fullSpecs": { "en": "Full specifications", "bm": "Spesifikasi penuh" },
+    "model": { "en": "Model", "bm": "Model" },
+    "overview": { "en": "Overview", "bm": "Gambaran" },
+    "specsTab": { "en": "Specs", "bm": "Spesifikasi" },
+    "priceTab": { "en": "Price", "bm": "Harga" },
+    "keyFigures": { "en": "Key figures", "bm": "Angka utama" },
     "pending": {
       "en": "Full specifications and pricing will be added here. Ask Yus for the latest information.",
       "bm": "Spesifikasi penuh dan harga akan dimuatkan di sini. Hubungi Yus untuk maklumat terkini."
