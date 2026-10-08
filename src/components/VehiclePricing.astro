@@ -9,12 +9,12 @@ const w = vehicle.warranty;
 const L = site.labels;
 const darkBtn = '!bg-ink !text-paper hover:!bg-lime hover:!text-ink w-full sm:w-auto';
 ---
-<div class="bg-paper p-6 text-ink md:p-10">
+<div class="bg-paper p-5 text-ink sm:p-7 md:p-10">
   {p ? (
     <div class="grid gap-8 md:grid-cols-12 md:gap-10">
       <div class="md:col-span-7">
         <p class="text-xs font-medium uppercase tracking-[0.18em] text-ink/60"><T value={L.from} /> · {vehicle.name}</p>
-        <p class="mt-2 font-display leading-[0.9] tracking-tight" style="font-size:clamp(3rem,8vw,6.5rem)">{p.from}</p>
+        <p class="mt-2 font-display leading-[0.95] tracking-tight" style="font-size:clamp(2.5rem,7vw,6.5rem)">{p.from}</p>
 
         {(p.otr || p.sumInsured) && (
           <dl class="mt-8 grid max-w-lg gap-0 text-sm">

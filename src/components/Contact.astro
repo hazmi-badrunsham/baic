@@ -25,11 +25,11 @@ const any = site.whatsapp.anyVehicle;
         </h2>
         <p class="mt-4 text-muted text-base md:text-lg"><T value={c.sub} /></p>
 
-        <div class="mt-8 flex flex-wrap items-center gap-4">
-          <WhatsAppLink class="min-h-12 px-6 text-xs" label={site.cta.primary} />
+        <div class="mt-8 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+          <WhatsAppLink class="min-h-12 w-full sm:w-auto px-6 text-xs justify-center" label={site.cta.primary} />
           <a
             href={`tel:+${site.advisor.whatsappNumber}`}
-            class="inline-flex min-h-12 items-center gap-2 border border-white/15 bg-white/[0.03] px-5 text-xs font-display uppercase tracking-[0.1em] text-paper hover:border-lime hover:text-lime transition-colors"
+            class="inline-flex min-h-12 w-full sm:w-auto items-center justify-center gap-2 border border-white/15 bg-white/[0.03] px-5 text-xs font-display uppercase tracking-[0.1em] text-paper hover:border-lime hover:text-lime transition-colors"
           >
             <span class="text-muted"><T value={c.call} /></span>
             <span class="text-lime font-semibold">{site.advisor.phone}</span>
@@ -82,8 +82,9 @@ const any = site.whatsapp.anyVehicle;
   .pick-btn {
     display: inline-flex;
     align-items: center;
-    min-height: 36px;
-    padding: 0 1rem;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 1.125rem;
     font-family: var(--font-display);
     font-size: 0.75rem;
     letter-spacing: 0.1em;

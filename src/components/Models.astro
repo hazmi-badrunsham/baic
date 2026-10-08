@@ -40,10 +40,10 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
               </span>
             </div>
             <div class="mt-4 flex items-baseline justify-between gap-4">
-              <h3 class="font-display text-2xl uppercase">{v.shortName}</h3>
-              <span aria-hidden="true" class="text-lime transition-transform group-hover:translate-x-1">→</span>
+              <h3 class="font-display text-2xl uppercase tracking-tight">{v.shortName}</h3>
+              <span aria-hidden="true" class="text-lime text-lg transition-transform group-hover:translate-x-1">→</span>
             </div>
-            <p class="label mt-1"><T value={v.traits} /></p>
+            <p class="label mt-1 text-xs"><T value={v.traits} /></p>
           </a>
         );
       })}

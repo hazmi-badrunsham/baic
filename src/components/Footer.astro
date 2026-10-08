@@ -19,13 +19,13 @@ const a = site.advisor;
         <p class="text-xs text-muted/70">{a.company}</p>
       </div>
 
-      <div class="flex flex-wrap items-center gap-x-8 gap-y-4">
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-4 sm:gap-x-8">
         <!-- Vehicle quick links -->
         <nav aria-label="Vehicles navigation">
-          <ul class="flex flex-wrap items-center gap-6 text-xs uppercase tracking-[0.14em]">
+          <ul class="flex flex-wrap items-center gap-5 sm:gap-6 text-xs uppercase tracking-[0.14em]">
             {vehicles.map((v) => (
               <li>
-                <a href={`#${v.slug}`} class="text-muted transition-colors hover:text-lime">
+                <a href={`#${v.slug}`} class="inline-flex min-h-10 items-center text-muted transition-colors hover:text-lime">
                   {v.shortName}
                 </a>
               </li>
@@ -38,7 +38,7 @@ const a = site.advisor;
         <!-- Lang toggle & Top -->
         <div class="flex items-center gap-4">
           <LangToggle />
-          <a href="#top" class="inline-flex items-center gap-1 text-xs uppercase tracking-[0.14em] text-muted transition-colors hover:text-paper" aria-label="Back to top">
+          <a href="#top" class="inline-flex min-h-10 items-center gap-1 text-xs uppercase tracking-[0.14em] text-muted transition-colors hover:text-paper" aria-label="Back to top">
             <span>Top</span>
             <span aria-hidden="true">↑</span>
           </a>

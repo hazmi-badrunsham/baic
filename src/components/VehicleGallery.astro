@@ -21,13 +21,13 @@ const pattern = rugged ? patternRugged : patternUrban;
 ---
 {items.length > 0 && (
   <div>
-    <!-- Mobile: horizontal snap scroll. Desktop: asymmetric 12-column rows. -->
-    <div class="no-scrollbar -mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 md:mx-0 md:grid md:grid-cols-12 md:gap-4 md:overflow-visible md:px-0">
+    <!-- Mobile: horizontal snap scroll with smooth peek. Desktop: asymmetric 12-column rows. -->
+    <div class="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 sm:-mx-6 sm:px-6 md:mx-0 md:grid md:grid-cols-12 md:gap-4 md:overflow-visible md:p-0">
       {items.map((g, i) => (
         <Media
           src={g.src}
           alt={g.alt}
-          class:list={['reveal-img group aspect-[4/3] w-[84%] shrink-0 snap-center md:w-auto', pattern[i % pattern.length]]}
+          class:list={['reveal-img group aspect-[4/3] w-[85%] shrink-0 snap-center sm:w-[70%] md:w-auto', pattern[i % pattern.length]]}
         />
       ))}
     </div>

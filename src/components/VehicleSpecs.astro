@@ -8,11 +8,11 @@ const labels = site.labels.specs as Record<string, { en: string; bm: string }>;
 const rows = Object.entries(vehicle.specs ?? {}).filter(([k, v]) => v && labels[k]);
 ---
 {stats.length > 0 && (
-  <dl class="grid grid-cols-2 gap-px overflow-hidden border border-white/10 bg-white/10 md:grid-cols-5">
+  <dl class="grid grid-cols-2 gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-3 md:grid-cols-5">
     {stats.map((s, i) => (
-      <div class:list={['flex flex-col-reverse justify-end gap-3 bg-ink p-5 md:p-7', i === stats.length - 1 && stats.length % 2 === 1 && 'col-span-2 md:col-span-1']}>
-        <dt class="label text-paper/70"><T value={s.unit} /></dt>
-        <dd class="font-display leading-none tracking-tight" style="font-size:clamp(2.25rem,5vw,4.5rem)">{s.value}</dd>
+      <div class:list={['flex flex-col-reverse justify-end gap-2 sm:gap-3 bg-ink p-4 sm:p-5 md:p-7', i === stats.length - 1 && stats.length % 2 === 1 && 'col-span-2 sm:col-span-1']}>
+        <dt class="label text-[0.6875rem] sm:text-xs text-paper/70"><T value={s.unit} /></dt>
+        <dd class="font-display leading-none tracking-tight text-3xl sm:text-4xl md:text-5xl">{s.value}</dd>
       </div>
     ))}
   </dl>
@@ -20,15 +20,15 @@ const rows = Object.entries(vehicle.specs ?? {}).filter(([k, v]) => v && labels[
 
 {rows.length > 0 && (
   <details class="group mt-6 border border-white/10 bg-white/[0.02]">
-    <summary class="flex min-h-16 cursor-pointer list-none items-center justify-between px-5 font-display text-sm uppercase tracking-[0.12em] hover:text-lime md:px-7">
-      <span><T value={site.labels.fullSpecs} /> <span class="text-muted">({rows.length})</span></span>
+    <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between px-4 sm:px-6 md:px-7 font-display text-xs sm:text-sm uppercase tracking-[0.12em] hover:text-lime">
+      <span><T value={site.labels.fullSpecs} /> <span class="text-muted font-mono font-normal">({rows.length})</span></span>
       <span aria-hidden="true" class="grid size-8 place-items-center border border-white/20 text-lg text-lime transition-transform group-open:rotate-45">+</span>
     </summary>
-    <dl class="grid gap-x-12 px-5 pb-6 md:grid-cols-2 md:px-7">
+    <dl class="grid gap-x-12 px-4 pb-6 sm:px-6 md:grid-cols-2 md:px-7">
       {rows.map(([k, val]) => (
-        <div class="flex justify-between gap-6 border-t border-white/10 py-3 text-sm">
+        <div class="flex items-baseline justify-between gap-4 border-t border-white/10 py-3 text-xs sm:text-sm">
           <dt class="text-muted"><T value={labels[k]} /></dt>
-          <dd class="text-right">{val as string}</dd>
+          <dd class="text-right font-medium text-paper">{val as string}</dd>
         </div>
       ))}
     </dl>

@@ -31,19 +31,29 @@ html[data-ui="en"] [data-lang="bm"],
 html[data-ui="bm"] [data-lang="en"] { display: none !important; }
 
 @layer components {
-  .wrap { margin-inline: auto; max-width: 90rem; padding-inline: 1.25rem; }
-  @media (min-width: 768px) { .wrap { padding-inline: 2.5rem; } }
+  .wrap {
+    margin-inline: auto;
+    max-width: 90rem;
+    padding-inline: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+  @media (min-width: 480px) {
+    .wrap { padding-inline: 1.5rem; }
+  }
+  @media (min-width: 768px) {
+    .wrap { padding-inline: 2.5rem; }
+  }
 
   .label {
     font-size: .75rem; font-weight: 500; letter-spacing: .18em;
     text-transform: uppercase; color: var(--color-muted);
   }
   .title-xl {
-    font-size: clamp(2.75rem, 8vw, 7.5rem); line-height: .92; letter-spacing: -.035em;
+    font-size: clamp(2.25rem, 7.5vw, 7.5rem); line-height: .95; letter-spacing: -.035em;
     text-transform: uppercase; text-wrap: balance;
   }
   .title-lg {
-    font-size: clamp(2.25rem, 6vw, 5rem); line-height: .95; letter-spacing: -.03em;
+    font-size: clamp(2rem, 5.5vw, 5rem); line-height: .98; letter-spacing: -.03em;
     text-transform: uppercase; text-wrap: balance;
   }
   .no-scrollbar { scrollbar-width: none; }
