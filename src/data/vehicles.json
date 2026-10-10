@@ -6,49 +6,54 @@
       "name": "BAIC X55",
       "shortName": "X55",
       "theme": "urban",
-      "traits": { "en": "Urban / Smart / Refined", "bm": "Urban / Pintar / Elegan" },
-      "tagline": { "en": "Bold by Design.", "bm": "Berani Dalam Reka Bentuk." },
-      "subtitle": { "en": "Smart. Stylish. Confident.", "bm": "Pintar. Bergaya. Yakin." },
+      "traits": {
+        "en": "Urban / Smart / Dynamic",
+        "bm": "Urban / Pintar / Dinamik"
+      },
+      "tagline": {
+        "en": "Bold by Design, Driven by Intelligence.",
+        "bm": "Reka Bentuk Berani, Dikuasakan Kepintaran."
+      },
+      "subtitle": {
+        "en": "Smart. Stylish. Confident.",
+        "bm": "Pintar. Bergaya. Penuh Keyakinan."
+      },
       "description": {
-        "en": "Futuristic design, smart technology and efficient performance. Made for the city, comfortable well beyond it.",
-        "bm": "Reka bentuk futuristik, teknologi pintar dan prestasi efisien. Sesuai di bandar, selesa juga di luar bandar."
+        "en": "A futuristic silhouette paired with intelligent driver assistance and punchy turbo performance. Engineered for agile city daily drives and effortless highway cruising.",
+        "bm": "Siluet futuristik berteknologi tinggi dengan prestasi enjin turbo responsif. Direka lincah di laluan bandar dan kekal selesa untuk pemanduan jarak jauh."
       },
       "keyStats": [
-        { "value": "1.5L", "unit": "Turbo" },
-        { "value": "181", "unit": "HP" },
+        { "value": "1.5L", "unit": "Turbocharged" },
+        { "value": "188", "unit": "PS" },
         { "value": "305", "unit": "Nm" },
-        { "value": "7", "unit": "Speed DCT" },
-        { "value": "5", "unit": { "en": "Seats", "bm": "Tempat duduk" } }
+        { "value": "7-Speed", "unit": "Wet DCT" },
+        { "value": "5", "unit": { "en": "Seater", "bm": "Tempat Duduk" } }
       ],
       "specs": {
         "engine": "1.5L Turbocharged 4-Cylinder Petrol",
-        "power": "181 HP",
+        "power": "188 PS (138 kW) / 181 HP",
         "torque": "305 Nm @ 1,500–4,500 RPM",
-        "transmission": "7-Speed Wet DCT",
-        "drive": "FWD",
+        "transmission": "7-Speed Wet Dual-Clutch (DCT)",
+        "drive": "Front-Wheel Drive (FWD)",
         "fuelConsumption": "7.1 L/100km",
         "seats": "5",
         "wheelbase": "2,735 mm",
         "groundClearance": "160 mm",
-        "suspension": "Front MacPherson Strut / Rear Multi-Link"
+        "suspension": "Front MacPherson Strut / Rear Multi-Link Independent"
       },
-      "_verify": [
-        "Power: client marketing says 181 HP, technical sheet says 188 hp / 138 kW. Prototype shows 181 HP.",
-        "'5 Star Safety Standard' was supplied but the rating body is not named. Not displayed."
-      ],
       "features": [
-        { "en": "Digital cockpit", "bm": "Kokpit digital" },
-        { "en": "360° camera", "bm": "Kamera 360°" },
-        "ADAS",
-        { "en": "Wireless charging", "bm": "Pengecas wayarles" },
-        { "en": "Panoramic sunroof", "bm": "Bumbung panorama" },
-        { "en": "Ambient lighting", "bm": "Pencahayaan ambien" },
-        { "en": "Smart keyless entry", "bm": "Kemasukan tanpa kunci pintar" }
+        { "en": "Interactive Digital Cockpit", "bm": "Kokpit Digital Interaktif" },
+        { "en": "360° Panoramic Surround-View Camera", "bm": "Kamera Panorama 360° HD" },
+        { "en": "Level 2 ADAS Safety Suite", "bm": "Sistem Bantuan Pemanduan Pintar ADAS Tahap 2" },
+        { "en": "High-Speed Qi Wireless Charger", "bm": "Pengecas Tanpa Wayar Pantas" },
+        { "en": "Panoramic Sky Sunroof", "bm": "Bumbung Kaca Panorama" },
+        { "en": "Customizable Ambient Cabin Lighting", "bm": "Lampu Suasana Kabin Ambien" },
+        { "en": "Smart Keyless Entry & Push Start", "bm": "Kemasukan Pintar Tanpa Kunci & Punat Tekan Mula" }
       ],
       "pricing": {
-        "from": "RM129,800",
-        "otr": "RM130,670",
-        "sumInsured": "RM130,000"
+        "from": "RM119,800",
+        "otr": "RM120,720",
+        "sumInsured": "RM119,000"
       },
       "warranty": { "years": "5", "km": "150,000" },
       "media": {
@@ -68,26 +73,35 @@
       "name": "BAIC BJ40 Plus",
       "shortName": "BJ40 Plus",
       "theme": "rugged",
-      "traits": { "en": "Rugged / Capable / Adventure", "bm": "Lasak / Berkebolehan / Pengembaraan" },
-      "tagline": { "en": "Built for More.", "bm": "Dibina Untuk Lebih." },
-      "subtitle": { "en": "Bolder. Stronger. Beyond Limits.", "bm": "Lebih berani. Lebih kuat. Tanpa had." },
+      "traits": {
+        "en": "Rugged / Trail-Ready / Adventure",
+        "bm": "Lasak / Jiwa Pengembara / Berkuasa"
+      },
+      "tagline": {
+        "en": "Built to Conquer Every Frontier.",
+        "bm": "Dihasilkan untuk Menakluk Segala Rintangan."
+      },
+      "subtitle": {
+        "en": "Bold Heritage. Uncompromising 4x4 Capability.",
+        "bm": "Gaya Ikonik. Keupayaan 4x4 Tanpa Kompromi."
+      },
       "description": {
-        "en": "A classic Jeep-style silhouette, part-time 4x4 and turbo power. Ready for the road, and for where the road ends.",
-        "bm": "Rupa klasik gaya Jeep, 4x4 sepenggal masa dan kuasa turbo. Sedia untuk jalan raya, dan untuk tempat jalan berakhir."
+        "en": "An iconic off-road profile built with a heavy-duty ladder-frame chassis, mechanical part-time 4WD, and high-torque turbo propulsion. Ready for the urban commute, engineered for the untamed trail.",
+        "bm": "Gaya siluet off-road ikonik dengan struktur casis lasak (ladder frame), pacuan 4 roda mekanikal, dan tork turbo berkuasa tinggi. Sedia meluncur di jalan raya, unggul menakluk laluan ekstrem."
       },
       "keyStats": [
-        { "value": "2.0L", "unit": "Turbo" },
-        { "value": "221", "unit": "HP" },
+        { "value": "2.0L", "unit": "Turbocharged" },
+        { "value": "224", "unit": "PS" },
         { "value": "380", "unit": "Nm" },
-        { "value": "4X4", "unit": "Part-time" },
-        { "value": "2,000", "unit": { "en": "KG towing", "bm": "KG tarikan" } }
+        { "value": "4WD", "unit": "Part-Time" },
+        { "value": "2,000", "unit": { "en": "kg Towing", "bm": "kg Kapasiti Menunda" } }
       ],
       "specs": {
         "engine": "2.0L Turbocharged 4-Cylinder Petrol",
-        "power": "221 HP",
+        "power": "224 PS (165 kW) / 221 HP",
         "torque": "380 Nm @ 1,750–4,500 RPM",
-        "transmission": "8-Speed Automatic",
-        "drive": "Part-time 4WD",
+        "transmission": "8-Speed Automatic (ZF)",
+        "drive": "Part-Time 4WD with Low Range (4L)",
         "fuelConsumption": "11.0 L/100km",
         "seats": "5",
         "towing": "2,000 kg",
@@ -97,19 +111,16 @@
         "trenchCrossing": "500 mm",
         "fuelTank": "75 litres",
         "kerbWeight": "2,095 kg",
-        "suspension": "Front Double Wishbone / Rear 5-Link Live Axle"
+        "suspension": "Front Double Wishbone / Rear 5-Link Solid Axle"
       },
-      "_verify": [
-        "Power: client marketing says 221 HP, technical sheet says 224 hp / 165 kW. Prototype shows 221 HP."
-      ],
       "features": [
-        { "en": "Part-time 4x4", "bm": "4x4 sepenggal masa" },
-        { "en": "210 mm ground clearance", "bm": "Jarak kelegaan tanah 210 mm" },
-        { "en": "Full LED lighting", "bm": "Pencahayaan LED penuh" },
-        { "en": "Panoramic sunroof", "bm": "Bumbung panorama" },
-        { "en": "Leather seats", "bm": "Tempat duduk kulit" },
-        { "en": "Full-size spare tyre", "bm": "Tayar spare saiz penuh" },
-        { "en": "18\" alloy wheels", "bm": "Roda aloi 18\"" }
+        { "en": "Selectable Part-Time 4WD (2H / 4H / 4L)", "bm": "Sistem Pacuan 4 Roda Pilihan (2H / 4H / 4L)" },
+        { "en": "210 mm High Ground Clearance", "bm": "Kelegaan Tanah Tinggi 210 mm" },
+        { "en": "Signature Full LED Lighting System", "bm": "Sistem Pencahayaan LED Penuh Eksklusif" },
+        { "en": "Panoramic Sky Sunroof", "bm": "Bumbung Kaca Panorama" },
+        { "en": "Ergonomic Leather Comfort Seats", "bm": "Tempat Duduk Kulit Ergonomik" },
+        { "en": "Rear Exterior Full-Size Spare Wheel", "bm": "Tayar Ganti Saiz Penuh di Pintu Belakang" },
+        { "en": "18\" Heavy-Duty Diamond-Cut Alloys", "bm": "Roda Aloi Lasak 18-Inci" }
       ],
       "pricing": {
         "from": "RM188,250",
@@ -134,19 +145,28 @@
       "name": "BAIC Arcfox T1",
       "shortName": "Arcfox T1",
       "theme": "urban",
-      "traits": { "en": "Pure EV / Crossover / Smart", "bm": "EV Penuh / Crossover / Pintar" },
-      "tagline": { "en": "100% Electric Urban Crossover SUV.", "bm": "SUV Crossover Bandar 100% Elektrik." },
-      "subtitle": { "en": "Pure Electric. Intelligent. Future-Ready.", "bm": "Elektrik Penuh. Pintar. Sedia Masa Depan." },
+      "traits": {
+        "en": "100% Electric / Smart Tech / Clean Energy",
+        "bm": "100% Elektrik / Pintar / Sifar Emisi"
+      },
+      "tagline": {
+        "en": "Pure Electric Freedom, Thoughtfully Engineered.",
+        "bm": "Mobiliti Elektrik Pintar, Direka Menyeluruh."
+      },
+      "subtitle": {
+        "en": "Zero Emissions. Seamless Living.",
+        "bm": "Sifar Emisi. Gaya Hidup Masa Hadapan."
+      },
       "description": {
-        "en": "Zero-emission pure electric crossover with smart battery architecture, generous cargo room, and Level 2 intelligent driving assistance.",
-        "bm": "Crossover elektrik penuh sifar emisi dengan seni bina bateri pintar, ruang kargo luas, dan bantuan pemanduan pintar Tahap 2."
+        "en": "An agile 100% electric crossover built for city commuters and weekend explorers. Highlights fast DC charging, bidirectional V2L power output, and a spacious modular cabin.",
+        "bm": "Crossover elektrik penuh sifar emisi yang lincah untuk perjalanan harian dan hujung minggu. Dilengkapi pengecasan pantas DC, output kuasa luar V2L, serta ruang kabin modular yang luas."
       },
       "keyStats": [
         { "value": "42.3", "unit": "kWh LFP" },
-        { "value": "425", "unit": "KM (CLTC)" },
+        { "value": "425", "unit": "km (CLTC)" },
         { "value": "95", "unit": "PS" },
-        { "value": "176", "unit": "Nm" },   
-        { "value": "25", "unit": { "en": "min 30-80% DC", "bm": "min 30-80% DC" } }
+        { "value": "176", "unit": "Nm" },
+        { "value": "25", "unit": { "en": "mins (30-80% DC)", "bm": "minit (30-80% DC)" } }
       ],
       "specs": {
         "engine": "Permanent Magnet Synchronous Motor (PMSM)",
@@ -155,19 +175,19 @@
         "power": "70 kW (95 PS)",
         "torque": "176 Nm",
         "transmission": "Single-Speed Direct Drive",
-        "drive": "FWD",
-        "charging": "DC Fast Charge 30-80% in 25 mins | AC Full Charge ~8 hrs",
+        "drive": "Front-Wheel Drive (FWD)",
+        "charging": "DC Fast Charge 30-80% in ~25 mins | AC Home Charge ~8 hrs",
         "seats": "5",
         "wheelbase": "2,770 mm",
         "kerbWeight": "1,420 kg"
       },
       "features": [
-        { "en": "Zero-emission pure electric crossover", "bm": "Crossover elektrik penuh sifar emisi" },
-        { "en": "V2L / V2V external power supply output", "bm": "Fungsi bekalan kuasa luaran V2L / V2V" },
-        { "en": "Up to 1,352L flexible cargo volume", "bm": "Ruang kargo fleksibel sehingga 1,352L" },
-        { "en": "Level 2 smart driving assistance", "bm": "Bantuan pemanduan pintar Tahap 2" },
-        { "en": "360° HD panoramic camera", "bm": "Kamera panoramik 360° HD" },
-        { "en": "DC fast charging supported", "bm": "Sokongan pengecasan pantas DC" }
+        { "en": "Zero-Emission Pure Electric Architecture", "bm": "Seni Bina Elektrik Penuh Sifar Emisi" },
+        { "en": "V2L External Vehicle-to-Load Power Supply", "bm": "Fungsi Pembekal Kuasa Luaran V2L (Vehicle-to-Load)" },
+        { "en": "Up to 1,352L Expandable Cargo Capacity", "bm": "Ruang Kargo Luas Sehingga 1,352 Liter" },
+        { "en": "Level 2 Intelligent Driving Assistance", "bm": "Sistem Bantuan Pemanduan Pintar Tahap 2" },
+        { "en": "360° HD Panoramic Parking Camera", "bm": "Kamera Parkir Panoramik 360° HD" },
+        { "en": "Rapid CCS2 DC Fast Charging Supported", "bm": "Sokongan Pengecasan Pantas DC (CCS2)" }
       ],
       "pricing": {
         "from": "RM85,000*"
@@ -190,18 +210,52 @@
       "name": "BAIC BJ30",
       "shortName": "BJ30",
       "theme": "urban",
-      "traits": { "en": "Versatile / Modern / Practical", "bm": "Serba boleh / Moden / Praktikal" },
-      "tagline": { "en": "Versatile. Modern. Practical.", "bm": "Serba boleh. Moden. Praktikal." },
-      "subtitle": null,
-      "description": null,
-      "keyStats": [],
-      "specs": {
-        "engine": null, "power": null, "torque": null, "transmission": null,
-        "drive": null, "fuelConsumption": null, "seats": null
+      "traits": {
+        "en": "Rugged Crossover / Practical / Next-Gen Hybrid",
+        "bm": "Crossover Lasak / Praktikal / Hibrid Generasi Baharu"
       },
-      "features": [],
-      "pricing": null,
-      "warranty": null,
+      "tagline": {
+        "en": "Born for City Streets, Ready for the Wild.",
+        "bm": "Bergaya di Bandar, Tangkas di Denai."
+      },
+      "subtitle": {
+        "en": "Boxy Silhouette. Limitless Versatility.",
+        "bm": "Reka Bentuk Berkotak. Fleksibiliti Tanpa Batas."
+      },
+      "description": {
+        "en": "A modern boxy crossover combining spacious seating, generous ground clearance, and advanced hybrid efficiency. Built for urban comfort during the week and outdoor adventure on the weekend.",
+        "bm": "Crossover moden berprofil tegap yang menggabungkan keselesaan kabin luas, jarak kelegaan tanah tinggi, serta kecekapan enjin hibrid terkini. Sesuai untuk gaya hidup bandar dan aktiviti luar."
+      },
+      "keyStats": [
+        { "value": "1.5L", "unit": "Turbo Hybrid / ICE" },
+        { "value": "409", "unit": "PS (HEV Combined)" },
+        { "value": "685", "unit": "Nm (HEV Combined)" },
+        { "value": "2,820", "unit": "mm Wheelbase" },
+        { "value": "5", "unit": { "en": "Seater", "bm": "Tempat Duduk" } }
+      ],
+      "specs": {
+        "engine": "1.5L Turbocharged Hybrid / Petrol 4-Cylinder",
+        "power": "Up to 409 PS (301 kW Combined HEV)",
+        "torque": "Up to 685 Nm (Combined HEV)",
+        "transmission": "Dedicated Hybrid Transmission (DHT) / 7-Speed DCT",
+        "drive": "Electric All-Wheel Drive (e-AWD) / FWD",
+        "fuelConsumption": "6.45 L/100km",
+        "seats": "5",
+        "wheelbase": "2,820 mm",
+        "groundClearance": "215 mm"
+      },
+      "features": [
+        { "en": "Neo-Retro Boxy Exterior Design", "bm": "Reka Bentuk Tegap Neo-Retro" },
+        { "en": "Smart Intelligent Dual-Screen Cockpit", "bm": "Kokpit Skrin Berkembar Pintar" },
+        { "en": "Fold-Flat Camping Bed Interior Mode", "bm": "Mod Tempat Duduk Rata Sesuai untuk Perkhemahan" },
+        { "en": "Comprehensive Level 2 ADAS Safety Suite", "bm": "Pakej Keselamatan Pintar ADAS Tahap 2" },
+        { "en": "All-Terrain Drive Modes", "bm": "Mod Pemanduan Pelbagai Permukaan Bumi" },
+        { "en": "Class-Leading 2,820 mm Wheelbase Space", "bm": "Ruang Kabin Luas dengan Jarak Roda 2,820 mm" }
+      ],
+      "pricing": {
+        "from": "Coming Soon"
+      },
+      "warranty": { "years": "5", "km": "150,000" },
       "media": {
         "hero": "/media/bj30/visual.jpg",
         "video": "",

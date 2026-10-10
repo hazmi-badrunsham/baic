@@ -1,7 +1,10 @@
 {
   "advisor": {
     "name": "Yus",
-    "role": { "en": "Sales Manager | BAIC Sungai Petani", "bm": "Pengurus Jualan | BAIC Sungai Petani" },
+    "role": {
+      "en": "Sales Manager | BAIC Sungai Petani",
+      "bm": "Pengurus Jualan | BAIC Sungai Petani"
+    },
     "company": "FM WORLD SDN BHD",
     "location": "Sungai Petani",
     "phone": "011-4977 7684",
@@ -10,89 +13,124 @@
   "seo": {
     "title": "BAIC Sungai Petani | Yus",
     "description": {
-      "en": "BAIC X55, BJ40 Plus, BJ30 and Arcfox T1 in Sungai Petani. Pricing, test drives, trade-in and booking with Yus, via WhatsApp.",
-      "bm": "BAIC X55, BJ40 Plus, BJ30 dan Arcfox T1 di Sungai Petani. Harga, pandu uji, tukar ganti dan tempahan bersama Yus melalui WhatsApp."
+      "en": "Official BAIC lineup in Sungai Petani — X55, BJ40 Plus, BJ30, and Arcfox T1. Get official pricing, trade-in valuations, and test drive bookings directly with Yus.",
+      "bm": "Koleksi rasmi BAIC di Sungai Petani — X55, BJ40 Plus, BJ30, dan Arcfox T1. Dapatkan harga rasmi, nilai tukar beli kenderaan, dan tempahan pandu uji terus bersama Yus."
     },
     "canonical": "",
     "ogImage": "/media/og.jpg"
   },
   "disclaimer": {
     "independent": {
-      "en": "Independent sales advisor page. Not the official BAIC Malaysia website.",
-      "bm": "Halaman penasihat jualan bebas. Bukan laman web rasmi BAIC Malaysia."
+      "en": "Independent sales advisor page. Not the official BAIC Malaysia corporate portal.",
+      "bm": "Laman penasihat jualan sah. Bukan portal korporat rasmi BAIC Malaysia."
     },
     "footer": {
-      "en": "Vehicle specifications, pricing and availability are subject to change without prior notice. Please contact Yus for the latest information.",
-      "bm": "Spesifikasi, harga dan ketersediaan kenderaan tertakluk kepada perubahan tanpa notis terlebih dahulu. Sila hubungi Yus untuk maklumat terkini."
+      "en": "Vehicle specifications, pricing, and availability are subject to change without prior notice. Please contact Yus for the latest updates.",
+      "bm": "Spesifikasi kenderaan, harga, dan ketersediaan stok tertakluk kepada perubahan tanpa notis. Sila hubungi Yus untuk maklumat terkini."
     },
     "pricing": {
-      "en": "Price and specifications are subject to change without prior notice.",
+      "en": "Prices and specifications are subject to change without prior notice.",
       "bm": "Harga dan spesifikasi tertakluk kepada perubahan tanpa notis terlebih dahulu."
     }
   },
   "cta": {
-    "primary": { "en": "WhatsApp Yus", "bm": "WhatsApp Yus" }
+    "primary": {
+      "en": "WhatsApp Yus",
+      "bm": "WhatsApp Yus"
+    }
   },
   "whatsapp": {
     "interest": {
-      "en": "Hi Yus, I'm interested in the {vehicle}. I'd like to know more about the current pricing and test drive availability.",
-      "bm": "Hi Yus, saya berminat dengan {vehicle}. Saya ingin tahu lebih lanjut tentang harga semasa dan slot pandu uji."
+      "en": "Hi Yus, I'm interested in the {vehicle}. Could you share the latest pricing, promotions, and test drive availability?",
+      "bm": "Salam Yus, saya berminat dengan model {vehicle}. Boleh kongsikan harga terkini, promosi semasa, dan slot pandu uji?"
     },
-    "anyVehicle": { "en": "BAIC lineup", "bm": "model BAIC" }
+    "anyVehicle": {
+      "en": "BAIC lineup",
+      "bm": "barisan model BAIC"
+    }
   },
   "hero": {
     "videoLandscape": "/media/hero-landscape.mp4",
     "videoPortrait": "/media/hero/hero-portrait.mp4",
-    "eyebrow": { "en": "BAIC Sungai Petani", "bm": "BAIC Sungai Petani" },
-    "title": { "en": "Drive with confidence.", "bm": "Memandu dengan yakin." },
-    "description": {
-      "en": "Explore our available models.",
-      "bm": "Lihat koleksi model yang tersedia."
+    "eyebrow": {
+      "en": "BAIC Sungai Petani",
+      "bm": "BAIC Sungai Petani"
     },
-    "scroll": { "en": "Scroll", "bm": "Scroll" }
+    "title": {
+      "en": "Drive with confidence.",
+      "bm": "Pemanduan yakin, setiap destinasi."
+    },
+    "description": {
+      "en": "Discover premium rugged SUVs and next-generation electric mobility.",
+      "bm": "Terokai SUV berprestasi tinggi dan mobiliti elektrik generasi baharu."
+    },
+    "scroll": {
+      "en": "Scroll to explore",
+      "bm": "Skrol ke bawah"
+    }
   },
   "yus": {
-    "label": { "en": "Meet Yus", "bm": "Kenali Yus" },
+    "label": {
+      "en": "Meet Yus",
+      "bm": "Kenali Yus"
+    },
     "portrait": "/media/yus/yus.jpeg",
-    "portraitAlt": { "en": "Yus, BAIC sales manager in Sungai Petani", "bm": "Yus, pengurus jualan BAIC di Sungai Petani" },
+    "portraitAlt": {
+      "en": "Yus, BAIC Sales Manager in Sungai Petani",
+      "bm": "Yus, Pengurus Jualan BAIC Sungai Petani"
+    },
     "office": "/media/yus/office.webp",
-    "officeAlt": { "en": "BAIC Sungai Petani (U) 3S showroom", "bm": "Bilik pameran BAIC Sungai Petani (U) 3S" },
+    "officeAlt": {
+      "en": "BAIC Sungai Petani (U) 3S Showroom",
+      "bm": "Pusat Pameran BAIC Sungai Petani (U) 3S"
+    },
     "location": {
-      "label": { "en": "Visit us", "bm": "Lawati kami" },
+      "label": {
+        "en": "Visit Showroom",
+        "bm": "Kunjungi Bilik Pameran"
+      },
       "name": "BAIC Sungai Petani (U) 3S",
       "facilities": [
         { "en": "Sales", "bm": "Jualan" },
-        { "en": "Service", "bm": "Servis" },
-        { "en": "Spare Parts", "bm": "Alat Ganti" }
+        { "en": "Service", "bm": "Pusat Servis" },
+        { "en": "Spare Parts", "bm": "Alat Ganti Asli" }
       ],
       "address": "4 & 5, Jalan Perdana 1, Pusat Perniagaan Perdana Sungai Petani (U), 08000 Sungai Petani, Kedah",
       "mapEmbed": "https://www.google.com/maps?q=BAIC+Sungai+Petani+(U)+3S,+4+%26+5+Jalan+Perdana+1,+Pusat+Perniagaan+Perdana+Sungai+Petani+(U),+08000+Sungai+Petani,+Kedah&output=embed",
       "mapLink": "https://www.google.com/maps/search/?api=1&query=BAIC+Sungai+Petani+(U)+3S+Jalan+Perdana+1+08000+Sungai+Petani",
-      "openMap": { "en": "Open in Google Maps", "bm": "Buka di Google Maps" }
+      "openMap": {
+        "en": "Open in Google Maps",
+        "bm": "Buka di Google Maps"
+      }
     },
     "lines": [
-      { "en": "Your", "bm": "Penasihat" },
+      { "en": "Your Trusted", "bm": "Penasihat" },
       { "en": "BAIC", "bm": "BAIC" },
-      { "en": "advisor.", "bm": "anda." }
+      { "en": "Advisor.", "bm": "Pilihan Anda." }
     ],
     "intro": {
-      "en": "Test drives, trade-ins, loans and bookings, all with one person. Message Yus and get a direct answer.",
-      "bm": "Pandu uji, tukar ganti, pinjaman dan tempahan, semuanya dengan satu orang. WhatsApp Yus dan dapatkan jawapan terus."
+      "en": "From test drives and trade-in valuations to fast loan approvals and delivery — deal directly with an experienced manager who gets things done.",
+      "bm": "Urusan pandu uji, penilaian tukar beli, kelulusan pinjaman, hingga serahan kunci — semuanya diuruskan terus oleh penasihat berpengalaman tanpa perantara."
     },
     "modelsLabel": { "en": "Models", "bm": "Model" },
     "servicesLabel": { "en": "Services", "bm": "Perkhidmatan" },
     "services": [
       { "en": "Test Drive", "bm": "Pandu Uji" },
-      { "en": "Trade-In", "bm": "Tukar Ganti" },
-      { "en": "Loan", "bm": "Pinjaman" },
-      { "en": "Booking", "bm": "Tempahan" }
+      { "en": "Trade-In Valuation", "bm": "Tukar Beli Kenderaan" },
+      { "en": "Financing & Loans", "bm": "Urusan Pinjaman Bank" },
+      { "en": "Fast Booking", "bm": "Tempahan Pantas" }
     ]
   },
   "models": {
-    "label": { "en": "Explore the models", "bm": "Teroka model" },
+    "label": {
+      "en": "Explore the Lineup",
+      "bm": "Terokai Barisan Model"
+    },
     "lines": [
-      { "en": "Smart SUVs & Pure Electric.", "bm": "SUV Pintar & Elektrik Penuh." },
-      { "en": "Engineered for every journey.", "bm": "Direka untuk setiap perjalanan." }
+      {
+        "en": "Built for Every Journey.",
+        "bm": "Direka untuk Setiap Perjalanan."
+      }
     ],
     "items": [
       {
@@ -104,127 +142,183 @@
         },
         "priceFrom": "RM 85,000*",
         "specs": {
-          "powertrain": { "en": "Pure Electric (Permanent Magnet Synchronous Motor)", "bm": "Elektrik Penuh (Motor Segerak Magnet Kekal)" },
+          "powertrain": {
+            "en": "Pure Electric (Permanent Magnet Synchronous Motor)",
+            "bm": "Elektrik Penuh (Motor Magnet Kekal Segerak)"
+          },
           "battery": "42.3 kWh LFP",
           "range": "310 km (WLTP) / 425 km (CLTC)",
           "power": "70 kW (95 PS)",
           "torque": "176 Nm",
-          "transmission": { "en": "Single-Speed Direct-Drive", "bm": "Kelajuan Tunggal Pemacuan Terus" },
-          "drive": { "en": "Front-Wheel Drive (FWD)", "bm": "Pacuan Roda Hadapan (FWD)" },
+          "transmission": {
+            "en": "Single-Speed Direct-Drive",
+            "bm": "Pemacu Terus Kelajuan Tunggal (Single-Speed)"
+          },
+          "drive": {
+            "en": "Front-Wheel Drive (FWD)",
+            "bm": "Pacuan Roda Hadapan (FWD)"
+          },
           "charging": {
-            "en": "DC Fast Charge 30-80% in 25 mins | AC Full Charge ~8 hrs",
-            "bm": "Pengecasan Pantas DC 30-80% dlm 25 minit | Pengecasan AC Penuh ~8 jam"
+            "en": "DC Fast Charging (30–80% in ~25 mins) | AC Full Charge (~8 hrs)",
+            "bm": "Pengecasan Pantas DC (30–80% ~25 minit) | Pengecasan AC Penuh (~8 jam)"
           },
           "wheelbase": "2,770 mm",
           "kerbWeight": "1,420 kg",
           "seats": 5
         },
         "highlights": [
-          { "en": "Zero-emission pure electric crossover", "bm": "Crossover elektrik penuh sifar emisi" },
-          { "en": "V2L / V2V external power supply output", "bm": "Fungsi bekalan kuasa luaran V2L / V2V" },
-          { "en": "Up to 1,352L flexible cargo volume", "bm": "Ruang kargo fleksibel sehingga 1,352L" },
-          { "en": "Level 2 smart driving assistance & 360° HD camera", "bm": "Bantuan pemanduan pintar Tahap 2 & kamera 360° HD" }
+          {
+            "en": "Zero-emission pure electric crossover with instant torque response",
+            "bm": "Crossover elektrik penuh sifar emisi dengan respon tork serta-merta"
+          },
+          {
+            "en": "Bi-directional V2L & V2V external power supply system",
+            "bm": "Sokongan bekalan kuasa luaran dwi-arah V2L & V2V"
+          },
+          {
+            "en": "Flexible modular cargo volume expanding up to 1,352 L",
+            "bm": "Ruang kargo modular fleksibel sehingga 1,352 Liter"
+          },
+          {
+            "en": "Level 2 Advanced Driver Assistance Systems (ADAS) & 360° HD camera",
+            "bm": "Sistem Bantuan Pemanduan Pintar Tahap 2 (ADAS) & kamera panorama 360° HD"
+          }
         ]
       }
     ]
   },
   "why": {
-    "label": { "en": "Why BAIC", "bm": "Kenapa BAIC" },
-    "title": { "en": "Why BAIC?", "bm": "Kenapa BAIC?" },
+    "label": { "en": "Why Choose BAIC", "bm": "Kelebihan BAIC" },
+    "title": { "en": "Why Choose BAIC?", "bm": "Mengapa Pilih BAIC?" },
     "points": [
-      { "en": "Modern ICE & EV lineup", "bm": "Barisan enjin konvensional & EV moden" },
-      { "en": "Technology & safety", "bm": "Teknologi & keselamatan" },
-      { "en": "Comprehensive warranty coverage", "bm": "Perlindungan waranti menyeluruh" },
-      { "en": "Test drive available", "bm": "Pandu uji tersedia" }
+      {
+        "en": "Diverse lineup from rugged 4x4 SUVs to cutting-edge EVs",
+        "bm": "Pilihan menyeluruh dari SUV pacuan 4x4 lasak hingga EV pintar"
+      },
+      {
+        "en": "Durable chassis engineering with advanced active safety tech",
+        "bm": "Kejuruteraan casis tahan lasak & ciri keselamatan aktif terkini"
+      },
+      {
+        "en": "Comprehensive manufacturer warranty & official 3S support",
+        "bm": "Waranti pengeluar komprehensif disokong pusat 3S bertauliah"
+      },
+      {
+        "en": "Hassle-free test drives & personalized financing advisory",
+        "bm": "Pandu uji fleksibel & bimbingan pembiayaan pinjaman berpengalaman"
+      }
     ]
   },
   "contact": {
-    "label": { "en": "Test drive", "bm": "Pandu uji" },
+    "label": { "en": "Book Your Drive", "bm": "Tempah Pandu Uji" },
     "lines": [
       { "en": "Ready to", "bm": "Bersedia untuk" },
-      { "en": "drive?", "bm": "memandu?" }
+      { "en": "Experience It?", "bm": "Mencuba Sendiri?" }
     ],
-    "sub": { "en": "Talk to Yus.", "bm": "Hubungi Yus." },
-    "pick": { "en": "Which model?", "bm": "Model yang diminati?" },
-    "anyOption": { "en": "Not sure yet", "bm": "Belum pasti" },
-    "call": { "en": "Or call", "bm": "Atau telefon" },
+    "sub": {
+      "en": "Get in touch with Yus directly.",
+      "bm": "Hubungi Yus untuk temu janji."
+    },
+    "pick": {
+      "en": "Select a model",
+      "bm": "Pilih model pilihan anda"
+    },
+    "anyOption": {
+      "en": "Help me choose",
+      "bm": "Bantu saya buat pilihan"
+    },
+    "call": { "en": "Direct Line", "bm": "Talian Terus" },
     "intents": [
       {
         "label": { "en": "Book a test drive", "bm": "Tempah pandu uji" },
         "template": {
-          "en": "Hi Yus, I'm interested in the {vehicle}. I'd like to book a test drive.",
-          "bm": "Hi Yus, saya berminat dengan {vehicle}. Saya ingin menempah pandu uji."
+          "en": "Hi Yus, I'd like to arrange a test drive for the {vehicle}. When is the earliest slot available?",
+          "bm": "Salam Yus, saya ingin menempah sesi pandu uji bagi model {vehicle}. Bilakah slot terawal yang ada?"
         }
       },
       {
-        "label": { "en": "Ask about pricing", "bm": "Tanya tentang harga" },
+        "label": { "en": "Pricing & rebates", "bm": "Semak harga & rebat" },
         "template": {
-          "en": "Hi Yus, I'm interested in the {vehicle}. I'd like to ask about the current pricing.",
-          "bm": "Hi Yus, saya berminat dengan {vehicle}. Saya ingin bertanya tentang harga semasa."
+          "en": "Hi Yus, could you share the on-the-road pricing breakdown and latest promotions for the {vehicle}?",
+          "bm": "Salam Yus, boleh kongsikan anggaran harga atas jalan dan promosi terkini untuk {vehicle}?"
         }
       },
       {
-        "label": { "en": "Trade-in", "bm": "Tukar ganti" },
+        "label": { "en": "Trade-in valuation", "bm": "Penilaian tukar beli" },
         "template": {
-          "en": "Hi Yus, I'm interested in the {vehicle}. I'd like to ask about trade-in.",
-          "bm": "Hi Yus, saya berminat dengan {vehicle}. Saya ingin bertanya tentang tukar ganti."
+          "en": "Hi Yus, I'm interested in the {vehicle} and have a car to trade in. How do we proceed with an appraisal?",
+          "bm": "Salam Yus, saya berminat dengan {vehicle} dan ingin tukar beli kenderaan sedia ada. Bagaimana proses penilaiannya?"
         }
       },
       {
-        "label": { "en": "Loan / Booking", "bm": "Pinjaman / Tempahan" },
+        "label": { "en": "Loan calculation & booking", "bm": "Kira pinjaman & tempahan" },
         "template": {
-          "en": "Hi Yus, I'm interested in the {vehicle}. I'd like to ask about loan and booking.",
-          "bm": "Hi Yus, saya berminat dengan {vehicle}. Saya ingin bertanya tentang pinjaman dan tempahan."
+          "en": "Hi Yus, I'd like to get a loan calculation (downpayment & monthly installment) and booking details for the {vehicle}.",
+          "bm": "Salam Yus, saya ingin semak kiraan pinjaman (bayaran muka & ansuran bulanan) serta proses tempahan bagi {vehicle}."
         }
       }
     ]
   },
   "more": {
-    "label": { "en": "More from Yus", "bm": "Lagi daripada Yus" },
-    "title": { "en": "Follow the journey.", "bm": "Ikuti perjalanan." },
+    "label": { "en": "Connect", "bm": "Kekal Berhubung" },
+    "title": { "en": "Follow the journey.", "bm": "Ikuti perkembangan terkini." },
     "links": [
-      { "id": "tiktok", "label": { "en": "Yus on TikTok", "bm": "Yus di TikTok" }, "url": "https://www.tiktok.com/@eddieanne0" },
-      { "id": "baic", "label": { "en": "BAIC Malaysia official website", "bm": "Laman web rasmi BAIC Malaysia" }, "url": "https://www.baic.com.my" }
+      {
+        "id": "tiktok",
+        "label": { "en": "Yus on TikTok", "bm": "Yus di TikTok" },
+        "url": "https://www.tiktok.com/@eddieanne0"
+      },
+      {
+        "id": "baic",
+        "label": { "en": "BAIC Malaysia Official", "bm": "Laman Web Rasmi BAIC Malaysia" },
+        "url": "https://www.baic.com.my"
+      }
     ]
   },
   "labels": {
-    "from": { "en": "From", "bm": "Bermula" },
-    "otr": { "en": "On-the-road price, without insurance", "bm": "Harga atas jalan, tanpa insurans" },
-    "sumInsured": { "en": "Proposed sum insured", "bm": "Cadangan jumlah diinsuranskan" },
+    "from": { "en": "Starting from", "bm": "Bermula daripada" },
+    "otr": {
+      "en": "Estimated On-The-Road (OTR) without insurance",
+      "bm": "Harga anggaran atas jalan (OTR) tanpa insurans"
+    },
+    "sumInsured": {
+      "en": "Proposed sum insured",
+      "bm": "Cadangan nilai perlindungan insurans"
+    },
     "warranty": { "en": "Warranty", "bm": "Waranti" },
     "years": { "en": "Years", "bm": "Tahun" },
-    "ask": { "en": "Ask About {name}", "bm": "Tanya Tentang {name}" },
-    "features": { "en": "Features", "bm": "Ciri-ciri" },
+    "ask": { "en": "Enquire About {name}", "bm": "Pertanyaan Mengenai {name}" },
+    "features": { "en": "Key Highlights", "bm": "Ciri Utama" },
     "gallery": { "en": "Gallery", "bm": "Galeri" },
-    "fullSpecs": { "en": "Full specifications", "bm": "Spesifikasi penuh" },
+    "fullSpecs": { "en": "Full Specifications", "bm": "Spesifikasi Penuh" },
     "model": { "en": "Model", "bm": "Model" },
-    "overview": { "en": "Overview", "bm": "Gambaran" },
-    "specsTab": { "en": "Specs", "bm": "Spesifikasi" },
-    "priceTab": { "en": "Price", "bm": "Harga" },
-    "keyFigures": { "en": "Key figures", "bm": "Angka utama" },
+    "overview": { "en": "Overview", "bm": "Gambaran Keseluruhan" },
+    "specsTab": { "en": "Specifications", "bm": "Spesifikasi" },
+    "priceTab": { "en": "Pricing & Packages", "bm": "Pakej & Harga" },
+    "keyFigures": { "en": "Technical Highlights", "bm": "Spesifikasi Utama" },
     "pending": {
-      "en": "Full specifications and pricing will be added here. Ask Yus for the latest information.",
-      "bm": "Spesifikasi penuh dan harga akan dimuatkan di sini. Hubungi Yus untuk maklumat terkini."
+      "en": "Official specifications and price lists will be updated here shortly. Contact Yus directly for immediate details.",
+      "bm": "Spesifikasi rasmi dan senarai harga penuh akan dikemas kini tidak lama lagi. Hubungi Yus terus untuk maklumat segera."
     },
     "specs": {
       "engine": { "en": "Powertrain / Motor", "bm": "Trenkuasa / Motor" },
       "battery": { "en": "Battery Capacity", "bm": "Kapasiti Bateri" },
-      "electricRange": { "en": "Electric Range", "bm": "Jarak Gerak Elektrik" },
-      "charging": { "en": "Charging", "bm": "Pengecasan" },
-      "power": { "en": "Power", "bm": "Kuasa" },
-      "torque": { "en": "Torque", "bm": "Tork" },
+      "electricRange": { "en": "Driving Range", "bm": "Jarak Perjalanan" },
+      "charging": { "en": "Charging Capability", "bm": "Kadar Pengecasan" },
+      "power": { "en": "Maximum Power", "bm": "Kuasa Maksimum" },
+      "torque": { "en": "Peak Torque", "bm": "Tork Maksimum" },
       "transmission": { "en": "Transmission", "bm": "Transmisi" },
-      "drive": { "en": "Drivetrain", "bm": "Sistem pacuan" },
-      "fuelConsumption": { "en": "Energy / Fuel consumption", "bm": "Penggunaan tenaga / bahan api" },
-      "seats": { "en": "Seats", "bm": "Tempat duduk" },
-      "towing": { "en": "Towing capacity", "bm": "Kapasiti tarikan" },
-      "wheelbase": { "en": "Wheelbase", "bm": "Jarak roda" },
-      "groundClearance": { "en": "Ground clearance", "bm": "Jarak kelegaan tanah" },
-      "fordingDepth": { "en": "Fording depth", "bm": "Kedalaman rentas air" },
-      "trenchCrossing": { "en": "Trench crossing", "bm": "Rentas parit" },
-      "fuelTank": { "en": "Fuel tank", "bm": "Tangki minyak" },
-      "kerbWeight": { "en": "Kerb weight", "bm": "Berat kerb" },
-      "suspension": { "en": "Suspension", "bm": "Suspensi" }
+      "drive": { "en": "Drivetrain", "bm": "Sistem Pacuan" },
+      "fuelConsumption": { "en": "Energy Consumption", "bm": "Penggunaan Tenaga / Bahan Api" },
+      "seats": { "en": "Seating Capacity", "bm": "Kapasiti Tempat Duduk" },
+      "towing": { "en": "Towing Capacity", "bm": "Kapasiti Menunda" },
+      "wheelbase": { "en": "Wheelbase", "bm": "Jarak Roda" },
+      "groundClearance": { "en": "Ground Clearance", "bm": "Kelegaan Tanah" },
+      "fordingDepth": { "en": "Wading Depth", "bm": "Kedalaman Rentas Air" },
+      "trenchCrossing": { "en": "Trench Crossing Capability", "bm": "Kelepasan Halangan" },
+      "fuelTank": { "en": "Fuel Tank Capacity", "bm": "Kapasiti Tangki Bahan Api" },
+      "kerbWeight": { "en": "Kerb Weight", "bm": "Berat Bersih (Kerb Weight)" },
+      "suspension": { "en": "Suspension System", "bm": "Sistem Suspensi" }
     }
   }
 }

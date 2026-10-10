@@ -2,15 +2,15 @@
 import site from '../data/site.json';
 import WhatsAppLink from './WhatsAppLink.astro';
 ---
-<!-- Mobile: bottom bar. Desktop: small floating button. Appears once the hero is out of view. -->
+<!-- Desktop only: small floating button. Hidden on mobile. Appears once the hero is out of view. -->
 <div
   id="wa-sticky"
   data-visible="false"
   data-any-en={site.whatsapp.anyVehicle.en}
   data-any-bm={site.whatsapp.anyVehicle.bm}
-  class="fixed inset-x-0 bottom-0 z-40 bg-ink/85 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md md:inset-x-auto md:bottom-8 md:right-8 md:bg-transparent md:p-0 md:backdrop-blur-none"
+  class="hidden md:block fixed md:bottom-8 md:right-8 z-40"
 >
-  <WhatsAppLink class="w-full md:w-auto md:px-6" label={site.cta.primary} />
+  <WhatsAppLink class="md:px-6" label={site.cta.primary} />
 </div>
 
 <script>
