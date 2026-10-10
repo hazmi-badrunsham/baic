@@ -2,6 +2,11 @@
 import nav from '../data/navigation.json';
 import T from './T.astro';
 import LangToggle from './LangToggle.astro';
+
+interface Props {
+  vehicles?: any[];
+}
+const { vehicles = [] } = Astro.props;
 ---
 <header
   id="site-header"
@@ -15,9 +20,55 @@ import LangToggle from './LangToggle.astro';
     </a>
 
     <nav aria-label="Primary" class="hidden lg:block">
-      <ul class="flex items-center gap-6 text-xs uppercase tracking-[0.14em] xl:gap-9">
+      <ul class="flex items-center gap-6 text-xs uppercase tracking-[0.14em] xl:gap-8">
         {nav.main.map((n) => (
-          <li><a href={n.href} class="py-2 text-muted transition-colors hover:text-paper"><T value={n.label} /></a></li>
+          n.hasDropdown && vehicles.length > 0 ? (
+            <li class="relative group/models">
+              <a
+                href={n.href}
+                class="flex items-center gap-1.5 py-2 text-muted transition-colors hover:text-paper group-hover/models:text-paper"
+              >
+                <T value={n.label} />
+                <span aria-hidden="true" class="text-[0.625rem] transition-transform duration-200 group-hover/models:rotate-180">▼</span>
+              </a>
+
+              <!-- Dropdown Menu -->
+              <div class="invisible pointer-events-none absolute left-1/2 top-full -translate-x-1/2 pt-2 opacity-0 transition-all duration-200 group-hover/models:visible group-hover/models:pointer-events-auto group-hover/models:opacity-100">
+                <div class="min-w-56 border border-white/15 bg-ink/95 p-2 shadow-2xl backdrop-blur-md">
+                  <div class="border-b border-white/10 px-3 py-2">
+                    <p class="text-[0.6875rem] font-medium tracking-[0.16em] text-muted"><T value={n.label} /></p>
+                  </div>
+                  <ul class="mt-1 space-y-0.5">
+                    {vehicles.map((v, i) => (
+                      <li>
+                        <a
+                          href={`#${v.slug}`}
+                          class="group/item flex items-center justify-between px-3 py-2 text-xs transition-colors hover:bg-white/[0.06] hover:text-lime"
+                        >
+                          <span class="font-display font-medium text-paper group-hover/item:text-lime">{v.shortName}</span>
+                          <span class="text-[0.6875rem] text-muted font-mono">{String(i + 1).padStart(2, '0')}</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                  <div class="mt-1 border-t border-white/10 pt-1">
+                    <a
+                      href="#models"
+                      class="block px-3 py-1.5 text-[0.6875rem] tracking-[0.12em] text-muted hover:text-lime"
+                    >
+                      <T value={{ en: 'View all models →', bm: 'Lihat semua model →' }} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          ) : (
+            <li>
+              <a href={n.href} class="py-2 text-muted transition-colors hover:text-paper">
+                <T value={n.label} />
+              </a>
+            </li>
+          )
         ))}
       </ul>
     </nav>
@@ -36,8 +87,22 @@ import LangToggle from './LangToggle.astro';
   <nav aria-label="Mobile">
     <ul class="divide-y divide-white/10">
       {nav.main.map((n) => (
-        <li>
-          <a href={n.href} class="flex min-h-14 items-center font-display text-3xl uppercase tracking-tight text-paper transition-colors hover:text-lime sm:min-h-16 sm:text-4xl"><T value={n.label} /></a>
+        <li class="py-2">
+          <a href={n.href} class="flex min-h-12 items-center font-display text-2xl sm:text-3xl uppercase tracking-tight text-paper transition-colors hover:text-lime">
+            <T value={n.label} />
+          </a>
+          {n.hasDropdown && vehicles.length > 0 && (
+            <ul class="mb-2 ml-3 mt-1 space-y-1 border-l-2 border-white/15 pl-4">
+              {vehicles.map((v, i) => (
+                <li>
+                  <a href={`#${v.slug}`} class="flex min-h-10 items-center justify-between text-base font-display uppercase tracking-wider text-muted hover:text-lime">
+                    <span>{v.shortName}</span>
+                    <span class="text-xs text-lime font-mono">{String(i + 1).padStart(2, '0')}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </li>
       ))}
     </ul>

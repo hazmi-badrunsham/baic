@@ -52,13 +52,13 @@
       },
       "warranty": { "years": "5", "km": "150,000" },
       "media": {
-        "hero": "/media/x55/visual.jpg",
+        "hero": "/media/x55/visual 2.jpg",
         "video": "",
         "gallery": [
-          "/media/x55/front.jpg",
-          "/media/x55/interior.jpg",
-          "/media/x55/top.png",
-          "/media/x55/back.jpg"
+          "/media/x55/11.jpg",
+          "/media/x55/22.jpg",
+          "/media/x55/44.jpg",
+          "/media/x55/33.jpg"
         ]
       }
     },
@@ -118,13 +118,69 @@
       },
       "warranty": { "years": "5", "km": "150,000" },
       "media": {
-        "hero": "/media/bj40/visual.jpg",
+        "hero": "/media/bj40/visual1.jpg",
         "video": "",
         "gallery": [
-          "/media/bj40/belakang.jpeg",
-          "/media/bj40/front.jpeg",
-          "/media/bj40/belakang2.jpeg",
-          "/media/bj40/dalam.jpeg"
+          "/media/bj40/11.jpg",
+          "/media/bj40/33.jpg",
+          "/media/bj40/22.jpg",
+          "/media/bj40/55.jpg"
+        ]
+      }
+    },
+    {
+      "id": "arcfox-t1",
+      "slug": "arcfox-t1",
+      "name": "BAIC Arcfox T1",
+      "shortName": "Arcfox T1",
+      "theme": "urban",
+      "traits": { "en": "Pure EV / Crossover / Smart", "bm": "EV Penuh / Crossover / Pintar" },
+      "tagline": { "en": "100% Electric Urban Crossover SUV.", "bm": "SUV Crossover Bandar 100% Elektrik." },
+      "subtitle": { "en": "Pure Electric. Intelligent. Future-Ready.", "bm": "Elektrik Penuh. Pintar. Sedia Masa Depan." },
+      "description": {
+        "en": "Zero-emission pure electric crossover with smart battery architecture, generous cargo room, and Level 2 intelligent driving assistance.",
+        "bm": "Crossover elektrik penuh sifar emisi dengan seni bina bateri pintar, ruang kargo luas, dan bantuan pemanduan pintar Tahap 2."
+      },
+      "keyStats": [
+        { "value": "42.3", "unit": "kWh LFP" },
+        { "value": "425", "unit": "KM (CLTC)" },
+        { "value": "95", "unit": "PS" },
+        { "value": "176", "unit": "Nm" },   
+        { "value": "25", "unit": { "en": "min 30-80% DC", "bm": "min 30-80% DC" } }
+      ],
+      "specs": {
+        "engine": "Permanent Magnet Synchronous Motor (PMSM)",
+        "battery": "42.3 kWh Lithium Iron Phosphate (LFP)",
+        "electricRange": "310 km (WLTP) / 425 km (CLTC)",
+        "power": "70 kW (95 PS)",
+        "torque": "176 Nm",
+        "transmission": "Single-Speed Direct Drive",
+        "drive": "FWD",
+        "charging": "DC Fast Charge 30-80% in 25 mins | AC Full Charge ~8 hrs",
+        "seats": "5",
+        "wheelbase": "2,770 mm",
+        "kerbWeight": "1,420 kg"
+      },
+      "features": [
+        { "en": "Zero-emission pure electric crossover", "bm": "Crossover elektrik penuh sifar emisi" },
+        { "en": "V2L / V2V external power supply output", "bm": "Fungsi bekalan kuasa luaran V2L / V2V" },
+        { "en": "Up to 1,352L flexible cargo volume", "bm": "Ruang kargo fleksibel sehingga 1,352L" },
+        { "en": "Level 2 smart driving assistance", "bm": "Bantuan pemanduan pintar Tahap 2" },
+        { "en": "360° HD panoramic camera", "bm": "Kamera panoramik 360° HD" },
+        { "en": "DC fast charging supported", "bm": "Sokongan pengecasan pantas DC" }
+      ],
+      "pricing": {
+        "from": "RM85,000*"
+      },
+      "warranty": { "years": "5", "km": "150,000" },
+      "media": {
+        "hero": "/media/arcfox-t1/visual.webp",
+        "video": "",
+        "gallery": [
+          "/media/arcfox-t1/1.jpg",
+          "/media/arcfox-t1/3.jpg",
+          "/media/arcfox-t1/5.jpg",
+          "/media/arcfox-t1/2.jpg"
         ]
       }
     },

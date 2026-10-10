@@ -10,8 +10,8 @@
   "seo": {
     "title": "BAIC Sungai Petani | Yus",
     "description": {
-      "en": "BAIC X55, BJ40 Plus and BJ30 in Sungai Petani. Pricing, test drives, trade-in and booking with Yus, via WhatsApp.",
-      "bm": "BAIC X55, BJ40 Plus dan BJ30 di Sungai Petani. Harga, pandu uji, tukar ganti dan tempahan bersama Yus melalui WhatsApp."
+      "en": "BAIC X55, BJ40 Plus, BJ30 and Arcfox T1 in Sungai Petani. Pricing, test drives, trade-in and booking with Yus, via WhatsApp.",
+      "bm": "BAIC X55, BJ40 Plus, BJ30 dan Arcfox T1 di Sungai Petani. Harga, pandu uji, tukar ganti dan tempahan bersama Yus melalui WhatsApp."
     },
     "canonical": "",
     "ogImage": "/media/og.jpg"
@@ -91,17 +91,50 @@
   "models": {
     "label": { "en": "Explore the models", "bm": "Teroka model" },
     "lines": [
-      { "en": "Three SUVs.", "bm": "Tiga SUV." },
-      { "en": "Three ways to move.", "bm": "Tiga cara bergerak." }
+      { "en": "Smart SUVs & Pure Electric.", "bm": "SUV Pintar & Elektrik Penuh." },
+      { "en": "Engineered for every journey.", "bm": "Direka untuk setiap perjalanan." }
+    ],
+    "items": [
+      {
+        "id": "arcfox-t1",
+        "name": "Arcfox T1",
+        "tagline": {
+          "en": "100% Electric Urban Crossover SUV",
+          "bm": "SUV Crossover Bandar 100% Elektrik"
+        },
+        "priceFrom": "RM 85,000*",
+        "specs": {
+          "powertrain": { "en": "Pure Electric (Permanent Magnet Synchronous Motor)", "bm": "Elektrik Penuh (Motor Segerak Magnet Kekal)" },
+          "battery": "42.3 kWh LFP",
+          "range": "310 km (WLTP) / 425 km (CLTC)",
+          "power": "70 kW (95 PS)",
+          "torque": "176 Nm",
+          "transmission": { "en": "Single-Speed Direct-Drive", "bm": "Kelajuan Tunggal Pemacuan Terus" },
+          "drive": { "en": "Front-Wheel Drive (FWD)", "bm": "Pacuan Roda Hadapan (FWD)" },
+          "charging": {
+            "en": "DC Fast Charge 30-80% in 25 mins | AC Full Charge ~8 hrs",
+            "bm": "Pengecasan Pantas DC 30-80% dlm 25 minit | Pengecasan AC Penuh ~8 jam"
+          },
+          "wheelbase": "2,770 mm",
+          "kerbWeight": "1,420 kg",
+          "seats": 5
+        },
+        "highlights": [
+          { "en": "Zero-emission pure electric crossover", "bm": "Crossover elektrik penuh sifar emisi" },
+          { "en": "V2L / V2V external power supply output", "bm": "Fungsi bekalan kuasa luaran V2L / V2V" },
+          { "en": "Up to 1,352L flexible cargo volume", "bm": "Ruang kargo fleksibel sehingga 1,352L" },
+          { "en": "Level 2 smart driving assistance & 360° HD camera", "bm": "Bantuan pemanduan pintar Tahap 2 & kamera 360° HD" }
+        ]
+      }
     ]
   },
   "why": {
     "label": { "en": "Why BAIC", "bm": "Kenapa BAIC" },
     "title": { "en": "Why BAIC?", "bm": "Kenapa BAIC?" },
     "points": [
-      { "en": "Modern SUV lineup", "bm": "Barisan SUV moden" },
+      { "en": "Modern ICE & EV lineup", "bm": "Barisan enjin konvensional & EV moden" },
       { "en": "Technology & safety", "bm": "Teknologi & keselamatan" },
-      { "en": "5 years / 150,000 km warranty", "bm": "Waranti 5 tahun / 150,000 km" },
+      { "en": "Comprehensive warranty coverage", "bm": "Perlindungan waranti menyeluruh" },
       { "en": "Test drive available", "bm": "Pandu uji tersedia" }
     ]
   },
@@ -174,12 +207,15 @@
       "bm": "Spesifikasi penuh dan harga akan dimuatkan di sini. Hubungi Yus untuk maklumat terkini."
     },
     "specs": {
-      "engine": { "en": "Engine", "bm": "Enjin" },
+      "engine": { "en": "Powertrain / Motor", "bm": "Trenkuasa / Motor" },
+      "battery": { "en": "Battery Capacity", "bm": "Kapasiti Bateri" },
+      "electricRange": { "en": "Electric Range", "bm": "Jarak Gerak Elektrik" },
+      "charging": { "en": "Charging", "bm": "Pengecasan" },
       "power": { "en": "Power", "bm": "Kuasa" },
       "torque": { "en": "Torque", "bm": "Tork" },
       "transmission": { "en": "Transmission", "bm": "Transmisi" },
       "drive": { "en": "Drivetrain", "bm": "Sistem pacuan" },
-      "fuelConsumption": { "en": "Fuel consumption (combined)", "bm": "Penggunaan bahan api (gabungan)" },
+      "fuelConsumption": { "en": "Energy / Fuel consumption", "bm": "Penggunaan tenaga / bahan api" },
       "seats": { "en": "Seats", "bm": "Tempat duduk" },
       "towing": { "en": "Towing capacity", "bm": "Kapasiti tarikan" },
       "wheelbase": { "en": "Wheelbase", "bm": "Jarak roda" },

@@ -1,10 +1,8 @@
 {
   "main": [
-    { "href": "#models", "label": { "en": "Models", "bm": "Model" } },
-    { "href": "#x55", "label": { "en": "X55", "bm": "X55" } },
-    { "href": "#bj40-plus", "label": { "en": "BJ40 Plus", "bm": "BJ40 Plus" } },
-    { "href": "#bj30", "label": { "en": "BJ30", "bm": "BJ30" } },
     { "href": "#yus", "label": { "en": "About Yus", "bm": "Tentang Yus" } },
+    { "href": "#models", "label": { "en": "Models", "bm": "Model" }, "hasDropdown": true },
+    { "href": "#why", "label": { "en": "Why BAIC", "bm": "Kenapa BAIC" } },
     { "href": "#contact", "label": { "en": "Contact", "bm": "Hubungi" } }
   ]
 }
