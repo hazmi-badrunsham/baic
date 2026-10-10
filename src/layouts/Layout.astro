@@ -17,18 +17,82 @@ const canonical = site.seo.canonical || undefined;
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="theme-color" content="#0A0A0A" />
 
+    <!-- Standard SEO -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Yus — BAIC Sungai Petani" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={site.seo.ogImage} />
+    <meta property="og:url" content={canonical || "https://baic-sungaipetani.com"} />
+    <meta property="og:locale" content="en_MY" />
+    <meta property="og:locale:alternate" content="ms_MY" />
 
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={site.seo.ogImage} />
+
+    <!-- Fonts: preconnect + display=swap for zero render-blocking text shift -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Structured Data (JSON-LD): AutoDealer & LocalBusiness Schema -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["AutoDealer", "LocalBusiness"],
+          "@id": "https://baic-sungaipetani.com/#dealership",
+          "name": "BAIC Sungai Petani (U) 3S — Yus",
+          "legalName": site.advisor.company,
+          "description": description,
+          "url": canonical || "https://baic-sungaipetani.com",
+          "telephone": `+${site.advisor.whatsappNumber}`,
+          "priceRange": "$$",
+          "image": `${canonical || "https://baic-sungaipetani.com"}${site.seo.ogImage}`,
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "4 & 5, Jalan Perdana 1, Pusat Perniagaan Perdana Sungai Petani (U)",
+            "addressLocality": "Sungai Petani",
+            "addressRegion": "Kedah",
+            "postalCode": "08000",
+            "addressCountry": "MY"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "5.6435",
+            "longitude": "100.4908"
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+              "opens": "09:00",
+              "closes": "18:00"
+            }
+          ],
+          "employee": {
+            "@type": "Person",
+            "name": site.advisor.name,
+            "jobTitle": site.advisor.role.en,
+            "telephone": `+${site.advisor.whatsappNumber}`
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://baic-sungaipetani.com/#website",
+          "url": canonical || "https://baic-sungaipetani.com",
+          "name": "BAIC Sungai Petani | Yus",
+          "description": description,
+          "inLanguage": ["en-MY", "ms-MY"]
+        }
+      ]
+    })} />
 
     <!-- Before first paint: flag JS, restore saved language -->
     <script is:inline>

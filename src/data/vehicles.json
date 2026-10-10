@@ -57,13 +57,13 @@
       },
       "warranty": { "years": "5", "km": "150,000" },
       "media": {
-        "hero": "/media/x55/visual 2.jpg",
+        "hero": "/media/x55/x55-hero.webp",
         "video": "",
         "gallery": [
-          "/media/x55/11.jpg",
-          "/media/x55/22.jpg",
-          "/media/x55/44.jpg",
-          "/media/x55/33.jpg"
+          "/media/x55/x55-front.webp",
+          "/media/x55/x55-rear.webp",
+          "/media/x55/x55-interior.webp",
+          "/media/x55/x55-side.webp"
         ]
       }
     },
@@ -129,13 +129,13 @@
       },
       "warranty": { "years": "5", "km": "150,000" },
       "media": {
-        "hero": "/media/bj40/visual1.jpg",
-        "video": "",
+        "hero": "/media/bj40/bj40-hero.webp",
+        "video": "", 
         "gallery": [
-          "/media/bj40/11.jpg",
-          "/media/bj40/33.jpg",
-          "/media/bj40/22.jpg",
-          "/media/bj40/55.jpg"
+          "/media/bj40/bj40-rear.webp",
+          "/media/bj40/bj40-front.webp",
+          "/media/bj40/bj40-side.webp",
+          "/media/bj40/bj40-interior.webp"
         ]
       }
     },

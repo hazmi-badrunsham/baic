@@ -4,16 +4,22 @@ import T from './T.astro';
 const w = site.why;
 ---
 <!-- Light editorial break between the vehicles and the contact section -->
-<section data-ctx class="bg-paper py-20 text-ink md:py-32">
+<section id="why" data-ctx class="bg-paper py-16 text-ink sm:py-20 md:py-28">
   <div class="wrap">
     <p class="label text-ink/60"><span class="text-ink">- </span><T value={w.label} /></p>
-    <h2 class="title-lg mt-6"><T value={w.title} /></h2>
+    <h2 class="mt-4 font-display text-2xl uppercase tracking-tight sm:text-3xl md:text-4xl lg:text-5xl">
+      <T value={w.title} />
+    </h2>
 
-    <ol class="mt-12 md:mt-20">
+    <ol class="mt-10 sm:mt-12 md:mt-16 border-t border-ink/15">
       {w.points.map((p, i) => (
-        <li class="reveal grid gap-2 border-t border-ink/20 py-6 last:border-b md:grid-cols-12 md:items-baseline md:gap-10 md:py-8">
-          <span class="font-display text-sm text-ink/50 md:col-span-2">{String(i + 1).padStart(2, '0')}</span>
-          <span class="font-display uppercase tracking-tight md:col-span-10" style="font-size:clamp(1.75rem,4.2vw,3.5rem);line-height:1"><T value={p} /></span>
+        <li class="reveal grid grid-cols-12 items-baseline gap-4 border-b border-ink/15 py-5 sm:py-6 md:gap-8 md:py-7">
+          <span class="col-span-2 sm:col-span-1 font-display text-xs sm:text-sm font-semibold tracking-wider text-ink/40">
+            {String(i + 1).padStart(2, '0')}
+          </span>
+          <span class="col-span-10 sm:col-span-11 font-display text-lg sm:text-xl md:text-2xl uppercase tracking-normal leading-snug sm:leading-tight text-ink/90">
+            <T value={p} />
+          </span>
         </li>
       ))}
     </ol>
